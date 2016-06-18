@@ -1,0 +1,30 @@
+
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    html, body, #pholder {
+        height:             100%;
+        width:              100%;
+        background-color:   #3D5AFE;
+        overflow:           hidden;
+    }
+
+
+    #bar-menu {
+        width:              100%;
+        height:             5%;
+        min-height:         80px;
+        border-bottom:      1px solid black;
+    }
+
+
+    #panel-left {
+        height:             90%;
+        width:              20%;
+        min-width:          200px;
+        border-right:       1px solid black;
+    }
+
