@@ -36,7 +36,7 @@
         <!-- | landing -->
         <div id="landing">
             <div class="title">
-                <h1><i class="material-icons large">dashboard</i></h1>
+                <h1><i class="material-icons large">folder_open</i></h1>
             </div>
         </div>
         <!-- landing -->
@@ -48,12 +48,11 @@
             <nav id="nav">
                 <div class="nav-wrapper light-blue">
                     <ul id="nav-mobile" class="left">
-                        <li><a id="nav-toggle-path"><i class="material-icons large">description</i></a></li>
+                        <li><a id="nav-toggle-path"><i class="material-icons large">folder_open</i></a></li>
                     </ul>
                     <ul id="nav-mobile" class="right">
                         <li><a><i class="material-icons large">search</i></a></li>
                         <li><a><i class="material-icons large">import_export</i></a></li>
-                        <li><a><i class="material-icons large">refresh</i></a></li>
                     </ul>
                 </div>
             </nav>
@@ -116,10 +115,11 @@
 
             <!-- DEBUG -->
             <script>
-                $("h1").click(function() {
+                $("#landing").click(function() {
                     $('html, body').animate({
                         scrollTop: $("#nav").offset().top
                     }, 1000);
+                    $("#input-path").focus();
                 });
             </script>
 

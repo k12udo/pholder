@@ -6,10 +6,20 @@
         overflow:   auto;
     }
 
-    #files .file {
+    #files table tbody tr {
+        cursor:     pointer;
     }
 
-    #files .file:hover {
+    #files table tbody tr td {
     }
+
+    #files table tbody tr td i {
+    }
+
+    #files table tbody tr td .name {
+        font-size:  32px;
+        margin:     40px;
+    }
+
 
 
