@@ -28,9 +28,9 @@
     private function get_file_icon($mime) {
         switch($mime) {
             case 'directory':
-                return 'directory';
+                return 'folder_open';
             default:
-                return '';
+                return 'insert_drive_file';
         }
     }
 
