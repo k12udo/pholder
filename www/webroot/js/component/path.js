@@ -46,6 +46,10 @@ var path =  {
     // ready
     ready : function() {
         this.on_change("/");
+        setTimeout(function() {
+            $("#input-path").focus();
+        }, 1000);
+        $("#input-path").val("");
     },
 
 
