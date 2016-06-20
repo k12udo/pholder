@@ -5,7 +5,7 @@
 
 
     /** input **/
-    private $input_path = __DIR__;
+    private $input_path = null;
 
 
 
@@ -34,9 +34,12 @@
 
     /** ls **/
     private function ls() {
-        return  $this->set_response_data(
-                    scandir($this->input_path)
-                );
+        if( ! is_null($this->input_path) ){
+            return  $this->set_response_data(scandir($this->input_path));
+        } else {
+            $this->set_response_code(400);
+            return false;
+        }
     }
 
 
