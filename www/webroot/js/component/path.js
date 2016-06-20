@@ -32,7 +32,7 @@ var path =  {
     // on - change
     on_change : function(path) {
         if( path != "" ){
-            if( files.refresh(path) ){
+            if( file.refresh(path) ){
                 this.display_200();
             } else {
                 this.display_400();
@@ -40,6 +40,13 @@ var path =  {
         } else {
             this.display_200();
         }
+    },
+
+
+    // set - path
+    set_path : function(directory) {
+        $("#input-path").val(directory);
+        this.on_change();
     },
 
 
