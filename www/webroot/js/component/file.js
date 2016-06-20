@@ -23,13 +23,13 @@ var file = {
     },
 
     // api - get - files
-    api_get_files : function() {
+    api_get_files : function(path_to_file) {
         var directory = $("#input-path").val();
         var this_copy = this;
         this.clear();
         $.ajax({
                     type:       "POST",
-                    data:       $('#path form').serialize(),
+                    data:       { path : path_to_file },
                     url:        "php/api/ls.php",
                     success:    function(data) {
                                     path.display_200();
@@ -56,9 +56,9 @@ var file = {
 
 
     // refresh
-    refresh : function() {
+    refresh : function(path_to_file) {
         this.clear();
-        this.api_get_files();
+        this.api_get_files(path_to_file);
     }
 
 

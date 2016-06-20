@@ -5,6 +5,12 @@
         width:              100%;
         background-color:   #03a9f4;
         overflow:           hidden;
+        transition:         1.86s;
+    }
+
+    #landing.hidden {
+        height:             0%;
+        min-height:         0%;
     }
 
     #landing .title {
@@ -18,12 +24,17 @@
     #landing .title h1 {
         text-align:         center;
         margin-top:         0;
-        transition:         0.5s;
+        user-select:        none;
+        cursor:             default;
     }
 
-    #landing .title h1:hover {
-        color:              white;
-        cursor:             pointer;
+    #landing .title h1 i {
+        transition:         2s;
+    }
+
+    #landing.hidden .title h1 i {
+        margin:             0;
+        opacity:            0;
     }
 
 

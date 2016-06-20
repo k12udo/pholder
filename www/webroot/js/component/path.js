@@ -43,10 +43,16 @@ var path =  {
     },
 
 
+    // ready
+    ready : function() {
+        this.on_change("/");
+    },
+
+
     // set - path
-    set_path : function(directory) {
-        $("#input-path").val(directory);
-        this.on_change();
+    set_path : function(path_to_file) {
+        $("#input-path").val(path_to_file);
+        this.on_change(path_to_file);
     },
 
 
@@ -59,6 +65,7 @@ var path =  {
     // view - show 
     view_show : function() {
         $("#path").removeClass("hidden");
+        $("#input-path").focus();
     }
 
 

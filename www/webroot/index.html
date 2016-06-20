@@ -85,15 +85,11 @@
         <footer id="footer" class="page-footer light-blue">
             <div class="container">
                 <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">About Pholder</h5>
-                        <p class="grey-text text-lighten-4">Something something something..</p>
-                    </div>
                 </div>
               </div>
               <div class="footer-copyright">
                 <div class="container">
-                    © 2016 Copyright Text
+                    © 2016
                     <a class="grey-text text-lighten-4 right" href="https://github.com/local-user/pholder">Github</a>
                 </div>
             </div>
@@ -110,19 +106,13 @@
             <script type="text/javascript" src="vendor/materialize/js/materialize.min.js"></script>
 
             <!-- pholder -->
-            <script type="text/javascript" src="js/component/file.js"></script>
-            <script type="text/javascript" src="js/component/path.js"></script>
-
-            <!-- DEBUG -->
+            <script type="text/javascript" src="js/component/file.js"   ></script>
+            <script type="text/javascript" src="js/component/landing.js"></script>
+            <script type="text/javascript" src="js/component/path.js"   ></script>
             <script>
-                $("#landing").click(function() {
-                    $('html, body').animate({
-                        scrollTop: $("#nav").offset().top
-                    }, 1000);
-                    $("#input-path").focus();
-                });
                 $(document).ready( function() {
-                    path.on_change();
+                    landing.ready();
+                    path.ready();
                 });
             </script>
 
