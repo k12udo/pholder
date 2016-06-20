@@ -18,7 +18,29 @@
         echo json_encode($this->response_data);
     }
 
+    /** display - error **/
+    public function display_json_error($msg = null) {
+        if( $msg ){
+            $this->set_response_data(array('message' => $msg));
+        }
+        return $this->display_json();
+    }
 
+
+    /** download **/
+    public function download($file) {
+        if( $this->response_code == 200 ){
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="'.basename($file).'"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            readfile($file);
+        }
+        http_response_code($this->response_code);
+    }
 
 
     /** set - response - code **/
@@ -32,6 +54,4 @@
     }
 
 
-
-
-} ?>
+}?>
