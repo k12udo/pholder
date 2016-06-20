@@ -5,11 +5,11 @@ var files = {
 
 
         // add - file
-        add_file : function(icon, name, path){
+        add_file : function(icon, mime, name, path){
             $("#files-list").append(
                 '<tr class="file" data-path="' + path + '">' +
                     '<td class="">' +
-                        '<span class="icon">' + icon + '</span>' +
+                        '<i class="small material-icons">' + icon + '</i>' +
                         '<span class="name">' + name + '</span>' +
                     '</td>' +
                 '</tr>'
@@ -37,6 +37,7 @@ var files = {
                             for( index in data ){
                                 this_copy.add_file(
                                     data[index]['icon'],
+                                    data[index]['mime'],
                                     data[index]['name'],
                                     data[index]['path']
                                 );
