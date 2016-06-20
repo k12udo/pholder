@@ -7,7 +7,16 @@
     /** input **/
     private $input_path = null;
 
+    /** ignore **/
+    private $ignore_files = array('.');
 
+
+
+
+    /** clean **/
+    private function clean($files) {
+        return array_diff($files, $this->ignore_files);
+    }
 
 
     /** get - file - details **/
@@ -72,7 +81,9 @@
     /** ls **/
     private function ls() {
         if( ! is_null($this->input_path) ){
-            $files = $this->get_files_details(scandir($this->input_path));
+            $files = scandir($this->input_path);
+            $files = $this->clean($files);
+            $files = $this->get_files_details($files);
             return   $this->set_response_data($files);
         } else {
             $this->set_response_code(400);
