@@ -15,9 +15,9 @@
                 $details = array();
                 $details ['name'] = $file;
                 if($this->input_path != "/"){
-                    $details['path'] = $this->input_path.'/'.$file;
+                    $details['path'] = realpath($this->input_path.'/'.$file);
                 } else {
-                    $details['path'] = $this->input_path.$file;
+                    $details['path'] = realpath($this->input_path.$file);
                 }
                 $details['mime'] = mime_content_type($details['path']);
                 $details['icon'] = $this->get_file_icon($details['mime']);
