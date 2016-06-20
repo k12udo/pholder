@@ -35,7 +35,7 @@
     /** ls **/
     private function ls() {
         if( ! is_null($this->input_path) ){
-            return  $this->set_response_data(scandir($this->input_path));
+            return $this->set_response_data(scandir($this->input_path));
         } else {
             $this->set_response_code(400);
             return false;
