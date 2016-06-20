@@ -15,8 +15,15 @@ var file = {
     },
 
 
-    // get - files
-    get_files : function() {
+    // api - download - file
+    api_download_file : function(path_to_file) {
+        var this_copy = this;
+        var url = "php/api/download.php?path=" + path_to_file;
+        window.location = url
+    },
+
+    // api - get - files
+    api_get_files : function() {
         var directory = $("#input-path").val();
         var this_copy = this;
         this.clear();
@@ -25,19 +32,19 @@ var file = {
                     data:       $('#path form').serialize(),
                     url:        "php/api/ls.php",
                     success:    function(data) {
-                        path.display_200();
-                        for( index in data ){
-                            this_copy.add_file(
-                                data[index]['icon'],
-                                data[index]['mime'],
-                                data[index]['name'],
-                                data[index]['path']
-                            );
-                        }
-                    },
+                                    path.display_200();
+                                    for( index in data ){
+                                        this_copy.add_file(
+                                            data[index]['icon'],
+                                            data[index]['mime'],
+                                            data[index]['name'],
+                                            data[index]['path']
+                                        );
+                                    }
+                                },
                     error:      function() {
-                        path.display_400();
-                    }
+                                   path.display_400();
+                                }
         });
     },
 
@@ -51,7 +58,7 @@ var file = {
     // refresh
     refresh : function() {
         this.clear();
-        this.get_files();
+        this.api_get_files();
     }
 
 
@@ -69,7 +76,7 @@ var file = {
         if( $(this).attr("data-mime") == "directory" ){
             path.set_path($(this).attr("data-path"));
         } else {
-            file.download_file($(this).attr("data-path"));
+            file.api_download_file($(this).attr("data-path"));
         }
     });
 

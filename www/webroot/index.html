@@ -62,7 +62,7 @@
             <div id="path" class="row light-blue">
                 <form class="col s12">
                     <div class="row white">
-                        <input name="path" id="input-path" placeholder="Enter a system path, eg '/home'" id="path" type="text" class="validate white">
+                        <input name="path" id="input-path" placeholder="Enter a system path, eg '/home'" id="path" type="text" class="validate white" value="/">
                     </div>
                 </form>
             </div>
@@ -120,6 +120,9 @@
                         scrollTop: $("#nav").offset().top
                     }, 1000);
                     $("#input-path").focus();
+                });
+                $(document).ready( function() {
+                    path.on_change();
                 });
             </script>
 

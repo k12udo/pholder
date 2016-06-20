@@ -12,7 +12,7 @@
 
     /** input **/
     private function input() {
-                foreach($_POST as $key => $value) {
+                foreach($_GET as $key => $value) {
                     $method = "input_$key";
                     if(method_exists($this, $method)) {
                         $this->$method($value);
