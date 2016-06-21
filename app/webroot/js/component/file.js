@@ -67,6 +67,24 @@ var file = {
         window.location = url
     },
 
+    // api - find - files
+    api_find_files : function(path_to_file, search_term) {
+        return $.ajax({
+                    type:       "POST",
+                    data:       {
+                                    path : path_to_file,
+                                    term : search_term
+                                },
+                    url:        "php/api/find.php",
+                    success:    function(data) {
+                                    search.display_200();
+                                },
+                    error:      function() {
+                                    search.display_400();
+                                }
+        });
+    },
+
     // api - get - files
     api_get_files : function(path_to_file) {
         return $.ajax({
@@ -97,6 +115,17 @@ var file = {
     // clear
     clear : function() {
         $("#files-list").empty();
+    },
+
+
+    // find
+    find : function(path_to_file, search_term) {
+        this.clear();
+        var this_copy = this
+            api = this.api_find_files(path_to_file, search_term);
+            api.success(function(data) {
+                this_copy.add_files(data);
+            });
     },
 
 

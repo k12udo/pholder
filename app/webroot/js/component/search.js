@@ -30,9 +30,9 @@ var search =  {
 
 
     // on - change
-    on_change : function(search) {
+    on_change : function(path_to_file, search_term) {
         if( search != "" ){
-            if( file.refresh(search) ){
+            if( file.find(path_to_file, search_term) ){
                 this.display_200();
             } else {
                 this.display_400();
@@ -45,14 +45,6 @@ var search =  {
 
     // ready
     ready : function() {
-        this.on_change("/");
-    },
-
-
-    // set - search
-    set_search : function(path_to_file) {
-        $("#search-input").val(path_to_file);
-        this.on_change(path_to_file);
     },
 
 
@@ -82,7 +74,7 @@ var search =  {
 
     // search - input - on - change
     $('#search-input').bind('input propertychange', function() {
-        search.on_change( $(this).val() );
+        search.on_change( $("#path-input").val(), $(this).val() );
     });
 
     // search - nav - click
@@ -90,7 +82,6 @@ var search =  {
         if( $("#search").hasClass("hidden") ){
             search.view_show();
             setTimeout(function() {
-                $("#search-input").val("/");
                 $("#search-input").focus();
             }, 500);
         } else {
