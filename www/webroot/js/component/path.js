@@ -64,12 +64,16 @@ var path =  {
     view_hide : function() {
         $("#path").addClass("hidden");
         $("#nav-toggle-path").prop("active", false);
+        $("#nav-toggle-path").removeClass("light-blue");
+        $("#nav-toggle-path").removeClass("darken-3");
     },
 
-    // view - show 
+    // view - show
     view_show : function() {
         $("#path").removeClass("hidden");
         $("#input-path").focus();
+        $("#nav-toggle-path").addClass("light-blue");
+        $("#nav-toggle-path").addClass("darken-3");
     }
 
 
