@@ -57,15 +57,15 @@
                 $details['name'] = basename($file);
                 $details['path'] = realpath($file);
                 $details['hash'] = md5($details['path']);
-                $details['mime'] = mime_content_type($details['path']);
-                $details['icon'] = $this->get_file_icon($details['mime']);
+                $details['dir']  = is_dir($details['path']);
+                $details['icon'] = $this->get_file_icon($details['path']);
         return  $details;
     }
 
     /** get - file - icon **/
-    public function get_file_icon($mime) {
-        switch($mime) {
-            case 'directory':
+    public function get_file_icon($path) {
+        switch($path) {
+            case is_dir($path):
                 return 'folder_open';
             default:
                 return 'insert_drive_file';

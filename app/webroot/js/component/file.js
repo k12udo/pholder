@@ -7,9 +7,9 @@ var file = {
         console.log(files);
         for( index in files ){
             this.add_file(
+                files[index]['dir'],
                 files[index]['hash'],
                 files[index]['icon'],
-                files[index]['mime'],
                 files[index]['name'],
                 files[index]['path']
             );
@@ -17,9 +17,9 @@ var file = {
     },
 
     // add - file
-    add_file : function(hash, icon, mime, name, path_to_file){
+    add_file : function(dir, hash, icon, name, path_to_file){
         $("#files-list").append(
-            '<tr id="' + hash + '" class="file" data-path="'+ path_to_file +'" data-mime="' + mime + '">' +
+            '<tr id="' + hash + '" class="file" data-path="'+ path_to_file +'" data-directory="' + dir + '" >' +
                 '<td class="icon">' +
                     '<i class="small material-icons">' + icon + '</i>' +
                 '</td>' +
@@ -151,7 +151,7 @@ var file = {
 
     // file - click
     $(document).on('click', '.file', function(){ 
-        if( $(this).attr("data-mime") == "directory" ){
+        if( $(this).attr("data-directory") == "true" ){
             path.set_path($(this).attr("data-path"));
         } else {
             file.api_download_file($(this).attr("data-path"));
