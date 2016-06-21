@@ -3,4 +3,24 @@
     #footer {
     }
 
+    #footer .title {
+        margin: 0 25px 0 0;
+        font-size: 20px;
+        user-select: none;
+    }
+
+    #footer .copyright {
+        margin: 0 0 0 25px;
+    }
+
+    #footer a {
+        margin: 0 25px 0 25px;
+        opacity: 0.5;
+        transition: 0.2s;
+    }
+
+    #footer a:hover {
+        opacity: 1;
+    }
+
 
