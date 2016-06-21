@@ -1,31 +1,31 @@
 
 
-    #path {
+    #search {
         height:         225px;
         width:          100%;
         transition:     0.75s;
     }
 
-    #path.hidden {
+    #search.hidden {
         height:         0px;
         overflow:       hidden;
         float:          left;
     }
 
-    #path .row {
+    #search .row {
         margin:         25px 0 25px 0;
         padding:        40px;
     }
-    #path .row input {
+    #search .row input {
         width:          100%;
         font-size:      20px;
     }
-    #path.hidden .row input {
+    #search.hidden .row input {
         width:          0%;
     }
 
 
-    #path .e200 { border-bottom: 1px solid green; }
-    #path .e400 { border-bottom: 1px solid red;   }
+    #search .e200 { border-bottom: 1px solid green; }
+    #search .e400 { border-bottom: 1px solid red;   }
 
 

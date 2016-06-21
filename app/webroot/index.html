@@ -23,10 +23,11 @@
         <!-- css -->
         <link rel="stylesheet" href="css/pholder.css">
         <link rel="stylesheet" href="css/component/files.css">
+        <link rel="stylesheet" href="css/component/footer.css">
         <link rel="stylesheet" href="css/component/landing.css">
         <link rel="stylesheet" href="css/component/nav.css">
         <link rel="stylesheet" href="css/component/path.css">
-        <link rel="stylesheet" href="css/component/footer.css">
+        <link rel="stylesheet" href="css/component/search.css">
 
         <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -53,15 +54,15 @@
                         <li id="nav-toggle-path" class=""><a><i class="material-icons large">folder_open</i></a></li>
                     </ul>
                     <ul id="nav-mobile" class="right">
-                        <li><a><i class="material-icons large">search</i></a></li>
-                        <li><a><i class="material-icons large">import_export</i></a></li>
+                        <li id="nav-toggle-search"><a><i class="material-icons large">search</i></a></li>
+                        <li id="nav-toggle-export"><a><i class="material-icons large">import_export</i></a></li>
                     </ul>
                 </div>
             </nav>
             <!-- nav | -->
 
             <!-- | path -->
-            <div id="path" class="row light-blue darken-3 hidden">
+            <div id="path" class="light-blue darken-3 hidden">
                 <form class="col s12">
                     <div class="row white">
                         <input  class="validate white"
@@ -72,10 +73,28 @@
                                 autocomplete="off"
                                 placeholder="Enter a system path, eg '/home'"
                         />
+                        <label for="path">Path</label>
                     </div>
                 </form>
             </div>
             <!-- path | -->
+
+            <!-- | search -->
+            <div id="search" class="green hidden">
+                <form class="col s12">
+                    <div class="row white">
+                        <input  class="validate white"
+                                id="search-input"
+                                name="path"
+                                type="text"
+                                autocomplete="off"
+                                placeholder="Enter a search term"
+                        />
+                        <label for="search">Search</label>
+                    </div>
+                </form>
+            </div>
+            <!-- search | -->
 
             <!-- | file(s) -->
             <div id="files">
@@ -118,6 +137,7 @@
             <script type="text/javascript" src="js/component/file.js"   ></script>
             <script type="text/javascript" src="js/component/landing.js"></script>
             <script type="text/javascript" src="js/component/path.js"   ></script>
+            <script type="text/javascript" src="js/component/search.js" ></script>
             <script>
                 $(document).ready( function() {
                     landing.ready();
