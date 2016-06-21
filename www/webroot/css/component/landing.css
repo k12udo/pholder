@@ -5,7 +5,7 @@
         width:              100%;
         background-color:   #03a9f4;
         overflow:           hidden;
-        transition:         1.86s;
+        transition:         1.25s;
     }
 
     #landing.hidden {

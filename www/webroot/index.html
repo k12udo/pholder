@@ -9,7 +9,9 @@
         <meta charset="utf-8">
         <meta name="author"         content="local-user"                            />
         <meta name="description"    content="A PHP file explorer."                  />
+        <meta name="theme-color"    content="#03a9f4"                               />
         <meta name="viewport"       content="width=device-width, initial-scale=1.0" />
+
 
         <!-- reset -->
         <link href="vendor/cssreset/reset.css" rel="stylesheet" >
@@ -62,7 +64,14 @@
             <div id="path" class="row light-blue darken-3">
                 <form class="col s12">
                     <div class="row white">
-                        <input name="path" id="input-path" placeholder="Enter a system path, eg '/home'" id="path" type="text" class="validate white" value="/">
+                        <input  class="validate white"
+                                id="input-path"
+                                name="path"
+                                type="text"
+                                value="/"
+                                autocomplete="off"
+                                placeholder="Enter a system path, eg '/home'"
+                        />
                     </div>
                 </form>
             </div>
@@ -112,7 +121,9 @@
             <script>
                 $(document).ready( function() {
                     landing.ready();
-                    path.ready();
+                    setTimeout(function() {
+                        path.ready();
+                    }, 1500);
                 });
             </script>
 

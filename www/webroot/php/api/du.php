@@ -50,7 +50,7 @@
                 if( is_file($this->input_path) ){
                     $bytes = $this->utility_file_size($this->input_path);
                 }
-                if( ! isset($bytes) || $bytes == 0 ){
+                if( ! isset($bytes) || $bytes === false ){
                     $this->set_response_code(400);
                     return false;
                 }
