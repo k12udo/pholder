@@ -28,6 +28,7 @@
                 } else {
                     $details['path'] = realpath($this->input_path.$file);
                 }
+                $details['hash'] = md5($details['path']);
                 $details['mime'] = mime_content_type($details['path']);
                 $details['icon'] = $this->get_file_icon($details['mime']);
         return  $details;

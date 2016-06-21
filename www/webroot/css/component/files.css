@@ -8,18 +8,29 @@
 
     #files table tbody tr {
         cursor:     pointer;
+        width:      100%;
     }
 
     #files table tbody tr td {
+        vertical-align: middle;
+        transition:     2s;
     }
 
     #files table tbody tr td i {
     }
 
-    #files table tbody tr td .name {
-        font-size:  32px;
-        margin:     40px;
+    #files table tbody tr td.icon {
+        width:      5%;
     }
 
+    #files table tbody tr td.name {
+        font-size:  32px;
+        margin:     40px;
+        width:      85%;
+    }
 
+    #files table tbody tr td.size {
+        width:      10%;
+        text-align: center;
+    }
 
