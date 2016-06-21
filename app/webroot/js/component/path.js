@@ -92,7 +92,7 @@ var path =  {
         if( $("#path").hasClass("hidden") ){
             path.view_show();
             setTimeout(function() {
-                $("#path-input").val("/");
+                $("#path-input").val( $("#path-input").val() );
                 $("#path-input").focus();
             }, 500);
         } else {
