@@ -80,7 +80,7 @@
         $matches = array();
         foreach( $files as $path => $file ){
             $name = basename($path);
-            if( strpos($name, $term) !== false ){
+            if( strpos(strtolower($name), strtolower($term)) !== false ){
                 if( ! in_array($name, $this->ignore_files)) {
                     $matches[] = $path;
                 }

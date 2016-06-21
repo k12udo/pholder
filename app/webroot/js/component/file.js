@@ -18,6 +18,7 @@ var file = {
 
     // add - file
     add_file : function(dir, hash, icon, name, path_to_file){
+        $('#' + hash).remove();
         $("#files-list").append(
             '<tr id="' + hash + '" class="file" data-path="'+ path_to_file +'" data-directory="' + dir + '" >' +
                 '<td class="icon">' +
