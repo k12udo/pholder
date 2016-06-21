@@ -31,7 +31,7 @@ var search =  {
 
     // on - change
     on_change : function(path_to_file, search_term) {
-        if( search != "" ){
+        if( path_to_file != "" && search_term != "" ){
             if( file.find(path_to_file, search_term) ){
                 this.display_200();
             } else {

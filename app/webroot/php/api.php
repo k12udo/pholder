@@ -42,6 +42,37 @@
     }
 
 
+    /** get - files - details **/
+    public function get_files_details($base, $files) {
+                $files_with_details = array();
+                foreach($files as $file) {
+                    $files_with_details[] = $this->get_file_details($base, $file);
+                }
+        return  $files_with_details;
+    }
+
+    /** get - file - details **/
+    public function get_file_details($base, $file) {
+                $details = array();
+                $details['name'] = basename($file);
+                $details['path'] = realpath($file);
+                $details['hash'] = md5($details['path']);
+                $details['mime'] = mime_content_type($details['path']);
+                $details['icon'] = $this->get_file_icon($details['mime']);
+        return  $details;
+    }
+
+    /** get - file - icon **/
+    public function get_file_icon($mime) {
+        switch($mime) {
+            case 'directory':
+                return 'folder_open';
+            default:
+                return 'insert_drive_file';
+        }
+    }
+
+
     /** set - response - code **/
     public function set_response_code($code) {
         $this->response_code = $code;

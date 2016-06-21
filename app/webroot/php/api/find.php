@@ -1,58 +1,18 @@
 <?php require_once('../api.php'); ?>
-<?php class ls extends \pholder\api {
+<?php class find extends \pholder\api {
 
 
 
 
     /** input **/
     private $input_path = null;
+    private $input_term = null;
 
     /** ignore **/
-    private $ignore_files = array('.');
+    private $ignore_files = array('.', '..');
 
-
-
-
-    /** clean **/
-    private function clean($files) {
-        return array_diff($files, $this->ignore_files);
-    }
-
-
-    /** get - file - details **/
-    private function get_file_details($file) {
-                $details = array();
-                $details ['name'] = $file;
-                if($this->input_path != "/"){
-                    $details['path'] = realpath($this->input_path.'/'.$file);
-                } else {
-                    $details['path'] = realpath($this->input_path.$file);
-                }
-                $details['hash'] = md5($details['path']);
-                $details['mime'] = mime_content_type($details['path']);
-                $details['icon'] = $this->get_file_icon($details['mime']);
-        return  $details;
-    }
-
-    /** get - file - icon **/
-    private function get_file_icon($mime) {
-        switch($mime) {
-            case 'directory':
-                return 'folder_open';
-            default:
-                return 'insert_drive_file';
-        }
-    }
-
-    /** get - files - details **/
-    private function get_files_details($files) {
-                $files_with_details = array();
-                foreach($files as $file) {
-                    $files_with_details[] = $this->get_file_details($file);
-                }
-        return  $files_with_details;
-    }
-
+    /** limit **/
+    private $limit_result = 250;
 
 
 
@@ -76,29 +36,33 @@
         return  true;
     }
 
-
-
-
-    /** ls **/
-    private function ls() {
-        if( ! is_null($this->input_path) ){
-            $files = scandir($this->input_path);
-            $files = $this->clean($files);
-            $files = $this->get_files_details($files);
-            return   $this->set_response_data($files);
-        } else {
-            $this->set_response_code(400);
-            return false;
-        }
+    /** input - term **/
+    private function input_term($term) {
+        return  $this->input_term = $term;
     }
 
 
+    /** find **/
+    private function find() {
+        if( is_null($this->input_path) ){
+            $this->set_response_code(400);
+            return false;
+        }
+        if( is_null($this->input_term) ){
+            $this->set_response_code(400);
+            return false;
+        }
+        $files = $this->utility_find_files($this->input_path, $this->input_term);
+        $files = $this->get_files_details($this->input_path, $files);
+                 $this->set_response_code(200);
+        return   $this->set_response_data($files);
+    }
 
 
     /** magic - start **/
     public function __construct() {
                 $this->input();
-        return  $this->ls();
+        return  $this->find();
     }
 
     /** magic - end **/
@@ -107,6 +71,26 @@
     }
 
 
+    /** utility - find - files **/
+    private function utility_find_files($path, $term) {
+        $files = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($path),
+            RecursiveIteratorIterator::SELF_FIRST
+        );
+        $matches = array();
+        foreach( $files as $path => $file ){
+            $name = basename($path);
+            if( strpos($name, $term) !== false ){
+                if( ! in_array($name, $this->ignore_files)) {
+                    $matches[] = $path;
+                }
+            }
+            if(count($matches) == $this->limit_result){
+                break;
+            }
+        }
+        return $matches;
+    }
 
 
-} $ls = new ls(); ?>
+} $find = new find(); ?>
