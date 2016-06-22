@@ -3,7 +3,7 @@
 
     # global(s)
     script_dir=$( dirname $0 )
-    builtin_bind="0.0.0.0:7070"
+    builtin_bind="127.0.0.1:7070"
 
 
     # | function(s)
@@ -13,7 +13,7 @@
         }
 
         function input_builtin_bind {
-            printf "Enter server mask [0.0.0.0:7070]: "
+            printf "Enter server mask [$builtin_bind]: "
             read input
             if [ ! -z "$input" ]; then
                 builtin_bind="$input"
