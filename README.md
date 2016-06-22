@@ -15,4 +15,3 @@ A php folder
 - Fix search sorting & duplicate matches
 - Implement clickable folder breadcrumbs
 - Implement session select, edit & export.
-- Implement vagrat sample server, for production setup.
