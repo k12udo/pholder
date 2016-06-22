@@ -1,0 +1,62 @@
+#!/bin/bash
+
+
+    # global(s)
+    script_dir=$( dirname $0 )
+    builtin_bind="0.0.0.0:7070"
+
+
+    # | function(s)
+
+        function display_usage {
+            echo "pholder usage: pholder [ --built-in | --vagrant ]"
+        }
+
+        function input_builtin_bind {
+            printf "Enter server mask [0.0.0.0:7070]: "
+            read input
+            if [ ! -z "$input" ]; then
+                builtin_bind="$input"
+            fi
+        }
+
+        function start_builtin {
+            php -S "$builtin_bind" -t "$script_dir/app/webroot"
+        }
+
+        function start_vagrant {
+            cd "$script_dir/vagrant"
+            vagrant up pholder
+        }
+
+    # function(s) |
+
+
+    # | main
+
+        # ? - argv - count
+        if [ $# -eq 0 ]; then
+            start_builtin
+        fi
+
+        # arg(s) - type
+        case "$1" in
+            '--built-in')
+                shift
+                input_builtin_bind
+                start_builtin
+                ;;
+            '--vagrant')
+                shift
+                start_vagrant
+                ;;
+            *)
+                display_usage
+                exit 2
+                ;;
+        esac
+
+    # main |
+
+
+# pholder |
