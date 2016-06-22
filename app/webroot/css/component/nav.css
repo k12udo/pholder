@@ -4,7 +4,12 @@
     }
 
     #nav #nav-toggle-path {
+    }
 
+    #nav .title {
+        font-size: 24px;
+        margin: 0 0 0 10px;
+        user-select: none;
     }
 
 
