@@ -12,7 +12,8 @@ A php folder
 - vagrant up pholder
 
 ##todo
-- Fix search sorting & duplicate matches.
+- Fix search sorting & duplicate matches
+- Implement clickable folder breadcrumbs
 - Implement session select, edit & export.
 - Implement 'pholder' script for quick launch.
 - Implement vagrat sample server, for production setup.
