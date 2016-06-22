@@ -1,0 +1,60 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version.
+VAGRANTFILE_API_VERSION = "2"
+
+# | Vagrant
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+
+    # | global
+
+        # base - box
+        config.vm.box = "ubuntu/trusty64"
+
+        # copy - app
+        config.vm.provision "file", source: "../app", destination: "/tmp/app"
+
+        # network - adapter - bridged
+        config.vm.network "public_network"
+
+        # provision - shell - bash
+        config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+        config.vm.provision "shell", path: "script/provision"
+
+        # ssh - agent - fowarding
+        config.ssh.forward_agent = true
+
+        # | VirtualBox
+        config.vm.provider "virtualbox" do |vb|
+
+            # VBoxManage - settings
+            vb.customize [
+                "modifyvm", :id,
+                "--memory", "512",
+            ]
+
+        end
+        # VirtualBox |
+
+    # global |
+
+
+    # | machine(s)
+
+        # | pholder
+        config.vm.define "pholder" do |web|
+            config.vm.hostname = "pholder"
+            config.vm.provider :virtualbox do |vb|
+                vb.name = "pholder"
+                vb.cpus = 2
+            end
+        end
+        # pholder |
+
+    # machine(s) |
+
+
+end
+# Vagrant |

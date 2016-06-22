@@ -1,0 +1,59 @@
+#!/bin/bash
+#
+#   script - provision
+#
+
+
+    # export - noninteractive
+    export DEBIAN_FRONTEND=noninteractive
+
+    # set - x
+    set -x
+
+
+    # | apt
+
+        # update
+        apt-get update
+
+        # upgrade
+        apt-get upgrade -q -y
+
+        # install - lamp
+        apt-get install -q -y lamp-server^
+
+        # install - extra
+        apt-get install -q -y fail2ban tree
+
+    # apt |
+
+
+    # | apache2
+    if [ -d '/var/www/html' ]; then
+
+        # remove - existing
+        rm -r '/var/www/html'
+
+        # default - site - pholder
+        sed -i s/html/webroot/g /etc/apache2/sites-enabled/000-default.conf
+
+        # restart
+        service apache2 restart
+
+    fi
+    # apache2 |
+
+
+    # | pholder
+    if [ -d '/tmp/app' ]; then
+
+        # ? - exists
+        [ -d '/var/www' ] && rm -r '/var/www'
+
+        # mv - app => folder
+        mv '/tmp/app' '/var/www'
+
+    fi
+    # pholder |
+
+
