@@ -48,7 +48,7 @@ var path =  {
     // ready
     ready : function() {
             hash = window.location.href.split('#')[1];
-        if( hash == "" ){
+        if( hash == undefined ){
             window.location.hash = "/"
             this.set_path("/");
         } else {
