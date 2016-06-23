@@ -1,17 +1,20 @@
 #pholder
 A php folder
 
+##overview
+A php/js web folder to quickly share files across a local network.
+
 ##installation
-- run 'git clone https://github.com/local-user/pholder.git'
+- 'git clone https://github.com/local-user/pholder.git'
 
 ##usage
-- './pholder'
-- './pholder --built-in'
-- './pholder --vagrant'
+- 'pholder/pholder'
+- 'pholder/pholder --built-in'
+- 'pholder/pholder --vagrant'
 
 ##warning
-pholder exposes your files to your network, use at your own risk.
+pholder exposes your files to your the network, use at your own risk
 
 ##todo
 - Fix search sorting & duplicate matches
-- Implement session select, edit & export.
+- Implement session select, edit & export
