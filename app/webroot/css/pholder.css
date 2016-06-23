@@ -8,6 +8,15 @@
     #pholder {
         min-height: 98%;
         width:  100%;
+        overflow: auto;
+    }
+
+    #footer {
+        position: relative;
+    }
+
+    *::-webkit-scrollbar {
+        display: none; 
     }
 
 
