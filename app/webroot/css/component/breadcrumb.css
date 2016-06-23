@@ -1,0 +1,15 @@
+
+
+    #breadcrumb {
+        height:         65px;
+        width:          100%;
+        transition:     0.75s;
+    }
+
+    #breadcrumb.hidden {
+        height:         0px;
+        width:          100%;
+        overflow:       hidden;
+    }
+
+

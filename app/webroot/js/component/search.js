@@ -48,18 +48,26 @@ var search =  {
     },
 
 
+    // view - reset
+    view_reset : function() {
+        $("#nav-toggle-search").removeClass("orange");
+        $("#nav-toggle-search").removeClass("lighten-2");
+        $("#search").removeClass("hidden");
+    },
+
     // view - hide
     view_hide : function() {
+        this.view_reset();
         $("#search").addClass("hidden");
         $("#nav-toggle-search").prop("active", false);
-        $("#nav-toggle-search").removeClass("green");
     },
 
     // view - show
     view_show : function() {
-        $("#search").removeClass("hidden");
+        this.view_reset();
+        $("#nav-toggle-search").addClass("orange");
+        $("#nav-toggle-search").addClass("lighten-2");
         $("#search-input").focus();
-        $("#nav-toggle-search").addClass("green");
     }
 
 

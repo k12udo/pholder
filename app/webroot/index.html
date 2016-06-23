@@ -22,6 +22,7 @@
 
         <!-- css -->
         <link rel="stylesheet" href="css/pholder.css">
+        <link rel="stylesheet" href="css/component/breadcrumb.css">
         <link rel="stylesheet" href="css/component/files.css">
         <link rel="stylesheet" href="css/component/footer.css">
         <link rel="stylesheet" href="css/component/landing.css">
@@ -51,16 +52,25 @@
             <nav id="nav">
                 <div class="nav-wrapper light-blue">
                     <ul id="nav-mobile" class="left">
-                        <li id="nav-toggle-breadcrumb"><a><i class="material-icons large">folder_open</i></a></li>
+                        <li><a id="nav-toggle-breadcrumb"><i class="material-icons large">folder_open</i></a></li>
                     </ul>
                     <ul id="nav-mobile" class="right">
-                        <li id="nav-toggle-path" class=""><a><i class="material-icons large">input</i></a></li>
-                        <li id="nav-toggle-search"><a><i class="material-icons large">search</i></a></li>
-                        <li id="nav-toggle-export"><a><i class="material-icons large">import_export</i></a></li>
+                        <li><a id="nav-toggle-path"><i class="material-icons large">input</i></a></li>
+                        <li><a id="nav-toggle-search"><i class="material-icons large">search</i></a></li>
+                        <li><a id="nav-toggle-export"><i class="material-icons large">import_export</i></a></li>
                     </ul>
                 </div>
             </nav>
             <!-- nav | -->
+
+            <!-- | breadcrumb -->
+            <nav id="breadcrumb" class="light-blue darken-1 hidden">
+                <div class="nav-wrapper">
+                    <div class="col s12 crumbs">
+                    </div>
+                </div>
+            </nav>
+            <!-- breadcrumb | -->
 
             <!-- | path -->
             <div id="path" class="light-blue darken-3 hidden">
@@ -70,7 +80,6 @@
                                 id="path-input"
                                 name="path"
                                 type="text"
-                                value="/"
                                 autocomplete="off"
                                 placeholder="Enter a system path, eg '/home'"
                         />
@@ -81,7 +90,7 @@
             <!-- path | -->
 
             <!-- | search -->
-            <div id="search" class="green hidden">
+            <div id="search" class="orange lighten-2 hidden">
                 <form class="col s12">
                     <div class="row white">
                         <input  class="validate white"
@@ -136,16 +145,20 @@
             <script type="text/javascript" src="vendor/materialize/js/materialize.min.js"></script>
 
             <!-- pholder -->
-            <script type="text/javascript" src="js/component/file.js"   ></script>
-            <script type="text/javascript" src="js/component/landing.js"></script>
-            <script type="text/javascript" src="js/component/path.js"   ></script>
-            <script type="text/javascript" src="js/component/search.js" ></script>
+            <script type="text/javascript" src="js/component/breadcrumb.js" ></script>
+            <script type="text/javascript" src="js/component/file.js"       ></script>
+            <script type="text/javascript" src="js/component/landing.js"    ></script>
+            <script type="text/javascript" src="js/component/path.js"       ></script>
+            <script type="text/javascript" src="js/component/search.js"     ></script>
             <script>
                 $(document).ready( function() {
                     landing.ready();
                     setTimeout(function() {
                         path.ready();
                     }, 1500);
+                    setTimeout(function() {
+                        breadcrumb.ready();
+                    }, 2000);
                 });
             </script>
 

@@ -45,7 +45,7 @@ var path =  {
 
     // ready
     ready : function() {
-        this.on_change("/");
+        this.set_path("/home/user/download/chromium");
     },
 
 
