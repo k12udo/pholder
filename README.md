@@ -4,14 +4,14 @@ A php folder
 ##installation
 - run 'git clone https://github.com/local-user/pholder.git'
 
-#!usage
-- run './pholder start'
+##usage
+- './pholder'
+- './pholder --built-in'
+- './pholder --vagrant'
 
-#!usage - vagrant
-- cd 'vagrant/'
-- vagrant up pholder
+##warning
+pholder exposes your files to your network, use at your own risk.
 
 ##todo
 - Fix search sorting & duplicate matches
-- Implement clickable folder breadcrumbs
 - Implement session select, edit & export.
