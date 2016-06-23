@@ -31,10 +31,14 @@ var file = {
                         '<div class="indeterminate"></div>' +
                     '</div>' +
                 '</td>' +
+                '<td class="script hidden">' +
+                    '<i class="small material-icons">add</i>' +
+                '</td>' +
             '</tr>'
         );
         if( name == ".." ){
-            $('#' + hash + ' .size').empty();
+            $('#' + hash + ' .script').remove();
+            $('#' + hash + ' .size'  ).empty();
         } else {
             this.add_file_size(hash, path_to_file);
         }
