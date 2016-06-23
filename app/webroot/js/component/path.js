@@ -40,12 +40,20 @@ var path =  {
         } else {
             this.display_200();
         }
+        window.location.hash = path;
+        breadcrumb.refresh(path);
     },
 
 
     // ready
     ready : function() {
-        this.set_path("/home/user/download/chromium");
+            hash = window.location.href.split('#')[1];
+        if( hash == "" ){
+            window.location.hash = "/"
+            this.set_path("/");
+        } else {
+            this.set_path(hash);
+        }
     },
 
 
@@ -81,6 +89,14 @@ var path =  {
 
 /** | listener **/
 
+
+    // path - hash - on - change
+    $(window).on('hashchange',function(){ 
+            hash = window.location.href.split('#')[1];
+        if( hash != "" ){
+            path.set_path(hash);
+        }
+    });
 
     // path - input - on - change
     $('#path-input').bind('input propertychange', function() {

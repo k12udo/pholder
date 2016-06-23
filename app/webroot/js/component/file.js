@@ -135,7 +135,9 @@ var file = {
         var this_copy = this
         var api = this.api_get_files(path_to_file)
             api.success(function(data) {
-                this_copy.add_files(data);
+                this_copy.add_files(data)
+            });
+            api.error(function(data) {
             });
     }
 

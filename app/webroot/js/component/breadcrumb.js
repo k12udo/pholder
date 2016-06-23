@@ -31,13 +31,13 @@ var breadcrumb =  {
 
     // ready
     ready : function() {
-        this.update( $("#path-input").val() );
+        this.refresh( $("#path-input").val() );
         this.view_show();
     },
 
 
-    // update
-    update : function(path_to_crumb) {
+    // refresh
+    refresh : function(path_to_crumb) {
                      this.clear();
         var crumbs = this.get_crumbs_from_path(path_to_crumb);
             crumbs.forEach( function(crumb){
