@@ -7,13 +7,13 @@ var script =  {
 
     // add
     add : function(hash, path_to_add) {
-        console.log(path_to_add);
+        file.add_file_script_loading(hash);
         api = this.api_session_add(path_to_add);
         api.success(function(data) {
-            file.add_file_selected(hash);
+            file.add_file_script_success(hash);
         });
         api.error(function() {
-            file.add_file_selected_error(hash);
+            file.add_file_script_error(hash);
         });
     },
 

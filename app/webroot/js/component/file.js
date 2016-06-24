@@ -49,16 +49,35 @@ var file = {
         }
     },
 
-    // add - file - selected
-    add_file_selected : function(hash) {
-        $("#" + hash).addClass("script-selected");
-        $("#" + hash + " .script-add i").html("remove");
+    // add - file - script - loading
+    add_file_script_loading : function(hash) {
+        $("#" + hash + " .script-add i").html(
+            '<div class="preloader-wrapper small active">' +
+                '<div class="spinner-layer spinner-blue-only">' +
+                    '<div class="circle-clipper left">' +
+                        '<div class="circle"></div>' +
+                    '</div>' +
+                    '<div class="gap-patch">' +
+                        '<div class="circle"></div>' +
+                    '</div>' +
+                    '<div class="circle-clipper right">' +
+                        '<div class="circle"></div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>'
+        );
     },
 
-    // add - file - selected - error
-    add_file_selected_error : function(hash) {
+    // add - file - script - error
+    add_file_script_error : function(hash) {
         $("#" + hash).addClass("script-selected-error");
-        $("#" + hash + " .script-add i").html("error_outline");
+        $("#" + hash + " .script-add").html('<i class="small material-icons">error_outline</i>');
+    },
+
+    // add - file - script
+    add_file_script_success : function(hash) {
+        $("#" + hash).addClass("script-selected");
+        $("#" + hash + " .script-add").html('<i class="small material-icons">remove</i>');
     },
 
 

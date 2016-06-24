@@ -22,6 +22,7 @@
 
     #files table tbody tr td {
         vertical-align:     middle;
+        height:             70px;
     }
 
     #files table tbody tr td.icon {
