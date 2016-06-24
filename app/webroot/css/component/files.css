@@ -12,6 +12,14 @@
         width:              100%;
     }
 
+    #files table tbody tr.script-selected {
+        background-color:   lightgreen;
+    }
+
+    #files table tbody tr.script-selected-error {
+        background-color:   tomato;
+    }
+
     #files table tbody tr td {
         vertical-align:     middle;
     }
@@ -41,7 +49,15 @@
 
     #files table tbody tr td.script:hover {
         color:              white;
-        background-color:   #4dd0e1;
+        background-color:   lightgreen;
+    }
+
+    #files table tbody tr.script-selected td.script:hover {
+    }
+
+    #files table tbody tr.script-selected-error td.script:hover {
+        background-color:   tomato;
+        color:              black;
     }
 
     #files table tbody tr td.script.hidden {

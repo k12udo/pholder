@@ -7,8 +7,14 @@ var script =  {
 
     // add
     add : function(hash, path_to_add) {
-        console.log(hash);
+        console.log(path_to_add);
         api = this.api_session_add(path_to_add);
+        api.success(function(data) {
+            file.add_file_selected(hash);
+        });
+        api.error(function() {
+            file.add_file_selected_error(hash);
+        });
     },
 
 
@@ -18,10 +24,6 @@ var script =  {
                     type:       "POST",
                     data:       { path : path_to_add },
                     url:        "php/api/session/add.php",
-                    success:    function(data) {
-                                },
-                    error:      function() {
-                                }
         });
     },
 

@@ -37,7 +37,7 @@ var file = {
                     '</div>' +
                 '</td>' +
                 '<td class="script script-add ' + script_enabled + '">' +
-                    '<i class="tiny material-icons">add</i>' +
+                    '<i class="small material-icons">add</i>' +
                 '</td>' +
             '</tr>'
         );
@@ -51,7 +51,14 @@ var file = {
 
     // add - file - selected
     add_file_selected : function(hash) {
-        console.log(hash);
+        $("#" + hash).addClass("script-selected");
+        $("#" + hash + " .script-add i").html("remove");
+    },
+
+    // add - file - selected - error
+    add_file_selected_error : function(hash) {
+        $("#" + hash).addClass("script-selected-error");
+        $("#" + hash + " .script-add i").html("error_outline");
     },
 
 
