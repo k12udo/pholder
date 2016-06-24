@@ -37,6 +37,10 @@
         return true;
     }
 
+    /** get **/
+    public function get() {
+        return $_SESSION['pholder'];
+    }
 
     /** init **/
     private function init() {
