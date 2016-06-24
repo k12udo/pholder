@@ -14,34 +14,34 @@
 
     #files table tbody tr td {
         vertical-align:     middle;
-        transition:         2s;
-    }
-
-    #files table tbody tr td i {
     }
 
     #files table tbody tr td.icon {
-        width:              10%;
+        width:              40px;
     }
 
     #files table tbody tr td.name {
         font-size:          20px;
         margin:             40px;
-        width:              70%;
     }
 
     #files table tbody tr td.size {
-        width:              10%;
+        width:              15%;
         text-align:         center;
+    }
+
+    #files table tbody tr td.size .progress {
+        display:            inline-block;
     }
 
     #files table tbody tr td.script {
-        width:              10%;
+        width:              100px;
         text-align:         center;
-        transition:         0.2s;
     }
 
     #files table tbody tr td.script:hover {
+        color:              white;
+        background-color:   red;
     }
 
     #files table tbody tr td.script.hidden {

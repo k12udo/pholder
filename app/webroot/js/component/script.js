@@ -25,14 +25,14 @@ var script =  {
     // view - reset
     view_reset : function() {
         $("#files .script").addClass("hidden");
-        $("#nav-toggle-script").removeClass("green");
+        $("#nav-toggle-script").removeClass("red");
     },
 
     // view - enabled
     view_enabled : function() {
         this.view_reset();
         $("#files .script").removeClass("hidden");
-        $("#nav-toggle-script").addClass("green");
+        $("#nav-toggle-script").addClass("red");
     }
 
 

@@ -32,7 +32,7 @@ var file = {
                     '</div>' +
                 '</td>' +
                 '<td class="script hidden">' +
-                    '<i class="small material-icons">add</i>' +
+                    '<i class="tiny material-icons">add</i>' +
                 '</td>' +
             '</tr>'
         );
