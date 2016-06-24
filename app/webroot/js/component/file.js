@@ -17,6 +17,11 @@ var file = {
 
     // add - file
     add_file : function(dir, hash, icon, name, path_to_file){
+        if( script.enabled ){
+            script_enabled = ""
+        } else {
+            script_enabled = "hidden"
+        }
         $('#' + hash).remove();
         $("#files-list").append(
             '<tr id="' + hash + '" class="file" data-path="'+ path_to_file +'" data-directory="' + dir + '" >' +
@@ -31,7 +36,7 @@ var file = {
                         '<div class="indeterminate"></div>' +
                     '</div>' +
                 '</td>' +
-                '<td class="script hidden">' +
+                '<td class="script script-add ' + script_enabled + '">' +
                     '<i class="tiny material-icons">add</i>' +
                 '</td>' +
             '</tr>'
@@ -43,6 +48,12 @@ var file = {
             this.add_file_size(hash, path_to_file);
         }
     },
+
+    // add - file - selected
+    add_file_selected : function(hash) {
+        console.log(hash);
+    },
+
 
     // add - file - size
     add_file_size : function(hash, path_to_file) {
@@ -156,12 +167,28 @@ var file = {
 
 
     // file - click
-    $(document).on('click', '.file', function(){ 
-        if( $(this).attr("data-directory") == "true" ){
+    $(document).on('click', '.file', function(){
+        if($(this).attr("data-directory") == "true"){
             path.set_path($(this).attr("data-path"));
         } else {
-            file.api_download_file($(this).attr("data-path"));
+            file.api_download_file( $(this).attr("data-path") );
         }
+    });
+
+    // file - click - script - add
+    $(document).on('click', '.file .script-add', function(){
+                        row = $(this).parent();
+        script.add(     row.attr("id"),
+                        row.attr("data-path")   );
+        return false;
+    });
+
+    // file - click - script - remove
+    $(document).on('click', '.file .script-remove', function(){
+                        row = $(this).parent();
+        script.remove(  row.attr("id"),
+                        row.attr("data-path")   );
+        return false;
     });
 
 

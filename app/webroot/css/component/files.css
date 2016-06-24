@@ -41,7 +41,7 @@
 
     #files table tbody tr td.script:hover {
         color:              white;
-        background-color:   red;
+        background-color:   #4dd0e1;
     }
 
     #files table tbody tr td.script.hidden {

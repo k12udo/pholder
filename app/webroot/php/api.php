@@ -73,6 +73,21 @@
     }
 
 
+    /** session - init **/
+    public function session_init() {
+        session_start();
+        if( ! isset($_SESSION['pholder'])) {
+                    $_SESSION['pholder']                            =   array();
+                    $_SESSION['pholder']['script']                  =   array();
+                    $_SESSION['pholder']['script']['path_prefix']   =   "";
+                    $_SESSION['pholder']['script']['path_suffix']   =   "";
+                    $_SESSION['pholder']['script']['paths']         =   array();
+                    $_SESSION['pholder']['script']['total_size']    =   0;
+        }
+        return true;
+    }
+
+
     /** set - response - code **/
     public function set_response_code($code) {
         $this->response_code = $code;
@@ -81,6 +96,45 @@
     /** set - response - data **/
     public function set_response_data($data) {
         $this->response_data = $data;
+    }
+
+
+    /** utility - calculate - path - size **/
+    public function utility_path_size($path) {
+        if(is_file($path)) { return $this->utility_file_size($path);        }
+        if(is_dir($path))  { return $this->utility_directory_size($path);   }
+                             return false;
+    }
+
+    /** utility - calculate - file - size **/
+    public function utility_directory_size($path) {
+        $bytes = 0;
+        $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
+        foreach ($iterator as $i) {
+            if( is_readable($i->getPathname()) ){
+                $bytes += $i->getSize();
+            }
+        }
+        return $bytes;
+    }
+
+    /** utility - calculate - file - size **/
+    public function utility_file_size($path) {
+        if( ! is_file($path) ){
+            return false;
+        }
+        return filesize($path);
+    }
+
+    /** utility - human - readable **/
+    public function utility_human_readable($size, $unit = "") {
+        if( (!$unit && $size >= 1<<30) || $unit == "GB")
+            return number_format($size/(1<<30),2)."GB";
+        if( (!$unit && $size >= 1<<20) || $unit == "MB")
+            return number_format($size/(1<<20),2)."MB";
+        if( (!$unit && $size >= 1<<10) || $unit == "KB")
+            return number_format($size/(1<<10),2)."KB";
+        return number_format($size)." bytes";
     }
 
 
