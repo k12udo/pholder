@@ -3,8 +3,12 @@
 
 
 
-    /** input(s) **/
-    private $path = null;
+
+    /** global(s) **/
+    private $path       = null;
+    private $size_bytes = null;
+    private $size_human = null;
+
 
 
 
@@ -31,7 +35,7 @@
         );
 
         // add - session - total - size
-        $_SESSION['pholder']['total_size'] += $this->size_bytes;
+        $_SESSION['pholder']['size']['bytes'] += $this->size_bytes;
 
         // return
         return true;
@@ -45,11 +49,13 @@
     /** init **/
     private function init() {
         if( ! isset($_SESSION['pholder'])) {
-            $_SESSION['pholder']                = array();
-            $_SESSION['pholder']['path_prefix'] = "";
-            $_SESSION['pholder']['path_suffix'] = "";
-            $_SESSION['pholder']['paths']       = array();
-            $_SESSION['pholder']['total_size']  = 0;
+            $_SESSION['pholder']                    = array();
+            $_SESSION['pholder']['path_prefix']     = "";
+            $_SESSION['pholder']['path_suffix']     = "";
+            $_SESSION['pholder']['paths']           = array();
+            $_SESSION['pholder']['size']            = array();
+            $_SESSION['pholder']['size']['bytes']   = 0;
+            $_SESSION['pholder']['size']['human']   = 0;
         }
         return true;
     }
