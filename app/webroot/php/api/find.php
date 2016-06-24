@@ -1,3 +1,4 @@
+<?php namespace pholder\api; ?>
 <?php require_once('../api.php'); ?>
 <?php class find extends \pholder\api {
 

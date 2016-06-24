@@ -73,21 +73,6 @@
     }
 
 
-    /** session - init **/
-    public function session_init() {
-        session_start();
-        if( ! isset($_SESSION['pholder'])) {
-                    $_SESSION['pholder']                            =   array();
-                    $_SESSION['pholder']['script']                  =   array();
-                    $_SESSION['pholder']['script']['path_prefix']   =   "";
-                    $_SESSION['pholder']['script']['path_suffix']   =   "";
-                    $_SESSION['pholder']['script']['paths']         =   array();
-                    $_SESSION['pholder']['script']['total_size']    =   0;
-        }
-        return true;
-    }
-
-
     /** set - response - code **/
     public function set_response_code($code) {
         $this->response_code = $code;
