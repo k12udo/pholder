@@ -3,12 +3,6 @@
 <?php class find extends \pholder\api {
 
 
-
-
-    /** input **/
-    private $input_path = null;
-    private $input_term = null;
-
     /** ignore **/
     private $ignore_files = array('.', '..');
 
@@ -16,29 +10,20 @@
     private $limit_result = 250;
 
 
-
-
-    /** input **/
-    private function input() {
-                foreach($_POST as $key => $value) {
-                    $method = "input_$key";
-                    if(method_exists($this, $method)) {
-                        $this->$method($value);
-                    }
-                }
-        return  true;
+    /** __ - construct **/
+    public function __construct() {
+                $this->input();
+        return  $this->find();
     }
 
-    /** input - path **/
-    private function input_path($path) {
-                if(is_dir($path)){
-                    $this->input_path = $path;
-                }
-        return  true;
+    /** __ - destruct **/
+    public function __destruct() {
+        return  $this->display_json();
     }
+
 
     /** input - term **/
-    private function input_term($term) {
+    public function input_term($term) {
         return  $this->input_term = $term;
     }
 
@@ -57,18 +42,6 @@
         $files = $this->get_files_details($this->input_path, $files);
                  $this->set_response_code(200);
         return   $this->set_response_data($files);
-    }
-
-
-    /** magic - start **/
-    public function __construct() {
-                $this->input();
-        return  $this->find();
-    }
-
-    /** magic - end **/
-    public function __destruct() {
-        return  $this->display_json();
     }
 
 

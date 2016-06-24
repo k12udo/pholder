@@ -9,9 +9,6 @@
     /** global(s) **/
     private $session = null;
 
-    /** input **/
-    private $input_path = null;
-
 
 
 
@@ -25,36 +22,6 @@
     /** __ - desconstruct - end **/
     public function __destruct() {
         return  $this->display_json();
-    }
-
-
-    /** input **/
-    private function input() {
-
-        // set - input(s)
-        foreach($_POST as $key => $value) {
-            $method = "input_$key";
-            if(method_exists($this, $method)) {
-                $this->$method($value);
-            }
-        }
-
-        // return
-        return  true;
-
-    }
-
-    /** input - path **/
-    private function input_path($path) {
-
-        // ? - dir
-        if(is_dir($path)){
-            $this->input_path = $path;
-        }
-
-        // return
-        return  true;
-
     }
 
 

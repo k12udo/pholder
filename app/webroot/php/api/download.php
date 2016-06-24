@@ -3,31 +3,14 @@
 <?php class get extends \pholder\api {
 
 
-
-
-    /** input **/
-    private $input_path = null;
-
-
-
-
-    /** input **/
-    private function input() {
-                foreach($_GET as $key => $value) {
-                    $method = "input_$key";
-                    if(method_exists($this, $method)) {
-                        $this->$method($value);
-                    }
-                }
-        return  true;
+    /** __ - construct **/
+    public function __construct() {
+                $this->input();
     }
 
-    /** input - path **/
-    private function input_path($path) {
-                if(file_exists($path)){
-                    $this->input_path = $path;
-                }
-        return  true;
+    /** __ - destruct **/
+    public function __destruct() {
+        return  $this->get();
     }
 
 
@@ -42,17 +25,6 @@
             $this->display_json_error("invalid path to file");
             return false;
         }
-    }
-
-
-    /** magic - start **/
-    public function __construct() {
-                $this->input();
-    }
-
-    /** magic - end **/
-    public function __destruct() {
-        return  $this->get();
     }
 
 

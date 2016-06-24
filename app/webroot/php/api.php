@@ -8,6 +8,9 @@
     private $response_code = null;
     private $response_data = array();
 
+    /** input **/
+    public $input_path = null;
+
 
 
 
@@ -70,6 +73,26 @@
             default:
                 return 'insert_drive_file';
         }
+    }
+
+
+    /** input **/
+    public function input() {
+        foreach($_POST as $key => $value) {
+            $method = "input_$key";
+            if(method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+        return  true;
+    }
+
+    /** input - path **/
+    public function input_path($path) {
+        if(is_dir($path)){
+            $this->input_path = $path;
+        }
+        return  true;
     }
 
 

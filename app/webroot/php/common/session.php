@@ -39,6 +39,7 @@
 
         // return
         return true;
+
     }
 
     /** get **/
@@ -60,6 +61,24 @@
         return true;
     }
 
+    /** remove **/
+    public function rm() {
+
+        // ? - already - removed
+        if( ! isset($_SESSION['pholder']['paths'][$this->path])){
+            return true;
+        }
+
+        // minus - session - total - size
+        $_SESSION['pholder']['size']['bytes'] -= $_SESSION['pholder']['paths'][$this->path]['size_bytes'];
+
+        // remove - session - path
+        unset($_SESSION['pholder']['paths'][$this->path]);
+
+        // return
+        return true;
+
+    }
 
     /** set - path **/
     public function set_path($path) {

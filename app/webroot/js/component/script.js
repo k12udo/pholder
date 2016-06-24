@@ -27,6 +27,15 @@ var script =  {
         });
     },
 
+    // api - session - remove
+    api_session_rm : function(path_to_remove) {
+        return $.ajax({
+                    type:       "POST",
+                    data:       { path : path_to_remove },
+                    url:        "php/api/session/rm.php",
+        });
+    },
+
 
     // disable
     disable : function() {
@@ -47,8 +56,15 @@ var script =  {
 
 
     // remove
-    remove : function(path_to_remove) {
-        console.log(path_to_remove);
+    remove : function(hash, path_to_remove) {
+              file.add_file_script_loading(hash);
+        api = this.api_session_rm(path_to_remove);
+        api.success(function(data) {
+            file.remove_file_script(hash);
+        });
+        api.error(function() {
+            file.add_file_script_error(hash);
+        });
     },
 
 

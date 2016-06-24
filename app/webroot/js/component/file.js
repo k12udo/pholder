@@ -71,13 +71,24 @@ var file = {
     // add - file - script - error
     add_file_script_error : function(hash) {
         $("#" + hash).addClass("script-selected-error");
-        $("#" + hash + " .script-add").html('<i class="small material-icons">error_outline</i>');
+        $("#" + hash + " .script").html('<i class="small material-icons">error_outline</i>');
     },
 
-    // add - file - script
+    // add - file - script - success
     add_file_script_success : function(hash) {
         $("#" + hash).addClass("script-selected");
-        $("#" + hash + " .script-add").html('<i class="small material-icons">remove</i>');
+        $("#" + hash + " .script").addClass("script-remove");
+        $("#" + hash + " .script").removeClass("script-add");
+        $("#" + hash + " .script").html('<i class="small material-icons">remove</i>');
+    },
+
+    // remove - file - script
+    remove_file_script : function(hash) {
+        $("#" + hash).removeClass("script-selected");
+        $("#" + hash).removeClass("script-selected-error");
+        $("#" + hash + " .script").addClass("script-add");
+        $("#" + hash + " .script").removeClass("script-remove");
+        $("#" + hash + " .script").html('<i class="small material-icons">add</i>');
     },
 
 
@@ -203,9 +214,9 @@ var file = {
 
     // file - click - script - add
     $(document).on('click', '.file .script-add', function(){
-                        row = $(this).parent();
-        script.add(     row.attr("id"),
-                        row.attr("data-path")   );
+                    row = $(this).parent();
+        script.add( row.attr("id"),
+                    row.attr("data-path") );
         return false;
     });
 
