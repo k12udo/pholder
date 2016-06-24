@@ -42,10 +42,26 @@
 
     }
 
+
+    /** exists **/
+    public function exists() {
+        foreach($_SESSION['pholder']['paths'] as $path => $sizes){
+            if ($this->path == $path) {
+                return "parent";
+            }
+            if (strpos($this->path, $path) === 0) {
+                return "child";
+            }
+        }
+        return false;
+    }
+
+
     /** get **/
     public function get() {
         return $_SESSION['pholder'];
     }
+
 
     /** init **/
     private function init() {

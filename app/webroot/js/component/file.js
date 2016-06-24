@@ -45,7 +45,8 @@ var file = {
             $('#' + hash + ' .script').remove();
             $('#' + hash + ' .size'  ).empty();
         } else {
-            this.add_file_size(hash, path_to_file);
+              this.add_file_size(hash, path_to_file);
+            script.refresh_file(hash, path_to_file);
         }
     },
 
@@ -68,29 +69,24 @@ var file = {
         );
     },
 
-    // add - file - script - error
-    add_file_script_error : function(hash) {
-        $("#" + hash).addClass("script-selected-error");
-        $("#" + hash + " .script").html('<i class="small material-icons">error_outline</i>');
-    },
-
-    // add - file - script - success
-    add_file_script_success : function(hash) {
+    // add - file - script - selected
+    add_file_script_selected : function(hash) {
         $("#" + hash).addClass("script-selected");
         $("#" + hash + " .script").addClass("script-remove");
         $("#" + hash + " .script").removeClass("script-add");
         $("#" + hash + " .script").html('<i class="small material-icons">remove</i>');
     },
 
-    // remove - file - script
-    remove_file_script : function(hash) {
-        $("#" + hash).removeClass("script-selected");
-        $("#" + hash).removeClass("script-selected-error");
-        $("#" + hash + " .script").addClass("script-add");
-        $("#" + hash + " .script").removeClass("script-remove");
-        $("#" + hash + " .script").html('<i class="small material-icons">add</i>');
+    // add - file - script - child
+    add_file_script_selected_child : function(hash) {
+        $("#" + hash + " .script").remove();
     },
 
+    // add - file - script - error
+    add_file_script_error : function(hash) {
+        $("#" + hash).addClass("script-selected-error");
+        $("#" + hash + " .script").html('<i class="small material-icons">error_outline</i>');
+    },
 
     // add - file - size
     add_file_size : function(hash, path_to_file) {
@@ -109,6 +105,16 @@ var file = {
                     '</div>'
                 );
             });
+    },
+
+    // remove - file - script
+    remove_file_script : function(hash) {
+        $("#" + hash).removeClass("script-selected");
+        $("#" + hash).removeClass("script-selected-child");
+        $("#" + hash).removeClass("script-selected-error");
+        $("#" + hash + " .script").addClass("script-add");
+        $("#" + hash + " .script").removeClass("script-remove");
+        $("#" + hash + " .script").html('<i class="small material-icons">add</i>');
     },
 
 

@@ -16,6 +16,10 @@
         background-color:   lightgreen;
     }
 
+    #files table tbody tr.script-selected-child {
+        background-color:   tomato;
+    }
+
     #files table tbody tr.script-selected-error {
         background-color:   tomato;
     }

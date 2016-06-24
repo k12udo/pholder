@@ -10,7 +10,7 @@ var script =  {
         file.add_file_script_loading(hash);
         api = this.api_session_add(path_to_add);
         api.success(function(data) {
-            file.add_file_script_success(hash);
+            file.add_file_script_selected(hash);
         });
         api.error(function() {
             file.add_file_script_error(hash);
@@ -24,6 +24,15 @@ var script =  {
                     type:       "POST",
                     data:       { path : path_to_add },
                     url:        "php/api/session/add.php",
+        });
+    },
+
+    // api - session - exists
+    api_session_exists : function(path_to_check) {
+        return $.ajax({
+                    type:       "POST",
+                    data:       { path : path_to_check },
+                    url:        "php/api/session/exists.php",
         });
     },
 
@@ -55,6 +64,26 @@ var script =  {
     },
 
 
+    // refresh
+    refresh_file : function(hash, path_to_check) {
+              file.add_file_script_loading(hash);
+        api = this.api_session_exists(path_to_check);
+        api.success(function(data) {
+            switch(data["exists"]){
+                case "parent":
+                    file.add_file_script_selected(hash);
+                    break;
+                case "child":
+                    file.add_file_script_selected(hash);
+                    file.add_file_script_selected_child(hash);
+                    break;
+                default:
+                    file.remove_file_script(hash);
+            }
+        });
+    },
+
+
     // remove
     remove : function(hash, path_to_remove) {
               file.add_file_script_loading(hash);
@@ -71,14 +100,14 @@ var script =  {
     // view - reset
     view_reset : function() {
         $("#files .script").addClass("hidden");
-        $("#nav-toggle-script").removeClass("cyan");
+        $("#nav-toggle-script").removeClass("green");
     },
 
     // view - enabled
     view_enabled : function() {
         this.view_reset();
         $("#files .script").removeClass("hidden");
-        $("#nav-toggle-script").addClass("cyan");
+        $("#nav-toggle-script").addClass("green");
     }
 
 
