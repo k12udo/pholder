@@ -42,7 +42,8 @@ var file = {
             '</tr>'
         );
         if( name == ".." ){
-            $('#' + hash + ' .script').remove();
+            $('#' + hash + ' .script i').remove();
+            $('#' + hash + ' .script').removeClass("script");
             $('#' + hash + ' .size'  ).empty();
         } else {
               this.add_file_size(hash, path_to_file);
@@ -52,7 +53,7 @@ var file = {
 
     // add - file - script - loading
     add_file_script_loading : function(hash) {
-        $("#" + hash + " .script-add i").html(
+        $("#" + hash + " .script i").html(
             '<div class="preloader-wrapper small active">' +
                 '<div class="spinner-layer spinner-blue-only">' +
                     '<div class="circle-clipper left">' +
@@ -79,7 +80,10 @@ var file = {
 
     // add - file - script - child
     add_file_script_selected_child : function(hash) {
-        $("#" + hash + " .script").remove();
+        $("#" + hash + " .script").removeClass("script-add");
+        $("#" + hash + " .script").removeClass("script-remove");
+        $("#" + hash).addClass("script-selected-child");
+        $("#" + hash + " .script").html('<i class="small material-icons">check</i>');
     },
 
     // add - file - script - error
@@ -221,16 +225,14 @@ var file = {
     // file - click - script - add
     $(document).on('click', '.file .script-add', function(){
                     row = $(this).parent();
-        script.add( row.attr("id"),
-                    row.attr("data-path") );
+        script.add( row.attr("id"), row.attr("data-path") );
         return false;
     });
 
     // file - click - script - remove
     $(document).on('click', '.file .script-remove', function(){
-                        row = $(this).parent();
-        script.remove(  row.attr("id"),
-                        row.attr("data-path")   );
+                       row = $(this).parent();
+        script.remove( row.attr("id"), row.attr("data-path") );
         return false;
     });
 

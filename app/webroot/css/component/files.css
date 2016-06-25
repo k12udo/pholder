@@ -17,7 +17,6 @@
     }
 
     #files table tbody tr.script-selected-child {
-        background-color:   tomato;
     }
 
     #files table tbody tr.script-selected-error {
@@ -59,7 +58,11 @@
 
     #files table tbody tr.script-selected td.script:hover {
         color:              red;
-        background-color:   white;
+    }
+
+    #files table tbody tr.script-selected-child td.script:hover {
+        background-color:   #b2ebf2;
+        color:              black;
     }
 
     #files table tbody tr.script-selected-error td.script:hover {

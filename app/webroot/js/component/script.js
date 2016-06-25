@@ -101,7 +101,7 @@ var script =  {
 
     // remove
     remove : function(hash, path_to_remove) {
-              file.add_file_script_loading(hash);
+        file.add_file_script_loading(hash);
         api = this.api_session_rm(path_to_remove);
         api.success(function(data) {
             file.remove_file_script(hash);
