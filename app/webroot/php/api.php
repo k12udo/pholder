@@ -89,7 +89,7 @@
 
     /** input - path **/
     public function input_path($path) {
-        if(is_dir($path)){
+        if(is_dir($path) || is_file($path)){
             $this->input_path = $path;
         }
         return  true;

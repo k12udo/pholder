@@ -14,8 +14,8 @@
 
     /** __ - construct - start **/
     public function __construct() {
-                $this->session = new \pholder\common\session();
                 $this->input();
+                $this->session = new \pholder\common\session();
         return  $this->add();
     }
 
@@ -42,7 +42,7 @@
         if( $size_bytes ){
             $size_human = $this->utility_human_readable($size_bytes);
         } else {
-            $size_human = false;
+            $size_human = null;
         }
 
         // set - session - data
@@ -59,28 +59,6 @@
             return false;
         }
 
-    }
-
-
-    /** session - add **/
-    public function session_add($path) {
-
-        // ? - already - added
-        if(isset($_SESSION['pholder']['paths'][$path])){
-            return true;
-        }
-
-        // add - session - path
-        $_SESSION['pholder']['paths'][$path] = array(
-            'size_bytes' => $size_bytes,
-            'size_human' => $size_human
-        );
-
-        // add - session - total - size
-        $_SESSION['pholder']['total_size'] += $size_bytes;
-
-        // return
-        return true;
     }
 
 
