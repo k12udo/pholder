@@ -17,7 +17,6 @@ pholder exposes your files to your the network, use at your own risk
 
 ##todo
 - Fix breadcrumb indentation
-- Fix download
 - Implement script size display
 - Implement script edit & export
 - Rebuild search
