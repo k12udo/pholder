@@ -47,23 +47,7 @@
 
     /** utility - find - files **/
     private function utility_find_files($path, $term) {
-        $files = new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator($path),
-            \RecursiveIteratorIterator::SELF_FIRST
-        );
-        $matches = array();
-        foreach( $files as $path => $file ){
-            $name = basename($path);
-            if( strpos(strtolower($name), strtolower($term)) !== false ){
-                if( ! in_array($name, $this->ignore_files)) {
-                    $matches[] = $path;
-                }
-            }
-            if(count($matches) == $this->limit_result){
-                break;
-            }
-        }
-        return $matches;
+        return array();
     }
 
 
