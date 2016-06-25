@@ -77,6 +77,17 @@
         return true;
     }
 
+
+    /** is - empty **/
+    public function is_empty() {
+        if(count($_SESSION['pholder']['paths']) == 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     /** remove **/
     public function rm() {
 

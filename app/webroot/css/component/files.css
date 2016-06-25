@@ -13,7 +13,7 @@
     }
 
     #files table tbody tr.script-selected {
-        background-color:   lightgreen;
+        background-color:   #b2ebf2;
     }
 
     #files table tbody tr.script-selected-child {
@@ -53,11 +53,13 @@
     }
 
     #files table tbody tr td.script:hover {
-        color:              white;
-        background-color:   lightgreen;
+        color:              green;
+        background-color:   #b2ebf2;
     }
 
     #files table tbody tr.script-selected td.script:hover {
+        color:              red;
+        background-color:   white;
     }
 
     #files table tbody tr.script-selected-error td.script:hover {

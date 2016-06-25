@@ -27,6 +27,14 @@ var script =  {
         });
     },
 
+    // api - session - empty
+    api_session_empty : function() {
+        return $.ajax({
+                    type:       "GET",
+                    url:        "php/api/session/empty.php",
+        });
+    },
+
     // api - session - exists
     api_session_exists : function(path_to_check) {
         return $.ajax({
@@ -61,6 +69,13 @@ var script =  {
 
     // ready
     ready : function() {
+        var this_copy = this;
+        api = this.api_session_empty();
+        api.success(function(data) {
+            if(data['empty'] != true){
+                this_copy.enable();
+            }
+        });
     },
 
 
@@ -100,14 +115,14 @@ var script =  {
     // view - reset
     view_reset : function() {
         $("#files .script").addClass("hidden");
-        $("#nav-toggle-script").removeClass("green");
+        $("#nav-toggle-script").removeClass("cyan");
     },
 
     // view - enabled
     view_enabled : function() {
         this.view_reset();
         $("#files .script").removeClass("hidden");
-        $("#nav-toggle-script").addClass("green");
+        $("#nav-toggle-script").addClass("cyan");
     }
 
 
