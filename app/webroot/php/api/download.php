@@ -16,15 +16,19 @@
 
     /** get **/
     private function get() {
-        if( ! is_null($this->input_path) ){
-            $this->set_response_code(200);
-            $this->download($this->input_path);
-            return true;
-        } else {
+
+        // ? - null
+        if(is_null($this->input_path) ){
             $this->set_response_code(400);
             $this->display_json_error("invalid path to file");
             return false;
         }
+
+        // get - path - download
+        $this->set_response_code(200);
+        $this->download($this->input_path);
+        return true;
+
     }
 
 

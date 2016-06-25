@@ -78,6 +78,12 @@
 
     /** input **/
     public function input() {
+        foreach($_GET as $key => $value) {
+            $method = "input_$key";
+            if(method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
         foreach($_POST as $key => $value) {
             $method = "input_$key";
             if(method_exists($this, $method)) {
