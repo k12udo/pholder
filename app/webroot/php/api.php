@@ -56,12 +56,14 @@
 
     /** get - file - details **/
     public function get_file_details($base, $file) {
+                if( is_link($file) ){ $path = $file;            }
+                else                { $path = realpath($file);  }
                 $details = array();
                 $details['name'] = basename($file);
-                $details['path'] = realpath($file);
+                $details['path'] = $path;
                 $details['hash'] = md5($details['path']);
                 $details['dir']  = is_dir($details['path']);
-                $details['icon'] = $this->get_file_icon($details['path']);
+                $details['icon'] = $this->get_file_icon($file);
         return  $details;
     }
 
