@@ -176,7 +176,7 @@ var file = {
 
     // clear
     clear : function() {
-        $("#files-list").empty();
+        this.view_reset();
     },
 
 
@@ -193,15 +193,41 @@ var file = {
 
     // refresh
     refresh : function(path_to_file) {
-        this.clear();
+        this.view_reset();
+        this.view_loading();
         var this_copy = this
         var api = this.api_get_files(path_to_file)
             api.success(function(data) {
                 this_copy.add_files(data)
+                this_copy.view_loading_loaded();
             });
             api.error(function(data) {
+                this_copy.view_loading_error();
             });
-    }
+    },
+
+
+    // view - reset
+    view_reset : function() {
+        $("#files #files-list").empty();
+        $("#files .loading").addClass("hidden");
+        $("#files .loading").removeClass("red");
+    },
+
+    // view - loading
+    view_loading : function() {
+        $("#files .loading").removeClass("hidden");
+    },
+
+    // view - loading - error
+    view_loading_error : function() {
+        $("#files .loading").addClass("red");
+    },
+
+    // view - loading - loaded
+    view_loading_loaded : function() {
+        $("#files .loading").addClass("hidden");
+    },
 
 
 }
