@@ -50,6 +50,7 @@ var breadcrumb =  {
 
     // view - reset
     view_reset : function() {
+        $("#breadcrumb-spacer").addClass("hidden");
         $("#breadcrumb").removeClass("hidden");
         $("#nav-toggle-breadcrumb").removeClass("light-blue");
         $("#nav-toggle-breadcrumb").removeClass("darken-1");
@@ -64,6 +65,7 @@ var breadcrumb =  {
     // view - show
     view_show : function() {
         this.view_reset();
+        $("#breadcrumb-spacer").removeClass("hidden");
         $("#nav-toggle-breadcrumb").addClass("light-blue");
         $("#nav-toggle-breadcrumb").addClass("darken-1");
     }

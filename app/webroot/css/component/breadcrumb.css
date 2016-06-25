@@ -1,12 +1,33 @@
 
 
     #breadcrumb {
-        height:         65px;
+        position:       absolute;
+        height:         68px;
         width:          100%;
         transition:     0.75s;
+        overflow:       hidden;
     }
 
     #breadcrumb.hidden {
+        height:         0px;
+        width:          100%;
+    }
+
+    #breadcrumb .nav-wrapper {
+        margin: 0 25px 0 25px;
+    }
+
+
+
+
+    #breadcrumb-spacer {
+        height:         60px;
+        width:          100%;
+        transition:     0.75s;
+        overflow:       hidden;
+    }
+
+    #breadcrumb-spacer.hidden {
         height:         0px;
         width:          100%;
     }
