@@ -119,8 +119,12 @@
         $bytes = 0;
         $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
         foreach ($iterator as $i) {
-            if( is_readable($i->getPathname()) ){
-                $bytes += $i->getSize();
+            if( ! is_link($i->getPathname()) ){
+                if( is_readable($i->getPathname()) ){
+                    if( is_file($i->getPathname()) ){
+                        $bytes += $i->getSize();
+                    }
+                }
             }
         }
         return $bytes;
