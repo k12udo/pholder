@@ -47,9 +47,9 @@
 
     /** utility - find - files **/
     private function utility_find_files($path, $term) {
-        $files = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($path),
-            RecursiveIteratorIterator::SELF_FIRST
+        $files = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($path),
+            \RecursiveIteratorIterator::SELF_FIRST
         );
         $matches = array();
         foreach( $files as $path => $file ){
