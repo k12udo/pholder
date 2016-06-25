@@ -116,8 +116,10 @@
 
     /** utility - calculate - file - size **/
     public function utility_directory_size($path) {
-        $bytes = 0;
-        $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
+        $bytes    = 0;
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($path)
+        );
         foreach ($iterator as $i) {
             if( ! is_link($i->getPathname()) ){
                 if( is_readable($i->getPathname()) ){
