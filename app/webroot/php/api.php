@@ -68,6 +68,8 @@
     /** get - file - icon **/
     public function get_file_icon($path) {
         switch($path) {
+            case is_link($path):
+                return 'link';
             case is_dir($path):
                 return 'folder_open';
             default:
