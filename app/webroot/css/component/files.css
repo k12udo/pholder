@@ -33,6 +33,20 @@
         background-color:   tomato;
     }
 
+    #files table tbody tr.script-selected td.script:hover {
+        color:              red;
+    }
+
+    #files table tbody tr.script-selected-child td.script:hover {
+        background-color:   #b2ebf2;
+        color:              black;
+    }
+
+    #files table tbody tr.script-selected-error td.script:hover {
+        background-color:   tomato;
+        color:              black;
+    }
+
     #files table tbody tr td {
         vertical-align:     middle;
         height:             70px;
@@ -65,23 +79,10 @@
         display:            none;
     }
 
-    #files table tbody tr td.script:hover {
+    #files table tbody tr td.script-add:hover {
         color:              green;
         background-color:   #b2ebf2;
     }
 
-    #files table tbody tr.script-selected td.script:hover {
-        color:              red;
-    }
-
-    #files table tbody tr.script-selected-child td.script:hover {
-        background-color:   #b2ebf2;
-        color:              black;
-    }
-
-    #files table tbody tr.script-selected-error td.script:hover {
-        background-color:   tomato;
-        color:              black;
-    }
 
 

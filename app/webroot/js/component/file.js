@@ -17,12 +17,15 @@ var file = {
 
     // add - file
     add_file : function(dir, hash, icon, name, path_to_file){
-        if( script.enabled ){
-            script_enabled = ""
-        } else {
-            script_enabled = "hidden"
-        }
+
+        // ? - script - enabled
+        if( script.enabled ){ script_enabled = "";      }
+        else                { script_enabled = "hidden" }
+
+        // remove - existing - html
         $('#' + hash).remove();
+
+        // append - html
         $("#files-list").append(
             '<tr id="' + hash + '" class="file" data-path="'+ path_to_file +'" data-directory="' + dir + '" >' +
                 '<td class="icon">' +
@@ -41,14 +44,26 @@ var file = {
                 '</td>' +
             '</tr>'
         );
+
+        // append - ignore
         if( name == ".." ){
-            $('#' + hash + ' .script i').remove();
-            $('#' + hash + ' .script').removeClass("script");
-            $('#' + hash + ' .size'  ).empty();
-        } else {
-              this.add_file_size(hash, path_to_file);
-            script.refresh_file(hash, path_to_file);
+            this.add_file_ignore(hash);
+            return true;
         }
+
+        // append - file - size
+        this.add_file_size(hash, path_to_file);
+
+        // script - refresh - file - exists
+        script.refresh_file_exists(hash, path_to_file);
+
+    },
+
+    // add - file - ignore
+    add_file_ignore : function(hash) {
+        $('#' + hash + ' .script i').remove();
+        $('#' + hash + ' .script').removeClass("script-add");
+        $('#' + hash + ' .size'  ).empty();
     },
 
     // add - file - script - loading

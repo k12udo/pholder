@@ -80,7 +80,7 @@ var script =  {
 
 
     // refresh
-    refresh_file : function(hash, path_to_check) {
+    refresh_file_exists : function(hash, path_to_check) {
               file.add_file_script_loading(hash);
         api = this.api_session_exists(path_to_check);
         api.success(function(data) {
