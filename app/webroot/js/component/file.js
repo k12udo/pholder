@@ -180,7 +180,7 @@ var file = {
     // api - get - file - size
     api_get_file_size : function(path_to_file) {
         return $.ajax({
-                    type:       "POST",
+                    type:       "GET",
                     data:       { path : path_to_file },
                     url:        "php/api/du.php",
                     success:    function(data) {},

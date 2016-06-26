@@ -13,26 +13,36 @@
 
 
     /** path - get - file - details **/
-    public function path_details($file) {
-                if( is_link($file) ){ $path = $file;            }
-                else                { $path = realpath($file);  }
+    public function path_details($path) {
                 $details = array();
-                $details['name'] = basename($file);
-                $details['path'] = $path;
-                $details['hash'] = md5($details['path']);
-                $details['dir']  = is_dir($details['path']);
-                $details['icon'] = $this->path_icon($file);
+                $details['name'] = basename($path);
+                $details['hash'] = md5($path);
+                $details['path'] = $this->path_path($path);
+                $details['type'] = $this->path_type($path);
+                $details['icon'] = $this->path_icon($details['type']);
         return  $details;
     }
 
 
+    /** path - path **/
+    public function path_path($path) {
+        if( is_link($path) ){
+            return $path;
+        } else {
+            return realpath($path);
+        }
+    }
+
+
     /** path - get - icon **/
-    public function path_icon($path) {
-        switch($path) {
-            case is_link($path):
+    public function path_icon($type) {
+        switch($type) {
+            case 'link':
                 return 'link';
-            case is_dir($path):
+            case 'directory':
                 return 'folder_open';
+            case 'file':
+                return 'file';
             default:
                 return 'insert_drive_file';
         }
@@ -84,6 +94,19 @@
         if( (!$unit && $size >= 1<<10) || $unit == "KB")
             return number_format($size/(1<<10),2)."KB";
         return number_format($size)." bytes";
+    }
+
+
+    /** path - type **/
+    public function path_type($path) {
+        switch($path) {
+            case is_link($path):
+                return 'link';
+            case is_dir($path):
+                return 'directory';
+            default:
+                return 'file';
+        }
     }
 
 
