@@ -23,7 +23,7 @@ var script =  {
     // api - session - add
     api_session_add : function(path_to_add) {
         return $.ajax({
-            type:       "POST",
+            type:       "GET",
             data:       { path : path_to_add },
             url:        "php/api/session/add.php",
         });
@@ -40,18 +40,18 @@ var script =  {
     // api - session - exists
     api_session_exists : function(path_to_check) {
         return $.ajax({
-            type:       "POST",
+            type:       "GET",
             data:       { path : path_to_check },
             url:        "php/api/session/exists.php",
         });
     },
 
     // api - session - remove
-    api_session_rm : function(path_to_remove) {
+    api_session_remove : function(path_to_remove) {
         return $.ajax({
-            type:       "POST",
+            type:       "GET",
             data:       { path : path_to_remove },
-            url:        "php/api/session/rm.php",
+            url:        "php/api/session/remove.php",
         });
     },
 
@@ -126,7 +126,7 @@ var script =  {
     remove : function(hash, path_to_remove) {
               file.add_file_script_loading(hash);
               this_copy = this;
-        api = this.api_session_rm(path_to_remove);
+        api = this.api_session_remove(path_to_remove);
         api.success(function(data) {
             file.remove_file_script(hash);
             this_copy.refresh_nav();
