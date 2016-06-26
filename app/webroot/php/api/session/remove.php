@@ -1,7 +1,7 @@
 <?php namespace pholder\api\session; ?>
 <?php require_once('../common/api.php'); ?>
 <?php require_once('../common/class/session.php'); ?>
-<?php class get extends \pholder\common\api {
+<?php class remove extends \pholder\common\api {
 
 
 
@@ -26,7 +26,7 @@
     }
 
 
-    /** get **/
+    /** remove **/
     private function rm() {
         $this->set_response_code(200);
         $this->session->rm();
@@ -34,4 +34,4 @@
     }
 
 
-} $get = new get(); ?>
+} $remove = new remove(); ?>

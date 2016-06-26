@@ -1,4 +1,5 @@
 <?php namespace pholder\common\c; ?>
+<?php session_start();            ?>
 <?php class session {
 
 
@@ -69,7 +70,6 @@
     /** init **/
     private function init() {
         if( ! isset($_SESSION['pholder'])) {
-            session_start();
             $_SESSION['pholder']                    = array();
             $_SESSION['pholder']['path_prefix']     = "";
             $_SESSION['pholder']['path_suffix']     = "";

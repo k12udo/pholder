@@ -20,7 +20,6 @@
                 $details['path']    = $this->path_path($path);
                 $details['type']    = $this->path_type($path);
                 $details['icon']    = $this->path_icon($details['type']);
-                $details['script']  = array('exists' => $this->path_script($path));
         return  $details;
     }
 
@@ -47,14 +46,6 @@
         } else {
             return realpath($path);
         }
-    }
-
-
-    /** path - script **/
-    public function path_script($path) {
-                $session = new \pholder\common\c\session();
-                $session->set_path($path);
-        return  $session->exists();
     }
 
 
