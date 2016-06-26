@@ -236,6 +236,7 @@ var file = {
         $("#files #files-list").empty();
         $("#files .loading").addClass("hidden");
         $("#files .loading").removeClass("red");
+        $("#files .loading div").removeClass("red");
     },
 
     // view - loading
@@ -245,7 +246,8 @@ var file = {
 
     // view - loading - error
     view_loading_error : function() {
-        $("#files .loading").addClass("red");
+        $("#files .loading .progress").addClass("red");
+        $("#files .loading .progress div").addClass("red");
     },
 
     // view - loading - loaded

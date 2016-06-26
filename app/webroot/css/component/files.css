@@ -10,7 +10,11 @@
     #files .loading {
         height:             200px;
         overflow:           hidden;
-        transition:         0.5s;
+        transition:         1s;
+    }
+
+    #files .loading .progress {
+        height:             100px;
     }
 
     #files .loading.hidden {

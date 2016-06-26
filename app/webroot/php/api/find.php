@@ -58,6 +58,12 @@
         $paths = $this->path_find($this->input_path, $this->input_term);
         $paths = $this->paths_details($paths);
 
+        // ? - no - results
+        if( count($paths) == 0 ){
+            $this->set_response_code(404);
+            return false;
+        }
+
         // set - response
         $this->set_response_code(200);
         $this->set_response_data($paths);
