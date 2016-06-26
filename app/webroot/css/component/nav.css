@@ -37,3 +37,19 @@
     }
 
 
+
+
+    #nav-export {
+        height:             100%;
+        width:              100%;
+        background-color:   red;
+        overflow:           hidden;
+    }
+
+    #nav-export.hidden {
+        height:             0%;
+    }
+
+
+
+

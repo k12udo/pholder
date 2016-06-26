@@ -2,7 +2,12 @@
 var script =  {
 
 
-    enabled : false,
+
+
+    enabled         :  false,
+    enabled_export  :  false,
+
+
 
 
     // add
@@ -18,6 +23,8 @@ var script =  {
             file.add_file_script_error(hash);
         });
     },
+
+
 
 
     // api - session - add
@@ -64,17 +71,36 @@ var script =  {
     },
 
 
+
+
     // disable
     disable : function() {
         this.view_reset();
         this.enabled = false;
     },
 
+    // enable - export
+    disable_export : function() {
+        this.view_export_reset();
+        this.enabled_export = false;
+    },
+
+
+
+
     // enable
     enable : function() {
         this.view_enabled();
         this.enabled = true;
     },
+
+    // enable - export
+    enable_export : function() {
+        this.view_export_enabled();
+        this.enabled_export = true;
+    },
+
+
 
 
     // ready
@@ -88,6 +114,8 @@ var script =  {
             }
         });
     },
+
+
 
 
     // refresh - file
@@ -123,6 +151,8 @@ var script =  {
     },
 
 
+
+
     // remove
     remove : function(hash, path_to_remove) {
               file.add_file_script_loading(hash);
@@ -138,15 +168,17 @@ var script =  {
     },
 
 
+
+
     // view - reset
     view_reset : function() {
         $("#files .script").addClass("hidden");
-        $("#nav-display-script-export").addClass("hidden");
-        $("#nav-display-script-export").removeClass("cyan");
         $("#nav-display-script").addClass("hidden");
         $("#nav-display-script").removeClass("cyan");
         $("#nav-display-script").removeClass("darken-1");
         $("#nav-toggle-script").removeClass("cyan");
+        $("#nav-toggle-script-export").addClass("hidden");
+        $("#nav-toggle-script-export a").removeClass("cyan");
     },
 
     // view - enabled
@@ -157,8 +189,8 @@ var script =  {
         $("#nav-display-script").addClass("darken-1");
         $("#nav-display-script").removeClass("hidden");
         $("#nav-toggle-script").addClass("cyan");
-        $("#nav-display-script-export").addClass("cyan");
-        $("#nav-display-script-export").removeClass("hidden");
+        $("#nav-toggle-script-export").removeClass("hidden");
+        $("#nav-toggle-script-export a").addClass("cyan");
     },
 
     // view - nav - loading
@@ -170,7 +202,25 @@ var script =  {
         $("#nav-display-script").html(
             '<span class"size">' + human + '</span>'
         );
+    },
+
+
+
+
+    // view - export - reset
+    view_export_reset : function() {
+        $("body").css("overflow", "auto");
+        $("#script-export").addClass("hidden");
+    },
+
+    // view - export - enabled
+    view_export_enabled : function() {
+        this.view_export_reset();
+        $("body").css("overflow", "hidden");
+        $("#script-export").removeClass("hidden");
     }
+
+
 
 
 }
@@ -182,12 +232,21 @@ var script =  {
 /** | listener **/
 
 
-    // script - nav - click
+    // nav - script - click
     $("#nav-toggle-script").click(function() {
         if( script.enabled ){
             script.disable();
         } else {
             script.enable();
+        }
+    });
+
+    // nav - script - export - click
+    $("#nav-toggle-script-export").click(function() {
+        if( script.enabled_export ){
+            script.disable_export();
+        } else {
+            script.enable_export();
         }
     });
 
