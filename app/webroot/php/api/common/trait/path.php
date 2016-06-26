@@ -39,7 +39,8 @@
             if( ! is_link($i->getPathname()) ){
                 if( is_readable($i->getPathname()) ){
                     if( is_file($i->getPathname()) ){
-                        if (strpos(basename($i->getPathname()), $term) !== false) {
+                        if( strpos( strtolower(basename($i->getPathname())),
+                                    strtolower($term)) !== false) {
                             $paths[] = $i->getPathname();
                         }
                     }
