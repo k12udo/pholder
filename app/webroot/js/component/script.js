@@ -141,6 +141,8 @@ var script =  {
     // view - reset
     view_reset : function() {
         $("#files .script").addClass("hidden");
+        $("#nav-display-script-export").addClass("hidden");
+        $("#nav-display-script-export").removeClass("cyan");
         $("#nav-display-script").addClass("hidden");
         $("#nav-display-script").removeClass("cyan");
         $("#nav-display-script").removeClass("darken-1");
@@ -151,10 +153,12 @@ var script =  {
     view_enabled : function() {
         this.view_reset();
         $("#files .script").removeClass("hidden");
-        $("#nav-display-script").removeClass("hidden");
         $("#nav-display-script").addClass("cyan");
         $("#nav-display-script").addClass("darken-1");
+        $("#nav-display-script").removeClass("hidden");
         $("#nav-toggle-script").addClass("cyan");
+        $("#nav-display-script-export").addClass("cyan");
+        $("#nav-display-script-export").removeClass("hidden");
     },
 
     // view - nav - loading

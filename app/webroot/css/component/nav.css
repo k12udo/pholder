@@ -27,3 +27,13 @@
     }
 
 
+    #nav #nav-display-script-export {
+        overflow:       hidden;
+    }
+
+    #nav #nav-display-script-export.hidden {
+        width:          0px;
+        font-size:      0px;
+    }
+
+
