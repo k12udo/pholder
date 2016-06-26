@@ -32,9 +32,9 @@
             case 'directory':
                 return 'folder_open';
             case 'file':
-                return 'file';
-            default:
                 return 'insert_drive_file';
+            default:
+                return 'signal_cellular_no_sim';
         }
     }
 

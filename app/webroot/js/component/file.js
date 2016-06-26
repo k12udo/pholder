@@ -4,19 +4,24 @@ var file = {
 
     // add - file(s)
     add_files : function(files){
+        console.log(files);
         for( index in files ){
             this.add_file(
-                files[index]['dir'],
                 files[index]['hash'],
                 files[index]['icon'],
                 files[index]['name'],
+                files[index]['type'],
                 files[index]['path']
             );
         }
     },
 
     // add - file
-    add_file : function(dir, hash, icon, name, path_to_file){
+    add_file : function(hash, icon, name, type, path_to_file){
+
+        // ? - type - dir
+        if( type == "directory" ){ dir = true;  }
+        else                     { dir = false; }
 
         // ? - script - enabled
         if( script.enabled ){ script_enabled = "";      }
