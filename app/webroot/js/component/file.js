@@ -235,8 +235,8 @@ var file = {
     view_reset : function() {
         $("#files #files-list").empty();
         $("#files .loading").addClass("hidden");
-        $("#files .loading").removeClass("red");
-        $("#files .loading div").removeClass("red");
+        $("#files .loading .progress").removeClass("red");
+        $("#files .loading .progress div").removeClass("red");
     },
 
     // view - loading
@@ -248,6 +248,7 @@ var file = {
     view_loading_error : function() {
         $("#files .loading .progress").addClass("red");
         $("#files .loading .progress div").addClass("red");
+        $("#files .loading .progress div").addClass("lighten-2");
     },
 
     // view - loading - loaded

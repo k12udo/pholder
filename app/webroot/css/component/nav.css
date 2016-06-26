@@ -27,13 +27,14 @@
     }
 
 
-    #nav #nav-display-script-export {
+    #nav #nav-toggle-script-export {
         overflow:       hidden;
     }
 
-    #nav #nav-display-script-export.hidden {
+    #nav #nav-toggle-script-export.hidden {
         width:          0px;
         font-size:      0px;
+        display:        none;
     }
 
 

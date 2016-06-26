@@ -250,5 +250,10 @@ var script =  {
         }
     });
 
+    // nav - script - export - click
+    $("#script-export-nav-close").click(function() {
+        script.disable_export();
+    });
+
 
 /** listener | **/
