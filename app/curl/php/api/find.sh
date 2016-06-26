@@ -2,6 +2,6 @@
 
 
     set -x
-    curl "localhost/php/api/find.php" "$@"
+    curl "localhost:7070/php/api/find.php" "$@"
 
 

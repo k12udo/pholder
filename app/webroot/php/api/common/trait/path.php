@@ -24,6 +24,34 @@
     }
 
 
+    /** path - find **/
+    private function path_find($path, $term) {
+
+        // var - results
+        $paths = array();
+
+        // path - find - term
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($path)
+        );
+        foreach ($iterator as $i) {
+            if( ! is_link($i->getPathname()) ){
+                if( is_readable($i->getPathname()) ){
+                    if( is_file($i->getPathname()) ){
+                        if (strpos(basename($i->getPathname()), $term) !== false) {
+                            $paths[] = $i->getPathname();
+                        }
+                    }
+                }
+            }
+        }
+
+        // return
+        return $paths;
+
+    }
+
+
     /** path - get - icon **/
     public function path_icon($type) {
         switch($type) {
