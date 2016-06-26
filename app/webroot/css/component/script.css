@@ -1,0 +1,18 @@
+
+
+
+
+    #script-export {
+        height:             100%;
+        width:              100%;
+        overflow:           hidden;
+        transition:         1.25s;
+    }
+
+    #script-export.hidden {
+        height:             0%;
+    }
+
+
+
+
