@@ -16,6 +16,4 @@ A php/js web folder to quickly share files across a local network.
 pholder exposes your files to your the network, use at your own risk
 
 ##todo
-- Implement script size display
 - Implement script edit & export
-- Rebuild search
