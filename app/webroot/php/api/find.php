@@ -1,5 +1,6 @@
-<?php namespace pholder\api; ?>
-<?php require_once('common/api.php'); ?>
+<?php namespace pholder\api;                    ?>
+<?php require_once('common/api.php');           ?>
+<?php require_once('common/class/session.php'); ?>
 <?php class find extends \pholder\common\api {
 
 

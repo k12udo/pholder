@@ -14,23 +14,14 @@
 
     /** path - get - file - details **/
     public function path_details($path) {
-                $details = array();
-                $details['name'] = basename($path);
-                $details['hash'] = md5($path);
-                $details['path'] = $this->path_path($path);
-                $details['type'] = $this->path_type($path);
-                $details['icon'] = $this->path_icon($details['type']);
+                $details            = array();
+                $details['name']    = basename($path);
+                $details['hash']    = md5($path);
+                $details['path']    = $this->path_path($path);
+                $details['type']    = $this->path_type($path);
+                $details['icon']    = $this->path_icon($details['type']);
+                $details['script']  = array('exists' => $this->path_script($path));
         return  $details;
-    }
-
-
-    /** path - path **/
-    public function path_path($path) {
-        if( is_link($path) ){
-            return $path;
-        } else {
-            return realpath($path);
-        }
     }
 
 
@@ -46,6 +37,24 @@
             default:
                 return 'insert_drive_file';
         }
+    }
+
+
+    /** path - path **/
+    public function path_path($path) {
+        if( is_link($path) ){
+            return $path;
+        } else {
+            return realpath($path);
+        }
+    }
+
+
+    /** path - script **/
+    public function path_script($path) {
+                $session = new \pholder\common\c\session();
+                $session->set_path($path);
+        return  $session->exists();
     }
 
 

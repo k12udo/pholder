@@ -68,8 +68,8 @@
 
     /** init **/
     private function init() {
-        session_start();
         if( ! isset($_SESSION['pholder'])) {
+            session_start();
             $_SESSION['pholder']                    = array();
             $_SESSION['pholder']['path_prefix']     = "";
             $_SESSION['pholder']['path_suffix']     = "";

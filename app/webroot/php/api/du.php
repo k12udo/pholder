@@ -1,6 +1,7 @@
-<?php namespace pholder; ?>
-<?php require_once('common/api.php'); ?>
-<?php require_once('common/trait/file.php'); ?>
+<?php namespace pholder;                        ?>
+<?php require_once('common/api.php');           ?>
+<?php require_once('common/class/session.php'); ?>
+<?php require_once('common/trait/file.php');    ?>
 <?php class du extends \pholder\common\api {
 
 
