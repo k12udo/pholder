@@ -79,7 +79,8 @@ var script =  {
 
     // ready
     ready : function() {
-        var this_copy = this;
+        this_copy = this;
+        this_copy.refresh_nav();
         api = this.api_session_empty();
         api.success(function(data) {
             if(data['empty'] != true){
@@ -114,6 +115,7 @@ var script =  {
               this_copy.view_nav_loading();
         api = this.api_session_size();
         api.success(function(data) {
+            console.log(data);
             this_copy.view_nav_size(
                 data['bytes'],
                 data['human']

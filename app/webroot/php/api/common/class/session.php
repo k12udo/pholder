@@ -76,7 +76,6 @@
             $_SESSION['pholder']['paths']           = array();
             $_SESSION['pholder']['size']            = array();
             $_SESSION['pholder']['size']['bytes']   = 0;
-            $_SESSION['pholder']['size']['human']   = 0;
         }
         return true;
     }
@@ -120,14 +119,14 @@
         return false;
     }
 
-    /** set - size - bytes **/
-    public function set_size_bytes($bytes) {
-        $this->size_bytes = $bytes;
+    /** set - path **/
+    public function set_size_bytes($size_bytes) {
+        $this->size_bytes = $size_bytes;
     }
 
-    /** set - size - human **/
-    public function set_size_human($human) {
-        $this->size_human = $human;
+    /** set - path **/
+    public function set_size_human($size_human) {
+        $this->size_human = $size_human;
     }
 
 

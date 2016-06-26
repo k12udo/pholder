@@ -4,7 +4,6 @@ var file = {
 
     // add - file(s)
     add_files : function(files){
-        console.log(files);
         for( index in files ){
             this.add_file(
                 files[index]['hash'],

@@ -14,12 +14,12 @@
 
     /** path - get - file - details **/
     public function path_details($path) {
-                $details            = array();
-                $details['name']    = basename($path);
-                $details['hash']    = md5($path);
-                $details['path']    = $this->path_path($path);
-                $details['type']    = $this->path_type($path);
-                $details['icon']    = $this->path_icon($details['type']);
+                $details         = array();
+                $details['name'] = basename($path);
+                $details['hash'] = md5($path);
+                $details['path'] = $this->path_path($path);
+                $details['type'] = $this->path_type($path);
+                $details['icon'] = $this->path_icon($details['type']);
         return  $details;
     }
 

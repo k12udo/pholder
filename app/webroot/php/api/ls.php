@@ -1,7 +1,7 @@
 <?php namespace pholder;                        ?>
 <?php require_once('common/api.php');           ?>
 <?php require_once('common/class/session.php'); ?>
-<?php require_once('common/trait/file.php');    ?>
+<?php require_once('common/trait/path.php');    ?>
 <?php class ls extends \pholder\common\api {
 
 
