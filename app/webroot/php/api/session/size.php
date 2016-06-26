@@ -1,7 +1,7 @@
 <?php namespace pholder\api\session; ?>
-<?php require_once('../../api.php'); ?>
+<?php require_once('../common/api.php'); ?>
 <?php require_once('../common/class/session.php'); ?>
-<?php class size extends \pholder\api {
+<?php class size extends \pholder\common\api {
 
 
 
@@ -32,6 +32,8 @@
         );
         return true;
     }
+
+
 
 
 } $size = new size(); ?>
