@@ -115,7 +115,6 @@ var script =  {
               this_copy.view_nav_loading();
         api = this.api_session_size();
         api.success(function(data) {
-            console.log(data);
             this_copy.view_nav_size(
                 data['bytes'],
                 data['human']

@@ -201,11 +201,16 @@ var file = {
 
     // find
     find : function(path_to_file, search_term) {
-        this.clear();
+        this.view_reset();
+        this.view_loading();
         var this_copy = this
             api = this.api_find_files(path_to_file, search_term);
             api.success(function(data) {
                 this_copy.add_files(data);
+                this_copy.view_loading_loaded();
+            });
+            api.error(function(data) {
+                this_copy.view_loading_error();
             });
     },
 

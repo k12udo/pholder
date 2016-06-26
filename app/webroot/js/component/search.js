@@ -29,17 +29,16 @@ var search =  {
     },
 
 
-    // on - change
-    on_change : function(path_to_file, search_term) {
+    // find
+    find : function(path_to_file, search_term) {
         if( path_to_file != "" && search_term != "" ){
             if( file.find(path_to_file, search_term) ){
                 this.display_200();
             } else {
                 this.display_400();
             }
-        } else {
-            this.display_200();
         }
+        this.display_400();
     },
 
 
@@ -81,8 +80,9 @@ var search =  {
 
 
     // search - input - on - change
-    $('#search-input').bind('input propertychange', function() {
-        search.on_change( $("#path-input").val(), $(this).val() );
+    $('#search form').on('submit', function(e) {
+        e.preventDefault();
+        search.find( $("#path-input").val(), $("#search-input").val() );
     });
 
     // search - nav - click
