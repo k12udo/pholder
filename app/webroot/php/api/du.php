@@ -1,6 +1,15 @@
-<?php namespace pholder\api; ?>
-<?php require_once('../api.php'); ?>
-<?php class ls extends \pholder\api {
+<?php namespace pholder; ?>
+<?php require_once('common/api.php'); ?>
+<?php require_once('common/trait/file.php'); ?>
+<?php class du extends \pholder\common\api {
+
+
+
+
+    /** trait(s) **/
+    use \pholder\common\t\path;
+
+
 
 
     /** __ - construct **/
@@ -15,6 +24,8 @@
     }
 
 
+
+
     /** du **/
     private function du() {
 
@@ -24,23 +35,24 @@
             return false;
         }
 
-        // get - bytes
-        $bytes = $this->utility_path_size($this->input_path);
+        // get - path - size - bytes
+        $size_bytes = $this->path_size($this->input_path);
 
         // ? - bytes
-        if( ! isset($bytes) || $bytes === false ){
+        if( ! isset($size_bytes) || $size_bytes === false ){
             $this->set_response_code(400);
             return false;
         }
 
-        // prepare - data
-        $data = array(
-            'size' => $this->utility_human_readable($bytes)
-        );
+        // get - path - size - huamn
+        $size_human = $this->path_size_human($size_bytes);
 
         // prepare - resposne
         $this->set_response_code(200);
-        $this->set_response_data($data);
+        $this->set_response_data(array(
+            'size_bytes' => $size_bytes,
+            'size_human' => $size_human
+        ));
 
         // return
         return  true;
@@ -48,4 +60,6 @@
     }
 
 
-} $ls = new ls(); ?>
+
+
+} $du = new du(); ?>

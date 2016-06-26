@@ -1,6 +1,8 @@
 <?php namespace pholder\api; ?>
-<?php require_once('../api.php'); ?>
-<?php class find extends \pholder\api {
+<?php require_once('common/api.php'); ?>
+<?php class find extends \pholder\common\api {
+
+
 
 
     /** ignore **/
@@ -8,6 +10,8 @@
 
     /** limit **/
     private $limit_result = 250;
+
+
 
 
     /** __ - construct **/
@@ -22,10 +26,14 @@
     }
 
 
+
+
     /** input - term **/
     public function input_term($term) {
         return  $this->input_term = $term;
     }
+
+
 
 
     /** find **/
@@ -45,10 +53,6 @@
     }
 
 
-    /** utility - find - files **/
-    private function utility_find_files($path, $term) {
-        return array();
-    }
 
 
 } $find = new find(); ?>

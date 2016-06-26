@@ -54,8 +54,8 @@ var file = {
         // append - file - size
         this.add_file_size(hash, path_to_file);
 
-        // script - refresh - file - exists
-        script.refresh_file_exists(hash, path_to_file);
+        // script - refresh - file
+        script.refresh_file(hash, path_to_file);
 
     },
 
@@ -113,7 +113,7 @@ var file = {
             api.success(function(data) {
                 $('#' + hash + ' .size').empty();
                 $('#' + hash + ' .size').append(
-                    data['size']
+                    data['size_human']
                 );
             });
             api.error(function(data) {

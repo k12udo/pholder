@@ -2,6 +2,6 @@
 
 
     set -x
-    curl "localhost/php/api/du.php" "$@"
+    curl "localhost:7070/php/api/du.php" "$@"
 
 

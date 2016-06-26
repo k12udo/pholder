@@ -62,8 +62,8 @@
     }
 
     #files table tbody tr td.size {
-        width:              15%;
-        text-align:         right;
+        width:              150px;
+        text-align:         center;
     }
 
     #files table tbody tr td.size .progress {

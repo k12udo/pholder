@@ -1,17 +1,21 @@
-<?php namespace pholder\api; ?>
-<?php require_once('../api.php'); ?>
-<?php class get extends \pholder\api {
+<?php namespace pholder; ?>
+<?php require_once('common/api.php'); ?>
+<?php class get extends \pholder\common\api {
+
+
 
 
     /** __ - construct **/
     public function __construct() {
-                $this->input();
+        return  $this->input();
     }
 
     /** __ - destruct **/
     public function __destruct() {
         return  $this->get();
     }
+
+
 
 
     /** get **/
@@ -30,6 +34,8 @@
         return true;
 
     }
+
+
 
 
 } $get = new get(); ?>

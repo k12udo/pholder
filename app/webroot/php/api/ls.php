@@ -1,10 +1,18 @@
-<?php namespace pholder\api; ?>
-<?php require_once('../api.php'); ?>
-<?php class ls extends \pholder\api {
+<?php namespace pholder; ?>
+<?php require_once('common/api.php'); ?>
+<?php require_once('common/trait/file.php'); ?>
+<?php class ls extends \pholder\common\api {
 
+
+
+
+    /** trait(s) **/
+    use \pholder\common\t\path;
 
     /** ignore **/
     private $ignore_files = array('.');
+
+
 
 
     /** __ - construct **/
@@ -19,30 +27,32 @@
     }
 
 
+
+
     /** ls **/
     private function ls() {
+
+        // ? - path
         if( is_null($this->input_path) ){
             $this->set_response_code(400);
             return false;
         }
-        $files = scandir($this->input_path);
-        $files = $this->utility_absolute_path($this->input_path, $files);
-        $files = $this->get_files_details($this->input_path, $files);
-        return   $this->set_response_data($files);
+
+        // get - path(s)
+        $paths = scandir($this->input_path);
+
+        // prepare - path(s)
+        $paths = $this->paths_clean($paths);
+        $paths = $this->paths_absolute($this->input_path, $paths);
+        $paths = $this->paths_details($paths);
+        $paths = $this->set_response_data($paths);
+
+        // return - path(s)
+        return $paths;
+
     }
 
 
-    /** utility - absolute - path - files **/
-    private function utility_absolute_path($base, $files) {
-        $files_absolute = array();
-        foreach($files as $file) {
-            if( ! in_array($file, $this->ignore_files) ){
-                $path = $base."/".$file;
-                $files_absolute[] = $path;
-            }
-        }
-        return $files_absolute;
-    }
 
 
 } $ls = new ls(); ?>
