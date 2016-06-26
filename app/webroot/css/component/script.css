@@ -6,7 +6,7 @@
         height:             100%;
         width:              100%;
         overflow:           hidden;
-        transition:         1.25s;
+        transition:         0.75s;
     }
 
     #script-export.hidden {
