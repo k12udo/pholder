@@ -8,6 +8,7 @@
     private $paths_ignore = array(
         '.'
     );
+    private $paths_search_limit = 50;
 
 
 
@@ -43,6 +44,9 @@
                         }
                     }
                 }
+            }
+            if( count($paths) == $this->paths_search_limit ){
+                break;
             }
         }
 
