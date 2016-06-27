@@ -1,5 +1,7 @@
 
 
+
+
     #nav {
     }
 
@@ -7,48 +9,57 @@
     }
 
     #nav .title {
-        font-size: 24px;
-        margin: 0 0 0 10px;
-        user-select: none;
+        font-size:              24px;
+        margin:                 0 0 0 10px;
+        user-select:            none;
+    }
+
+
+    #nav #nav-toggle-script:hover {
+        background-color:       #00acc1 !important;
     }
 
 
     #nav #nav-display-script {
-        width:          150px;
-        text-align:     center;
-        overflow:       hidden;
-        transition:     0.6s;
-        font-size:      18px;
+        width:                  150px;
+        text-align:             center;
+        overflow:               hidden;
+        transition:             0.6s;
+        font-size:              18px;
     }
 
     #nav #nav-display-script.hidden {
-        width:          0px;
-        font-size:      0px;
+        width:                  0px;
+        font-size:              0px;
     }
 
 
     #nav #nav-toggle-script-export {
-        overflow:       hidden;
+        overflow:               hidden;
+    }
+
+    #nav #nav-toggle-script-export:hover a {
+        background-color:       #00acc1 !important;
     }
 
     #nav #nav-toggle-script-export.hidden {
-        width:          0px;
-        font-size:      0px;
-        display:        none;
+        width:                  0px;
+        font-size:              0px;
+        display:                none;
     }
 
 
 
 
     #nav-export {
-        height:             100%;
-        width:              100%;
-        background-color:   red;
-        overflow:           hidden;
+        height:                 100%;
+        width:                  100%;
+        background-color:       red;
+        overflow:               hidden;
     }
 
     #nav-export.hidden {
-        height:             0%;
+        height:                 0%;
     }
 
 
