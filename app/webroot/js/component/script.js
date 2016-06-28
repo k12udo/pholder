@@ -38,7 +38,13 @@ var script =  {
 
     // api - session - display
     api_session_display : function() {
-        var url = "php/api/session/display.php?filename=paths.txt";
+        var url = "php/api/session/display.php?filename=" + $("#script-export-input-filename").val();
+        window.location = url
+    },
+
+    // api - session - download
+    api_session_download : function() {
+        var url = "php/api/session/download.php?filename=" + $("#script-export-input-filename").val();
         window.location = url
     },
 
@@ -292,8 +298,8 @@ var script =  {
 
     // refresh - nav
     refresh_nav : function() {
-              this_copy = this;
-              this_copy.view_nav_loading();
+        this_copy = this;
+        this_copy.view_nav_loading();
         api = this.api_session_size();
         api.success(function(data) {
             this_copy.view_nav_size(
@@ -310,11 +316,11 @@ var script =  {
         $("#script-export-spacer-bot textarea").removeClass("error");
         api = this.api_session_ready();
         api.success(function(data) {
-            $("#script-export-download-script").removeClass("hidden");
+            $("#script-export-download").removeClass("hidden");
             $("#script-export-spacer-bot textarea").addClass("success");
         });
         api.error(function(data) {
-            $("#script-export-download-script").addClass("hidden");
+            $("#script-export-download").addClass("hidden");
             $("#script-export-spacer-bot").addClass("hidden");
             $("#script-export-spacer-bot textarea").addClass("error");
         });
@@ -487,8 +493,8 @@ var script =  {
 
     // set - section - reset
     set_session_reset : function() {
-        $("#script-export-download-paths").addClass("hidden");
-        $("#script-export-download-script").addClass("hidden");
+        $("#script-export-display").addClass("hidden");
+        $("#script-export-download").addClass("hidden");
         $("#script-export input").removeClass("error");
         $("#script-export input").removeClass("success");
         $("#script-export input").val("");
@@ -602,6 +608,11 @@ var script =  {
     // script - export - display
     $("#script-export-display").click(function() {
         script.api_session_display();
+    });
+
+    // script - export - download
+    $("#script-export-download").click(function() {
+        script.api_session_download();
     });
 
     // script - export - filename - input - on - change

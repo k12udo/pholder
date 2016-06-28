@@ -1,7 +1,7 @@
 <?php namespace pholder\api\session;                ?>
 <?php require_once('../common/api.php');            ?>
 <?php require_once('../common/class/session.php');  ?>
-<?php class display extends \pholder\common\api {
+<?php class download extends \pholder\common\api {
 
 
 
@@ -21,7 +21,7 @@
 
     /** __ - destruct **/
     public function __destruct() {
-        return  $this->display();
+        return  $this->download();
     }
 
 
@@ -36,7 +36,7 @@
 
 
     /** get **/
-    private function display() {
+    private function download() {
 
         // headers - status - code
         http_response_code(200);
@@ -62,4 +62,4 @@
 
 
 
-} $display = new display(); ?>
+} $download = new download(); ?>
