@@ -68,6 +68,7 @@
         font-size:          16px;
         border:             none;
         border-right:       2px solid #00acc1;
+        margin:             0;
     }
 
     #script-export .script input:focus {
@@ -131,7 +132,6 @@
     #script-export .script > .path {
         overflow-x:         scroll;
         border-right:       2px solid #00acc1;
-        margin:             50px 0 50px 0;
     }
 
     #script-export .script > .path.success {

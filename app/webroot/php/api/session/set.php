@@ -49,14 +49,12 @@
 
     /** set - footer **/
     private function set_footer($footer) {
-        if( empty($footer) ){ return false; }
         $_SESSION['pholder']['script']['footer'] = explode("\n", $footer);
         return true;
     }
 
     /** set - header **/
     private function set_header($header) {
-        if( empty($header) ){ return false; }
         $_SESSION['pholder']['script']['header'] = explode("\n", $header);
         return true;
     }
