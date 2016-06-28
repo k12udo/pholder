@@ -53,6 +53,14 @@ var script =  {
         });
     },
 
+    // api - session - get
+    api_session_get : function() {
+        return $.ajax({
+            type:       "GET",
+            url:        "php/api/session/get.php",
+        });
+    },
+
     // api - session - remove
     api_session_remove : function(path_to_remove) {
         return $.ajax({
@@ -236,6 +244,22 @@ var script =  {
                 this_copy.enable();
             }
         });
+        this.ready_export();
+    },
+
+    // ready - export
+    ready_export : function() {
+        api = this.api_session_get();
+        api.success(function(data) {
+            $("#script-export-input-filename").val(data['script']['filename']);
+            $("#script-export-input-header").val(data['script']['header']);
+            $("#script-export-input-interpreter").val(data['script']['interpreter']);
+            $("#script-export-input-path-prefix").val(data['script']['path']['prefix']);
+            $("#script-export-input-path-suffix").val(data['script']['path']['suffix']);
+            $("#script-export-input-footer").val(data['script']['footer']);
+        });
+        this.refresh_session_ready();
+        this.refresh_session_sample();
     },
 
 
