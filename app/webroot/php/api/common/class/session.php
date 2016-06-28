@@ -70,12 +70,18 @@
     /** init **/
     private function init() {
         if( ! isset($_SESSION['pholder'])) {
-            $_SESSION['pholder']                    = array();
-            $_SESSION['pholder']['path_prefix']     = "";
-            $_SESSION['pholder']['path_suffix']     = "";
-            $_SESSION['pholder']['paths']           = array();
-            $_SESSION['pholder']['size']            = array();
-            $_SESSION['pholder']['size']['bytes']   = 0;
+            $_SESSION['pholder']                                = array();
+            $_SESSION['pholder']['paths']                       = array();
+            $_SESSION['pholder']['script']                      = array();
+            $_SESSION['pholder']['script']['filename']          = "";
+            $_SESSION['pholder']['script']['footer']            = array();
+            $_SESSION['pholder']['script']['header']            = array();
+            $_SESSION['pholder']['script']['interpreter']       = "";
+            $_SESSION['pholder']['script']['path']              = array();
+            $_SESSION['pholder']['script']['path']['prefix']    = "";
+            $_SESSION['pholder']['script']['path']['suffix']    = "";
+            $_SESSION['pholder']['size']                        = array();
+            $_SESSION['pholder']['size']['bytes']               = 0;
         }
         return true;
     }

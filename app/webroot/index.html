@@ -51,7 +51,7 @@
                 <nav>
                     <div class="nav-wrapper">
                         <ul id="nav-mobile" class="left">
-                            <li><input name="script_name" placeholder="< filename >" /></li>
+                            <li><input id="script-export-input-filename" name="filename" placeholder="< filename >" /></li>
                         </ul>
                         <ul id="nav-mobile" class="right">
                             <li><a id="script-export-nav-close"><i class="material-icons large">exit_to_app</i></a></li>
@@ -59,8 +59,8 @@
                     </div>
                 </nav>
                 <div class="script container">
-                    <div class="spacer">
-                        <textarea class="error" readonly onfocus="this.blur()"></textarea>
+                    <div class="spacer" id="script-export-spacer-top">
+                        <textarea class="" readonly onfocus="this.blur()"></textarea>
                     </div>
                     <div class="interpreter">
                         <input class="" name="script_interpreter" type="text" placeholder="< interpreter >" />

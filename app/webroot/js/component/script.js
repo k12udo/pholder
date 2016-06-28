@@ -62,8 +62,17 @@ var script =  {
         });
     },
 
+    // api - set - session - filename
+    api_set_session_filename : function(filename_to_set) {
+        return $.ajax({
+            type:       "GET",
+            data:       { filename : filename_to_set },
+            url:        "php/api/session/set.php",
+        });
+    },
+
     // api - session - size
-    api_session_size : function(path_to_remove) {
+    api_session_size : function() {
         return $.ajax({
             type:       "GET",
             url:        "php/api/session/size.php",
@@ -170,6 +179,26 @@ var script =  {
 
 
 
+    // set - session - fileename
+    set_session_filename : function(input) {
+        $(input).removeClass("error");
+        $(input).removeClass("success");
+        api = this.api_set_session_filename($(input).val());
+        api.success(function(data) {
+            $(input).addClass("success");
+            $("#script-export-spacer-top textarea").addClass("success");
+            $("#script-export-spacer-top textarea").removeClass("error");
+        });
+        api.error(function() {
+            $(input).addClass("error");
+            $("#script-export-spacer-top textarea").addClass("error");
+            $("#script-export-spacer-top textarea").removeClass("success");
+        });
+    },
+
+
+
+
     // view - reset
     view_reset : function() {
         $("#files .script").addClass("hidden");
@@ -253,6 +282,11 @@ var script =  {
     // nav - script - export - click
     $("#script-export-nav-close").click(function() {
         script.disable_export();
+    });
+
+    // script - export - filename - input - on - change
+    $('#script-export-input-filename').bind('input propertychange', function() {
+        script.set_session_filename(this);
     });
 
 

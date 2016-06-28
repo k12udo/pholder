@@ -31,17 +31,18 @@
 
     /** set **/
     private function set() {
-        if( isset($_POST['filename'])    ){ return $this->set_filename($_POST['filename']);         }
-        if( isset($_POST['footer'])      ){ return $this->set_footer();                             }
-        if( isset($_POST['header'])      ){ return $this->set_header();                             }
-        if( isset($_POST['interpreter']) ){ return $this->set_interpreter($_POST['interpreter']);   }
-        if( isset($_POST['path_prefix']) ){ return $this->set_path_prefix($_POST['path_prefix']);   }
-        if( isset($_POST['path_suffix']) ){ return $this->set_path_suffix($_POST['path_suffix']);   }
-                                            return false;
+        if( isset($_GET['filename'])    ){ return $this->set_filename($_GET['filename']);       }
+        if( isset($_GET['footer'])      ){ return $this->set_footer();                          }
+        if( isset($_GET['header'])      ){ return $this->set_header();                          }
+        if( isset($_GET['interpreter']) ){ return $this->set_interpreter($_GET['interpreter']); }
+        if( isset($_GET['path_prefix']) ){ return $this->set_path_prefix($_GET['path_prefix']); }
+        if( isset($_GET['path_suffix']) ){ return $this->set_path_suffix($_GET['path_suffix']); }
+                                           return false;
     }
 
     /** set - filename **/
     private function set_filename($filename) {
+        if( empty($filename) ){ return false; }
         $_SESSION['pholder']['script']['filename'] = $filename;
         return true;
     }
@@ -49,13 +50,13 @@
     /** set - footer **/
     private function set_footer() {
         print_r($_GET);
-        print_r($_POST);
+        print_r($_GET);
     }
 
     /** set - header **/
     private function set_header() {
         print_r($_GET);
-        print_r($_POST);
+        print_r($_GET);
     }
 
     /** set - path - prefix **/
