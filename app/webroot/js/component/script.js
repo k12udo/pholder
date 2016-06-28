@@ -62,6 +62,14 @@ var script =  {
         });
     },
 
+    // api - session - size
+    api_session_size : function() {
+        return $.ajax({
+            type:       "GET",
+            url:        "php/api/session/size.php",
+        });
+    },
+
     // api - set - session - filename
     api_set_session_filename : function(filename_to_set) {
         return $.ajax({
@@ -69,8 +77,17 @@ var script =  {
             data:       { filename : filename_to_set },
             url:        "php/api/session/set.php",
         });
-    }
-    ,
+    },
+
+    // api - set - session - header
+    api_set_session_header : function(header_to_set) {
+        return $.ajax({
+            type:       "GET",
+            data:       { header : header_to_set },
+            url:        "php/api/session/set.php",
+        });
+    },
+
     // api - set - session - interpreter
     api_set_session_interpreter : function(interpreter_to_set) {
         return $.ajax({
@@ -80,11 +97,12 @@ var script =  {
         });
     },
 
-    // api - session - size
-    api_session_size : function() {
+    // api - set - session - footer
+    api_set_session_footer : function(footer_to_set) {
         return $.ajax({
             type:       "GET",
-            url:        "php/api/session/size.php",
+            data:       { footer : footer_to_set },
+            url:        "php/api/session/set.php",
         });
     },
 
@@ -195,30 +213,56 @@ var script =  {
         api = this.api_set_session_filename($(input).val());
         api.success(function(data) {
             $(input).addClass("success");
-            $("#script-export-spacer-top textarea").addClass("success");
-            $("#script-export-spacer-top textarea").removeClass("error");
         });
         api.error(function() {
             $(input).addClass("error");
-            $("#script-export-spacer-top textarea").addClass("error");
-            $("#script-export-spacer-top textarea").removeClass("success");
+        });
+    },
+
+    // set - session - header
+    set_session_header : function(input) {
+        $(input).removeClass("error");
+        $(input).removeClass("success");
+        api = this.api_set_session_header($(input).val());
+        api.success(function(data) {
+            $(input).addClass("success");
+        });
+        api.error(function() {
+            $(input).addClass("error");
         });
     },
 
     // set - session - interpreter
     set_session_interpreter : function(input) {
+        $("#script-export-spacer-top textarea").removeClass("error");
+        $("#script-export-spacer-top textarea").removeClass("success");
         $(input).removeClass("error");
         $(input).removeClass("success");
         api = this.api_set_session_interpreter($(input).val());
         api.success(function(data) {
             $(input).addClass("success");
             $("#script-export-spacer-top textarea").addClass("success");
-            $("#script-export-spacer-top textarea").removeClass("error");
         });
         api.error(function() {
             $(input).addClass("error");
             $("#script-export-spacer-top textarea").addClass("error");
-            $("#script-export-spacer-top textarea").removeClass("success");
+        });
+    },
+
+    // set - session - footer
+    set_session_footer : function(input) {
+        $("#script-export-spacer-bot textarea").removeClass("success");
+        $("#script-export-spacer-bot textarea").removeClass("error");
+        $(input).removeClass("error");
+        $(input).removeClass("success");
+        api = this.api_set_session_footer($(input).val());
+        api.success(function(data) {
+            $(input).addClass("success");
+            $("#script-export-spacer-bot textarea").addClass("success");
+        });
+        api.error(function() {
+            $(input).addClass("error");
+            $("#script-export-spacer-bot textarea").addClass("error");
         });
     },
 
@@ -315,9 +359,19 @@ var script =  {
         script.set_session_filename(this);
     });
 
+    // script - export - footer - input - on - change
+    $('#script-export-input-footer').bind('input propertychange', function() {
+        script.set_session_footer(this);
+    });
+
     // script - export - interpreter - input - on - change
     $('#script-export-input-interpreter').bind('input propertychange', function() {
         script.set_session_interpreter(this);
+    });
+
+    // script - export - header - input - on - change
+    $('#script-export-input-header').bind('input propertychange', function() {
+        script.set_session_header(this);
     });
 
 

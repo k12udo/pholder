@@ -32,8 +32,8 @@
     /** set **/
     private function set() {
         if( isset($_GET['filename'])    ){ return $this->set_filename($_GET['filename']);       }
-        if( isset($_GET['footer'])      ){ return $this->set_footer();                          }
-        if( isset($_GET['header'])      ){ return $this->set_header();                          }
+        if( isset($_GET['footer'])      ){ return $this->set_footer($_GET['footer']);           }
+        if( isset($_GET['header'])      ){ return $this->set_header($_GET['header']);           }
         if( isset($_GET['interpreter']) ){ return $this->set_interpreter($_GET['interpreter']); }
         if( isset($_GET['path_prefix']) ){ return $this->set_path_prefix($_GET['path_prefix']); }
         if( isset($_GET['path_suffix']) ){ return $this->set_path_suffix($_GET['path_suffix']); }
@@ -48,15 +48,17 @@
     }
 
     /** set - footer **/
-    private function set_footer() {
-        print_r($_GET);
-        print_r($_GET);
+    private function set_footer($footer) {
+        if( empty($footer) ){ return false; }
+        $_SESSION['pholder']['script']['footer'] = explode("\n", $footer);
+        return true;
     }
 
     /** set - header **/
-    private function set_header() {
-        print_r($_GET);
-        print_r($_GET);
+    private function set_header($header) {
+        if( empty($header) ){ return false; }
+        $_SESSION['pholder']['script']['header'] = explode("\n", $header);
+        return true;
     }
 
     /** set - interpreter  **/
