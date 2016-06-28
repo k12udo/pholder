@@ -106,6 +106,24 @@ var script =  {
         });
     },
 
+    // api - set - session - path - prefix
+    api_set_session_path_prefix : function(prefix_to_set) {
+        return $.ajax({
+            type:       "GET",
+            data:       { path_prefix : prefix_to_set },
+            url:        "php/api/session/set.php",
+        });
+    },
+
+    // api - set - session - path - suffix
+    api_set_session_path_suffix : function(suffix_to_set) {
+        return $.ajax({
+            type:       "GET",
+            data:       { path_suffix : suffix_to_set },
+            url:        "php/api/session/set.php",
+        });
+    },
+
 
 
 
@@ -266,6 +284,40 @@ var script =  {
         });
     },
 
+    // set - session - path - prefix
+    set_session_path_prefix : function(input) {
+        $("#script-export-spacer-bot textarea").removeClass("success");
+        $("#script-export-spacer-bot textarea").removeClass("error");
+        $(input).removeClass("error");
+        $(input).removeClass("success");
+        api = this.api_set_session_path_prefix($(input).val());
+        api.success(function(data) {
+            $(input).addClass("success");
+            $("#script-export-spacer-bot textarea").addClass("success");
+        });
+        api.error(function() {
+            $(input).addClass("error");
+            $("#script-export-spacer-bot textarea").addClass("error");
+        });
+    },
+
+    // set - session - path - suffix
+    set_session_path_suffix : function(input) {
+        $("#script-export-spacer-bot textarea").removeClass("success");
+        $("#script-export-spacer-bot textarea").removeClass("error");
+        $(input).removeClass("error");
+        $(input).removeClass("success");
+        api = this.api_set_session_path_suffix($(input).val());
+        api.success(function(data) {
+            $(input).addClass("success");
+            $("#script-export-spacer-bot textarea").addClass("success");
+        });
+        api.error(function() {
+            $(input).addClass("error");
+            $("#script-export-spacer-bot textarea").addClass("error");
+        });
+    },
+
 
 
 
@@ -372,6 +424,16 @@ var script =  {
     // script - export - header - input - on - change
     $('#script-export-input-header').bind('input propertychange', function() {
         script.set_session_header(this);
+    });
+
+    // script - export - path - prefix - input - on - change
+    $('#script-export-input-path-prefix').bind('input propertychange', function() {
+        script.set_session_path_prefix(this);
+    });
+
+    // script - export - path - suffix - input - on - change
+    $('#script-export-input-path-suffix').bind('input propertychange', function() {
+        script.set_session_path_suffix(this);
     });
 
 

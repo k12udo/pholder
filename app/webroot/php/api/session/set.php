@@ -70,12 +70,14 @@
 
     /** set - path - prefix **/
     private function set_path_prefix($prefix) {
+        if( empty($prefix) ){ return false; }
         $_SESSION['pholder']['script']['path']['prefix'] = $prefix;
         return true;
     }
 
     /** set - path - suffix **/
-    private function set_path_suffix($prefix) {
+    private function set_path_suffix($suffix) {
+        if( empty($suffix) ){ return false; }
         $_SESSION['pholder']['script']['path']['suffix'] = $suffix;
         return true;
     }
