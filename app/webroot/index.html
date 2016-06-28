@@ -51,7 +51,7 @@
                 <nav>
                     <div class="nav-wrapper">
                         <ul id="nav-mobile" class="left">
-                            <li><input name="script_name" placeholder="Script filename" /></li>
+                            <li><input name="script_name" placeholder="< filename >" /></li>
                         </ul>
                         <ul id="nav-mobile" class="right">
                             <li><a id="script-export-nav-close"><i class="material-icons large">exit_to_app</i></a></li>
@@ -60,30 +60,34 @@
                 </nav>
                 <div class="script container">
                     <div class="spacer">
-                        <textarea></textarea>
+                        <textarea class="error" readonly onfocus="this.blur()"></textarea>
                     </div>
                     <div class="interpreter">
-                        <input class="" name="script_interpreter" type="text" value="#!/bin/bash" />
+                        <input class="" name="script_interpreter" type="text" placeholder="< interpreter >" />
                     </div>
                     <div class="extra header">
-                        <textarea name="script_header">#\n#\n</textarea>
+                        <textarea name="script_header"></textarea>
                     </div>
                     <div class="path">
                         <div class="sample">
-                            <textarea name="path_sample"></textarea>
+                            <textarea readonly name="path_sample"></textarea>
                         </div>
                         <div class="ix prefix">
-                            <input class="" name="script_body_prefix" placeholder="Path prefix" />
+                            <input class="" name="script_body_prefix" placeholder="< path prefix >" />
                         </div>
                         <div class="ix suffix">
-                            <input class="" name="script_body_suffix" placeholder="Path suffix" />
+                            <input class="" name="script_body_suffix" placeholder="< path suffix >" />
                         </div>
                     </div>
                     <div class="extra footer">
                         <textarea name="script_footer" rows="5" cols="80"></textarea>
                     </div>
-                </div>
-                <div class="download">
+                    <div class="spacer hidden">
+                        <textarea readonly onfocus="this.blur()"></textarea>
+                    </div>
+                    <div class="download hidden">
+                        <a class="right waves-effect waves-light btn-large"><i class="material-icons left">content_copy</i>Download</a>
+                    </div>
                 </div>
             </form>
         </div>
