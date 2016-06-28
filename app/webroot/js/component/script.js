@@ -481,18 +481,23 @@ var script =  {
 
     // set - section - reset
     set_session_reset : function() {
-        $("#script-export-input-filename").val("");
-        $("#script-export-input-header").val("");
-        $("#script-export-input-interpreter").val("");
-        $("#script-export-input-path-prefix").val("");
-        $("#script-export-input-path-suffix").val("");
-        $("#script-export-input-footer").val("");
-        this_copy.api_unset_session_filename("");
-        this_copy.api_unset_session_header("");
-        this_copy.api_unset_session_interpreter("");
-        this_copy.api_unset_session_path_prefix("");
-        this_copy.api_unset_session_path_suffix("");
-        this_copy.api_unset_session_footer("");
+        $("#script-export-download-paths").addClass("hidden");
+        $("#script-export-download-script").addClass("hidden");
+        $("#script-export input").removeClass("error");
+        $("#script-export input").removeClass("success");
+        $("#script-export input").val("");
+        $("#script-export textarea").removeClass("error");
+        $("#script-export textarea").removeClass("success");
+        $("#script-export textarea").val("");
+        $("#script-export-path").removeClass("error");
+        $("#script-export-path").removeClass("success");
+        this.api_unset_session_filename("");
+        this.api_unset_session_header("");
+        this.api_unset_session_interpreter("");
+        this.api_unset_session_path_prefix("");
+        this.api_unset_session_path_suffix("");
+        this.api_unset_session_footer("");
+        this.refresh_session_sample();
     },
 
 

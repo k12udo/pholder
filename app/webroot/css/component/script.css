@@ -76,17 +76,17 @@
 
     #script-export .script input:focus {
         border:             none;
-        outline:            none !important;
+        outline:            none;
         border-bottom:      2px solid #00acc1;
         border-right:       2px solid #00acc1;
     }
 
     #script-export .script input.error {
-        border-right:       2px solid tomato !important;
+        border-right:       2px solid tomato;
     }
 
     #script-export .script input.success {
-        border-right:       2px solid lightgreen !important;
+        border-right:       2px solid lightgreen;
     }
 
     #script-export .script textarea {
@@ -99,17 +99,17 @@
 
     #script-export .script textarea:focus {
         border:             none;
-        outline:            none !important;
+        outline:            none;
         border-right:       2px solid #00acc1;
         border-bottom:      2px solid #00acc1;
     }
 
     #script-export .script textarea.error {
-        border-right:       2px solid tomato !important;
+        border-right:       2px solid tomato;
     }
 
     #script-export .script textarea.success {
-        border-right:       2px solid lightgreen !important;
+        border-right:       2px solid lightgreen;
     }
 
     #script-export .script .download {
@@ -139,11 +139,11 @@
     }
 
     #script-export .script > .path.success {
-        border-right:       2px solid lightgreen !important;
+        border-right:       2px solid lightgreen;
     }
 
     #script-export .script > .path.error {
-        border-right:       2px solid tomato !important;
+        border-right:       2px solid tomato;
     }
 
     #script-export .script .path table td {
@@ -179,6 +179,7 @@
     #script-export .script .spacer textarea {
         height:             150px;
         border-bottom:      2px solid #2b2b2b;
+        border-right:       2px solid lightgreen;
     }
 
     #script-export .script .spacer.hidden textarea {
@@ -188,7 +189,6 @@
 
     #script-export .script .spacer textarea:focus {
         border:             none;
-        border-right:       2px solid #00acc1;
     }
 
 
