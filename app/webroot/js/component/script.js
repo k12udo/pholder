@@ -132,7 +132,7 @@ var script =  {
         });
     },
 
-    // api - set - session - ready
+    // api - session - ready
     api_session_ready : function() {
         return $.ajax({
             type:       "GET",
@@ -140,6 +140,59 @@ var script =  {
         });
     },
 
+    // api - unset - session - filename
+    api_unset_session_filename : function(filename_to_unset) {
+        return $.ajax({
+            type:       "GET",
+            data:       { filename : filename_to_unset },
+            url:        "php/api/session/unset.php",
+        });
+    },
+
+    // api - unset - session - header
+    api_unset_session_header : function(header_to_unset) {
+        return $.ajax({
+            type:       "GET",
+            data:       { header : header_to_unset },
+            url:        "php/api/session/unset.php",
+        });
+    },
+
+    // api - unset - session - interpreter
+    api_unset_session_interpreter : function(interpreter_to_unset) {
+        return $.ajax({
+            type:       "GET",
+            data:       { interpreter : interpreter_to_unset },
+            url:        "php/api/session/unset.php",
+        });
+    },
+
+    // api - unset - session - footer
+    api_unset_session_footer : function(footer_to_unset) {
+        return $.ajax({
+            type:       "GET",
+            data:       { footer : footer_to_unset },
+            url:        "php/api/session/unset.php",
+        });
+    },
+
+    // api - unset - session - path - prefix
+    api_unset_session_path_prefix : function(prefix_to_unset) {
+        return $.ajax({
+            type:       "GET",
+            data:       { path_prefix : prefix_to_unset },
+            url:        "php/api/session/unset.php",
+        });
+    },
+
+    // api - unset - session - path - suffix
+    api_unset_session_path_suffix : function(suffix_to_unset) {
+        return $.ajax({
+            type:       "GET",
+            data:       { path_suffix : suffix_to_unset },
+            url:        "php/api/session/unset.php",
+        });
+    },
 
 
 
@@ -232,6 +285,7 @@ var script =  {
         });
         api.error(function(data) {
             $("#script-export-download-script").addClass("hidden");
+            $("#script-export-spacer-bot").addClass("hidden");
             $("#script-export-spacer-bot textarea").addClass("error");
         });
     },
@@ -280,15 +334,19 @@ var script =  {
         $(input).removeClass("success");
         api = this.api_set_session_filename($(input).val());
         api.success(function(data) {
-            this_copy.refresh_session_ready();
             $(input).addClass("success");
             $("#script-export-download-paths").removeClass("hidden");
             $("#script-export-spacer-top textarea").addClass("success");
+            this_copy.refresh_session_ready();
         });
         api.error(function() {
             $(input).addClass("error");
             $("#script-export-download-paths").addClass("hidden");
             $("#script-export-spacer-top textarea").addClass("error");
+            unset = this_copy.api_unset_session_filename("");
+            unset.success(function() {
+                this_copy.refresh_session_ready();
+            });
         });
     },
 
@@ -304,6 +362,10 @@ var script =  {
         });
         api.error(function() {
             $(input).addClass("error");
+            unset = this_copy.api_unset_session_header("");
+            unset.success(function() {
+                this_copy.refresh_session_ready();
+            });
         });
     },
 
@@ -319,6 +381,10 @@ var script =  {
         });
         api.error(function() {
             $(input).addClass("error");
+            unset = this_copy.api_unset_session_interpreter("");
+            unset.success(function() {
+                this_copy.refresh_session_ready();
+            });
         });
     },
 
@@ -334,6 +400,10 @@ var script =  {
         });
         api.error(function() {
             $(input).addClass("error");
+            unset = this_copy.api_unset_session_footer("");
+            unset.success(function() {
+                this_copy.refresh_session_ready();
+            });
         });
     },
 
@@ -354,6 +424,10 @@ var script =  {
         api.error(function() {
             $(input).addClass("error");
             $("#script-export-spacer-bot textarea").addClass("error");
+            unset = this_copy.api_unset_session_path_prefix("");
+            unset.success(function() {
+                this_copy.refresh_session_ready();
+            });
         });
     },
 
@@ -374,6 +448,10 @@ var script =  {
         api.error(function() {
             $(input).addClass("error");
             $("#script-export-spacer-bot textarea").addClass("error");
+            unset = this_copy.api_unset_session_path_suffix("");
+            unset.success(function() {
+                this_copy.refresh_session_ready();
+            });
         });
     },
 

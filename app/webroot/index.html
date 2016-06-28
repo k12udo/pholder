@@ -51,28 +51,31 @@
                 <nav>
                     <div class="nav-wrapper">
                         <ul id="nav-mobile" class="left">
-                            <li><input id="script-export-input-filename" name="filename" placeholder="< filename >" /></li>
+                            <li><input id="script-export-input-filename" class="amber-text" name="filename" placeholder="Filename" /></li>
                         </ul>
                         <ul id="nav-mobile" class="right">
                             <li><a id="script-export-nav-close"><i class="material-icons large">exit_to_app</i></a></li>
                         </ul>
                     </div>
                 </nav>
-                <div class="script container amber-text">
+                <div class="script amber-text">
                     <div class="spacer" id="script-export-spacer-top">
                         <textarea class="" readonly onfocus="this.blur()"></textarea>
                     </div>
                     <div class="download hidden" id="script-export-download-paths">
-                        <a class="right waves-effect waves-light btn-large"><i class="material-icons left">content_copy</i>Download Paths</a>
+                        <a class="right waves-effect waves-light btn-large light-green darken-3"><i class="material-icons left">content_copy</i>Download Paths</a>
                     </div>
                     <div class="spacer" id="script-export-spacer-top">
                         <textarea class="success" readonly onfocus="this.blur()"></textarea>
                     </div>
                     <div class="interpreter">
-                        <input id="script-export-input-interpreter" class="" name="script_interpreter" type="text" placeholder="< interpreter >" />
+                        <input id="script-export-input-interpreter" class="" name="script_interpreter" type="text" placeholder="Interpreter" />
+                    </div>
+                    <div class="spacer" id="script-export-spacer-mid">
+                        <textarea class="" readonly onfocus="this.blur()"></textarea>
                     </div>
                     <div class="extra header">
-                        <textarea id="script-export-input-header" class="success" name="script_header"></textarea>
+                        <textarea id="script-export-input-header" class="success" name="script_header" placeholder="Header"></textarea>
                     </div>
                     <div id="script-export-path" class="path">
                         <div class="sample">
@@ -82,20 +85,20 @@
                             </table>
                         </div>
                         <div class="ix prefix">
-                            <input id="script-export-input-path-prefix" class="amber-text" name="script_body_prefix" placeholder="< path prefix >" />
+                            <input id="script-export-input-path-prefix" class="amber-text" name="script_body_prefix" placeholder="Path prefix" />
                         </div>
                         <div class="ix suffix">
-                            <input id="script-export-input-path-suffix" class="amber-text" name="script_body_suffix" placeholder="< path suffix >" />
+                            <input id="script-export-input-path-suffix" class="amber-text" name="script_body_suffix" placeholder="Path suffix" />
                         </div>
                     </div>
                     <div class="extra footer">
-                        <textarea id="script-export-input-footer" class="success" name="script_footer" rows="5" cols="80"></textarea>
+                        <textarea id="script-export-input-footer" class="success" name="script_footer" rows="5" cols="80" placeholder="Footer"></textarea>
                     </div>
                     <div class="spacer hidden" id="script-export-spacer-bot">
                         <textarea readonly onfocus="this.blur()"></textarea>
                     </div>
                     <div class="download hidden" id="script-export-download-script">
-                        <a class="right waves-effect waves-light btn-large"><i class="material-icons left">content_copy</i>Download Script</a>
+                        <a class="right waves-effect waves-light btn-large light-green darken-3"><i class="material-icons left">content_copy</i>Download Script</a>
                     </div>
                 </div>
             </form>

@@ -62,20 +62,23 @@
 
     #script-export .script {
         color:              #00acc1;
+        width:              85%;
+        margin:             auto;
     }
 
     #script-export .script input {
-        font-size:          16px;
         border:             none;
+        border-bottom:      2px solid #00acc1;
         border-right:       2px solid #00acc1;
+        font-size:          20px;
         margin:             0;
     }
 
     #script-export .script input:focus {
         border:             none;
         outline:            none !important;
-        border-right:       2px solid #00acc1;
         border-bottom:      2px solid #00acc1;
+        border-right:       2px solid #00acc1;
     }
 
     #script-export .script input.error {
@@ -87,8 +90,9 @@
     }
 
     #script-export .script textarea {
-        font-size:          16px;
+        font-size:          20px;
         border:             none;
+        border-bottom:      2px solid #00acc1;
         border-right:       2px solid #00acc1;
         resize:             vertical;
     }
@@ -174,6 +178,7 @@
 
     #script-export .script .spacer textarea {
         height:             150px;
+        border-bottom:      2px solid #2b2b2b;
     }
 
     #script-export .script .spacer.hidden textarea {
