@@ -132,6 +132,14 @@ var script =  {
         });
     },
 
+    // api - set - session - ready
+    api_session_ready : function() {
+        return $.ajax({
+            type:       "GET",
+            url:        "php/api/session/ready.php",
+        });
+    },
+
 
 
 
@@ -212,6 +220,22 @@ var script =  {
         });
     },
 
+    // refresh - session - ready
+    refresh_session_ready : function() {
+        $("#script-export-spacer-bot").removeClass("hidden");
+        $("#script-export-spacer-bot textarea").removeClass("success");
+        $("#script-export-spacer-bot textarea").removeClass("error");
+        api = this.api_session_ready();
+        api.success(function(data) {
+            $("#script-export-download-script").removeClass("hidden");
+            $("#script-export-spacer-bot textarea").addClass("success");
+        });
+        api.error(function(data) {
+            $("#script-export-download-script").addClass("hidden");
+            $("#script-export-spacer-bot textarea").addClass("error");
+        });
+    },
+
     // refresh - session - sample
     refresh_session_sample : function() {
         $("#script-export-path").removeClass("error");
@@ -249,29 +273,33 @@ var script =  {
 
     // set - session - fileename
     set_session_filename : function(input) {
+        this_copy = this;
         $("#script-export-spacer-top textarea").removeClass("error");
         $("#script-export-spacer-top textarea").removeClass("success");
         $(input).removeClass("error");
         $(input).removeClass("success");
         api = this.api_set_session_filename($(input).val());
         api.success(function(data) {
+            this_copy.refresh_session_ready();
+            $(input).addClass("success");
             $("#script-export-download-paths").removeClass("hidden");
             $("#script-export-spacer-top textarea").addClass("success");
-            $(input).addClass("success");
         });
         api.error(function() {
+            $(input).addClass("error");
             $("#script-export-download-paths").addClass("hidden");
             $("#script-export-spacer-top textarea").addClass("error");
-            $(input).addClass("error");
         });
     },
 
     // set - session - header
     set_session_header : function(input) {
+        this_copy = this;
         $(input).removeClass("error");
         $(input).removeClass("success");
         api = this.api_set_session_header($(input).val());
         api.success(function(data) {
+            this_copy.refresh_session_ready();
             $(input).addClass("success");
         });
         api.error(function() {
@@ -281,10 +309,12 @@ var script =  {
 
     // set - session - interpreter
     set_session_interpreter : function(input) {
+        this_copy = this
         $(input).removeClass("error");
         $(input).removeClass("success");
         api = this.api_set_session_interpreter($(input).val());
         api.success(function(data) {
+            this_copy.refresh_session_ready();
             $(input).addClass("success");
         });
         api.error(function() {
@@ -294,18 +324,16 @@ var script =  {
 
     // set - session - footer
     set_session_footer : function(input) {
-        $("#script-export-spacer-bot textarea").removeClass("success");
-        $("#script-export-spacer-bot textarea").removeClass("error");
+        this_copy = this;
         $(input).removeClass("error");
         $(input).removeClass("success");
         api = this.api_set_session_footer($(input).val());
         api.success(function(data) {
+            this_copy.refresh_session_ready();
             $(input).addClass("success");
-            $("#script-export-spacer-bot textarea").addClass("success");
         });
         api.error(function() {
             $(input).addClass("error");
-            $("#script-export-spacer-bot textarea").addClass("error");
         });
     },
 
@@ -318,6 +346,7 @@ var script =  {
         $(input).removeClass("success");
         api = this.api_set_session_path_prefix($(input).val());
         api.success(function(data) {
+            this_copy.refresh_session_ready();
             this_copy.refresh_session_sample();
             $(input).addClass("success");
             $("#script-export-spacer-bot textarea").addClass("success");
@@ -337,6 +366,7 @@ var script =  {
         $(input).removeClass("success");
         api = this.api_set_session_path_suffix($(input).val());
         api.success(function(data) {
+            this_copy.refresh_session_ready();
             this_copy.refresh_session_sample();
             $(input).addClass("success");
             $("#script-export-spacer-bot textarea").addClass("success");
