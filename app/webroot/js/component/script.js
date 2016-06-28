@@ -455,6 +455,22 @@ var script =  {
         });
     },
 
+    // set - section - reset
+    set_session_reset : function() {
+        $("#script-export-input-filename").val("");
+        $("#script-export-input-header").val("");
+        $("#script-export-input-interpreter").val("");
+        $("#script-export-input-path-prefix").val("");
+        $("#script-export-input-path-suffix").val("");
+        $("#script-export-input-footer").val("");
+        this_copy.api_unset_session_filename("");
+        this_copy.api_unset_session_header("");
+        this_copy.api_unset_session_interpreter("");
+        this_copy.api_unset_session_path_prefix("");
+        this_copy.api_unset_session_path_suffix("");
+        this_copy.api_unset_session_footer("");
+    },
+
 
 
 
@@ -538,7 +554,12 @@ var script =  {
         }
     });
 
-    // nav - script - export - click
+    // nav - script - export - click - reset
+    $("#script-export-nav-reset").click(function() {
+        script.set_session_reset();
+    });
+
+    // nav - script - export - click - close
     $("#script-export-nav-close").click(function() {
         script.disable_export();
     });
