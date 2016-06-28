@@ -58,7 +58,7 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="script container">
+                <div class="script container amber-text">
                     <div class="spacer" id="script-export-spacer-top">
                         <textarea class="" readonly onfocus="this.blur()"></textarea>
                     </div>
@@ -68,15 +68,18 @@
                     <div class="extra header">
                         <textarea id="script-export-input-header" name="script_header"></textarea>
                     </div>
-                    <div class="path">
+                    <div id="script-export-path" class="path">
                         <div class="sample">
-                            <textarea readonly name="path_sample"></textarea>
+                            <table>
+                                <tbody id="script-export-path-sample">
+                                </tbody>
+                            </table>
                         </div>
                         <div class="ix prefix">
-                            <input id="script-export-input-path-prefix" class="" name="script_body_prefix" placeholder="< path prefix >" />
+                            <input id="script-export-input-path-prefix" class="amber-text" name="script_body_prefix" placeholder="< path prefix >" />
                         </div>
                         <div class="ix suffix">
-                            <input id="script-export-input-path-suffix" class="" name="script_body_suffix" placeholder="< path suffix >" />
+                            <input id="script-export-input-path-suffix" class="amber-text" name="script_body_suffix" placeholder="< path suffix >" />
                         </div>
                     </div>
                     <div class="extra footer">

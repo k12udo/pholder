@@ -70,6 +70,14 @@ var script =  {
         });
     },
 
+    // api - session - sample
+    api_session_sample : function() {
+        return $.ajax({
+            type:       "GET",
+            url:        "php/api/session/sample.php",
+        });
+    },
+
     // api - set - session - filename
     api_set_session_filename : function(filename_to_set) {
         return $.ajax({
@@ -204,6 +212,21 @@ var script =  {
         });
     },
 
+    // refresh - session - sample
+    refresh_session_sample : function() {
+        $("#script-export-path").removeClass("error");
+        $("#script-export-path").removeClass("success");
+        api = this.api_session_sample();
+        api.success(function(data) {
+            $("#script-export-path").addClass("success");
+            $("#script-export-path-sample").html(data);
+        });
+        api.error(function(data) {
+            $("#script-export-path").addClass("error");
+            $("#script-export-path-sample").html(data);
+        });
+    },
+
 
 
 
@@ -286,12 +309,14 @@ var script =  {
 
     // set - session - path - prefix
     set_session_path_prefix : function(input) {
+        this_copy = this;
         $("#script-export-spacer-bot textarea").removeClass("success");
         $("#script-export-spacer-bot textarea").removeClass("error");
         $(input).removeClass("error");
         $(input).removeClass("success");
         api = this.api_set_session_path_prefix($(input).val());
         api.success(function(data) {
+            this_copy.refresh_session_sample();
             $(input).addClass("success");
             $("#script-export-spacer-bot textarea").addClass("success");
         });
@@ -303,12 +328,14 @@ var script =  {
 
     // set - session - path - suffix
     set_session_path_suffix : function(input) {
+        this_copy = this;
         $("#script-export-spacer-bot textarea").removeClass("success");
         $("#script-export-spacer-bot textarea").removeClass("error");
         $(input).removeClass("error");
         $(input).removeClass("success");
         api = this.api_set_session_path_suffix($(input).val());
         api.success(function(data) {
+            this_copy.refresh_session_sample();
             $(input).addClass("success");
             $("#script-export-spacer-bot textarea").addClass("success");
         });
