@@ -38,7 +38,7 @@ var script =  {
 
     // api - session - display
     api_session_display : function() {
-        var url = "php/api/session/display.php";
+        var url = "php/api/session/display.php?filename=paths.txt";
         window.location = url
     },
 
