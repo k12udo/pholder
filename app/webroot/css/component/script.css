@@ -28,11 +28,12 @@
     }
 
     #script-export nav .left input {
-        height:             68px;
+        height:             62px;
         padding:            0px 0px 0px 10px;
-        width:              200%;
+        width:              400%;
         font-size:          30px;
         color:              #00acc1;
+        border-bottom:      0.5px solid #00acc1;
     }
 
     #script-export nav .right li a {
@@ -48,6 +49,44 @@
         font-size:          35px;
     }
 
+
+
+
+    #script-export .script {
+        color:              #00acc1;
+    }
+
+    #script-export .script input {
+        font-size:          24px;
+        border:             none;
+        border-right:       0.5px solid #00acc1;
+    }
+
+    #script-export .script textarea {
+        font-size:          24px;
+        border:             none;
+        border-right:       0.5px solid #00acc1;
+    }
+
+    #script-export .script .extra textarea {
+        min-height:         150px;
+    }
+
+    #script-export .script .path {
+    }
+
+    #script-export .script .path .ix {
+        width:              50%;
+        float:              left;
+    }
+
+    #script-export .script .path .ix input {
+        text-align:         center;
+    }
+
+    #script-export .script .spacer textarea {
+        height:             100px;
+    }
 
 
 
