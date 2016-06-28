@@ -131,6 +131,7 @@
 
     #script-export .script .extra textarea {
         min-height:         100px;
+        border-right:       2px solid lightgreen;
     }
 
     #script-export .script > .path {
@@ -179,6 +180,10 @@
     #script-export .script .spacer textarea {
         height:             150px;
         border-bottom:      2px solid #2b2b2b;
+        border-right:       2px solid #00acc3;
+    }
+
+    #script-export .script .spacer textarea.success {
         border-right:       2px solid lightgreen;
     }
 
