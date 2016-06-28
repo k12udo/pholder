@@ -249,13 +249,19 @@ var script =  {
 
     // set - session - fileename
     set_session_filename : function(input) {
+        $("#script-export-spacer-top textarea").removeClass("error");
+        $("#script-export-spacer-top textarea").removeClass("success");
         $(input).removeClass("error");
         $(input).removeClass("success");
         api = this.api_set_session_filename($(input).val());
         api.success(function(data) {
+            $("#script-export-download-paths").removeClass("hidden");
+            $("#script-export-spacer-top textarea").addClass("success");
             $(input).addClass("success");
         });
         api.error(function() {
+            $("#script-export-download-paths").addClass("hidden");
+            $("#script-export-spacer-top textarea").addClass("error");
             $(input).addClass("error");
         });
     },
@@ -275,18 +281,14 @@ var script =  {
 
     // set - session - interpreter
     set_session_interpreter : function(input) {
-        $("#script-export-spacer-top textarea").removeClass("error");
-        $("#script-export-spacer-top textarea").removeClass("success");
         $(input).removeClass("error");
         $(input).removeClass("success");
         api = this.api_set_session_interpreter($(input).val());
         api.success(function(data) {
             $(input).addClass("success");
-            $("#script-export-spacer-top textarea").addClass("success");
         });
         api.error(function() {
             $(input).addClass("error");
-            $("#script-export-spacer-top textarea").addClass("error");
         });
     },
 

@@ -107,13 +107,20 @@
         border-right:       2px solid lightgreen !important;
     }
 
+    #script-export .script .download {
+        height:             50px;
+        width:              100%;
+        transition:         0.75s ease-in;
+    }
+
     #script-export .script .download a {
         width:              100%;
-        transition:         0.5s;
+        float:              right;
     }
 
     #script-export .script .download.hidden {
-        width:              0%;
+        height:             0;
+        width:              0;
         overflow:           hidden;
     }
 
@@ -166,7 +173,7 @@
     }
 
     #script-export .script .spacer textarea {
-        height:             200px;
+        height:             150px;
     }
 
     #script-export .script .spacer.hidden textarea {
