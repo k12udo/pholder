@@ -59,6 +59,13 @@
         print_r($_GET);
     }
 
+    /** set - interpreter  **/
+    private function set_interpreter($i) {
+        if( empty($i) ){ return false; }
+        $_SESSION['pholder']['script']['interpreter'] = $i;
+        return true;
+    }
+
     /** set - path - prefix **/
     private function set_path_prefix($prefix) {
         $_SESSION['pholder']['script']['path']['prefix'] = $prefix;

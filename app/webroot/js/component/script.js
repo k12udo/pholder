@@ -69,6 +69,15 @@ var script =  {
             data:       { filename : filename_to_set },
             url:        "php/api/session/set.php",
         });
+    }
+    ,
+    // api - set - session - interpreter
+    api_set_session_interpreter : function(interpreter_to_set) {
+        return $.ajax({
+            type:       "GET",
+            data:       { interpreter : interpreter_to_set },
+            url:        "php/api/session/set.php",
+        });
     },
 
     // api - session - size
@@ -196,6 +205,23 @@ var script =  {
         });
     },
 
+    // set - session - interpreter
+    set_session_interpreter : function(input) {
+        $(input).removeClass("error");
+        $(input).removeClass("success");
+        api = this.api_set_session_interpreter($(input).val());
+        api.success(function(data) {
+            $(input).addClass("success");
+            $("#script-export-spacer-top textarea").addClass("success");
+            $("#script-export-spacer-top textarea").removeClass("error");
+        });
+        api.error(function() {
+            $(input).addClass("error");
+            $("#script-export-spacer-top textarea").addClass("error");
+            $("#script-export-spacer-top textarea").removeClass("success");
+        });
+    },
+
 
 
 
@@ -288,6 +314,13 @@ var script =  {
     $('#script-export-input-filename').bind('input propertychange', function() {
         script.set_session_filename(this);
     });
+
+    // script - export - interpreter - input - on - change
+    $('#script-export-input-interpreter').bind('input propertychange', function() {
+        script.set_session_interpreter(this);
+    });
+
+
 
 
 /** listener | **/
