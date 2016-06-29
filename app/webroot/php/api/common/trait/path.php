@@ -132,9 +132,9 @@
 
     /** path - size - system **/
     function path_size_system($path) {
-        $size = trim(shell_exec("du --bytes --summarize '$path' | cut -f1"));
+        $size = trim(shell_exec("du -k -s '$path' | cut -f1"));
         if( is_numeric($size) ){
-            return $size;
+            return $size * 1024;
         } else {
             return $this->path_size($path);
         }
