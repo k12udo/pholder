@@ -154,6 +154,7 @@
 
     #script-export .script .path table td {
         padding:            0;
+        font-size:          20px;
     }
 
     #script-export .script .path table td.prefix {
@@ -183,7 +184,7 @@
     }
 
     #script-export .script .spacer textarea {
-        height:             150px;
+        height:             75px;
         border-bottom:      2px solid #2b2b2b;
         border-right:       2px solid #00acc3;
     }

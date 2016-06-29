@@ -50,7 +50,7 @@
         foreach( $this->sample_data as $path ){
             $sample .= "<tr>";
             $sample .= "<td class='amber-text  prefix'>$prefix</td>";
-            $sample .= "<td class='light-blue-text path'>$path</td>";
+            $sample .= "<td class='light-blue-text path'>\"$path\"</td>";
             $sample .= "<td class='amber-text  suffix'>$suffix</td>";
             $sample .= "</tr>";
         }

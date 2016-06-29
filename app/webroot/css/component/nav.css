@@ -34,6 +34,13 @@
     }
 
 
+    #nav #nav-toggle-script-empty.hidden {
+        width:                  0px;
+        font-size:              0px;
+        display:                none;
+    }
+
+
     #nav #nav-toggle-script-export {
         overflow:               hidden;
     }

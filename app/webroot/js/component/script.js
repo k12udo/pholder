@@ -535,6 +535,8 @@ var script =  {
         $("#nav-toggle-script").removeClass("cyan");
         $("#nav-toggle-script-export").addClass("hidden");
         $("#nav-toggle-script-export a").removeClass("cyan");
+        $("#nav-toggle-script-empty").addClass("hidden");
+        $("#nav-toggle-script-empty a").removeClass("cyan");
     },
 
     // view - enabled
@@ -545,6 +547,8 @@ var script =  {
         $("#nav-display-script").addClass("darken-1");
         $("#nav-display-script").removeClass("hidden");
         $("#nav-toggle-script").addClass("cyan");
+        $("#nav-toggle-script-empty").removeClass("hidden");
+        $("#nav-toggle-script-empty a").addClass("cyan");
         $("#nav-toggle-script-export").removeClass("hidden");
         $("#nav-toggle-script-export a").addClass("cyan");
     },
