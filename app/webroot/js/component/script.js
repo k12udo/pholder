@@ -283,6 +283,10 @@ var script =  {
         api = this.api_session_exists(path_to_check);
         api.success(function(data) {
             switch(data["exists"]){
+                case "ancestor":
+                    file.add_file_script_selected_ancestor(hash);
+                    file.remove_file_script(hash);
+                    break;
                 case "parent":
                     file.add_file_script_selected(hash);
                     break;

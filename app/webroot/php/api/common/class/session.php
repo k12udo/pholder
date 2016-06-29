@@ -44,7 +44,11 @@
 
     /** exists **/
     public function exists() {
+        $return = false;
         foreach($_SESSION['pholder']['paths'] as $path => $sizes){
+            if (strpos($path, $this->path) === 0) {
+                $return = "ancestor";
+            }
             if ($this->path == $path) {
                 return "parent";
             }
@@ -52,7 +56,7 @@
                 return "child";
             }
         }
-        return false;
+        return $return;
     }
 
 

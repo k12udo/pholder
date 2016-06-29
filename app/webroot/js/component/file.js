@@ -79,6 +79,13 @@ var file = {
         );
     },
 
+    // add - file - script - ancestor
+    add_file_script_selected_ancestor : function(hash) {
+        $("#" + hash + " .script").removeClass("script-add");
+        $("#" + hash + " .script").removeClass("script-remove");
+        $("#" + hash).addClass("script-selected-ancestor");
+    },
+
     // add - file - script - selected
     add_file_script_selected : function(hash) {
         $("#" + hash).addClass("script-selected");
