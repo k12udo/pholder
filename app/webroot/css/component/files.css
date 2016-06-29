@@ -76,6 +76,7 @@
     #files table tbody tr td.script {
         width:              10%;
         text-align:         center;
+        height:             5px;
     }
 
     #files table tbody tr td.script.hidden {

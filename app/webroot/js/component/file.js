@@ -72,19 +72,9 @@ var file = {
 
     // add - file - script - loading
     add_file_script_loading : function(hash) {
-        $("#" + hash + " .script i").html(
-            '<div class="preloader-wrapper small active">' +
-                '<div class="spinner-layer spinner-blue-only">' +
-                    '<div class="circle-clipper left">' +
-                        '<div class="circle"></div>' +
-                    '</div>' +
-                    '<div class="gap-patch">' +
-                        '<div class="circle"></div>' +
-                    '</div>' +
-                    '<div class="circle-clipper right">' +
-                        '<div class="circle"></div>' +
-                    '</div>' +
-                '</div>' +
+        $("#" + hash + " .script").html(
+            '<div class="progress">' +
+                '<div class="indeterminate"></div>' +
             '</div>'
         );
     },
