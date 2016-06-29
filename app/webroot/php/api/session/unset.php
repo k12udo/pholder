@@ -48,13 +48,13 @@
 
     /** unset - footer **/
     private function unset_footer() {
-        $_SESSION['pholder']['script']['footer'] = "";
+        $_SESSION['pholder']['script']['footer'] = array();
         return true;
     }
 
     /** unset - header **/
     private function unset_header() {
-        $_SESSION['pholder']['script']['header'] = "";
+        $_SESSION['pholder']['script']['header'] = array();
         return true;
     }
 
