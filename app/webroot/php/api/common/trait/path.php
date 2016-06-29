@@ -94,14 +94,14 @@
     function path_size_directory($path) {
         $bytes    = 0;
         $iterator = new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator($path)
-        );
+                        new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS),
+                        \RecursiveIteratorIterator::SELF_FIRST,
+                        \RecursiveIteratorIterator::CATCH_GET_CHILD
+                    );
         foreach ($iterator as $i) {
-            if( ! is_link($i->getPathname()) ){
-                if( is_readable($i->getPathname()) ){
-                    if( is_file($i->getPathname()) ){
-                        $bytes += $i->getSize();
-                    }
+            if( is_readable($i->getPathname()) ){
+                if( ! is_link($i->getPathname()) ){
+                    $bytes += $i->getSize();
                 }
             }
         }

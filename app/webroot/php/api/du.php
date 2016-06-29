@@ -30,8 +30,14 @@
     /** du **/
     private function du() {
 
-        // ? - input - path
+        // ? - null - input - path
         if( is_null($this->input_path) ){
+            $this->set_response_code(400);
+            return false;
+        }
+
+        // ? - ! - readable - input - path
+        if( ! is_readable($this->input_path) ){
             $this->set_response_code(400);
             return false;
         }
