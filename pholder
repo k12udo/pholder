@@ -9,12 +9,16 @@
     # | function(s)
 
         function display_usage {
-            echo "pholder usage: pholder [ --built-in | --vagrant ]"
+            echo "pholder usage: pholder --server [ --built-in | --vagrant ]"
         }
 
         function input_builtin_bind {
-            printf "Enter server mask [$builtin_bind]: "
-            read input
+            if [   -z "$1" ]; then
+                printf "Enter server mask [$builtin_bind]: "
+                read input
+            else
+                input="$1"
+            fi
             if [ ! -z "$input" ]; then
                 builtin_bind="$input"
             fi
@@ -41,19 +45,21 @@
 
         # arg(s) - type
         case "$1" in
-            '--built-in')
-                shift
-                input_builtin_bind
-                start_builtin
-                ;;
-            '--vagrant')
-                shift
-                start_vagrant
-                ;;
-            *)
-                display_usage
-                exit 2
-                ;;
+            '--server')
+                case "$2" in
+                    '--built-in')
+                        input_builtin_bind "$3"
+                        start_builtin
+                        ;;
+                    '--vagrant')
+                        start_vagrant
+                        ;;
+                    *)
+                        display_usage
+                        exit 2
+                        ;;
+                esac
+            ;;
         esac
 
     # main |

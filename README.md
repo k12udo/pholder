@@ -9,11 +9,12 @@ A php/js web folder to quickly share files across a local network.
 
 ##usage
 - 'pholder/pholder'
-- 'pholder/pholder --built-in'
-- 'pholder/pholder --vagrant'
+- 'pholder/pholder --server --built-in'
+- 'pholder/pholder --server --built-in localhost:7070'
+- 'pholder/pholder --server --vagrant'
+
+##note(s)
+Running folder with no arguments will launch the built-in server on localhost:7070
 
 ##warning
 pholder exposes your files to your the network, use at your own risk
-
-##todo
-- Implement script edit & export
