@@ -64,6 +64,7 @@
         color:              #00acc1;
         width:              85%;
         margin:             auto;
+        margin-bottom:      200px;
     }
 
     #script-export .script input {
