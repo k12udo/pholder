@@ -83,10 +83,12 @@
 
     #script-export .script input.error {
         border-right:       2px solid tomato;
+        border-bottom:      2px solid tomato;
     }
 
     #script-export .script input.success {
         border-right:       2px solid lightgreen;
+        border-bottom:      2px solid lightgreen;
     }
 
     #script-export .script textarea {
@@ -106,10 +108,12 @@
 
     #script-export .script textarea.error {
         border-right:       2px solid tomato;
+        border-bottom:      2px solid tomato;
     }
 
     #script-export .script textarea.success {
         border-right:       2px solid lightgreen;
+        border-bottom:      2px solid lightgreen;
     }
 
     #script-export .script .download {

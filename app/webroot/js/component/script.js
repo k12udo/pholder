@@ -317,7 +317,8 @@ var script =  {
         api = this.api_session_ready();
         api.success(function(data) {
             $("#script-export-download").removeClass("hidden");
-            $("#script-export-spacer-bot textarea").addClass("success");
+            $("#script-export input").addClass("success");
+            $("#script-export textarea").addClass("success");
         });
         api.error(function(data) {
             $("#script-export-download").addClass("hidden");
@@ -408,14 +409,18 @@ var script =  {
     // set - session - interpreter
     set_session_interpreter : function(input) {
         this_copy = this
+        $("#script-export-spacer-mid textarea").removeClass("success");
+        $("#script-export-spacer-mid textarea").removeClass("error");
         $(input).removeClass("error");
         $(input).removeClass("success");
         api = this.api_set_session_interpreter($(input).val());
         api.success(function(data) {
+            $("#script-export-spacer-mid textarea").addClass("success");
             this_copy.refresh_session_ready();
             $(input).addClass("success");
         });
         api.error(function() {
+            $("#script-export-spacer-mid textarea").addClass("error");
             $(input).addClass("error");
             unset = this_copy.api_unset_session_interpreter("");
             unset.success(function() {
@@ -463,6 +468,7 @@ var script =  {
             unset = this_copy.api_unset_session_path_prefix("");
             unset.success(function() {
                 this_copy.refresh_session_ready();
+                this_copy.refresh_session_sample();
             });
         });
     },
@@ -487,6 +493,7 @@ var script =  {
             unset = this_copy.api_unset_session_path_suffix("");
             unset.success(function() {
                 this_copy.refresh_session_ready();
+                this_copy.refresh_session_sample();
             });
         });
     },
