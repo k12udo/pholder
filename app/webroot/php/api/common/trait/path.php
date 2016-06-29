@@ -84,13 +84,14 @@
 
     /** path - get - size **/
     function path_size($path) {
-        if(is_file($path)) { return $this->path_size_file($path);        }
-        if(is_dir($path))  { return $this->path_size_directory($path);   }
-                             return false;
+        if(exec('echo OK') == 'OK'  ){ return $this->path_size_system($path);       }
+        if(is_file($path)           ){ return $this->path_size_file($path);         }
+        if(is_dir($path)            ){ return $this->path_size_directory($path);    }
+                                       return false;
     }
 
 
-    /** path - get - size - directory  **/
+    /** path - size - directory  **/
     function path_size_directory($path) {
         $bytes    = 0;
         $iterator = new \RecursiveIteratorIterator(
@@ -109,7 +110,7 @@
     }
 
 
-    /** path - get - size **/
+    /** path - size - file **/
     function path_size_file($path) {
         if( ! is_file($path) ){
             return false;
@@ -118,7 +119,7 @@
     }
 
 
-    /** path - get - size - human **/
+    /** path - size - human **/
     function path_size_human($size, $unit = "") {
         if( (!$unit && $size >= 1<<30) || $unit == "GB")
             return number_format($size/(1<<30),2)."GB";
@@ -129,6 +130,15 @@
         return number_format($size)." bytes";
     }
 
+    /** path - size - system **/
+    function path_size_system($path) {
+        $size = trim(shell_exec("du --bytes --summarize '$path' | cut -f1"));
+        if( is_numeric($size) ){
+            return $size;
+        } else {
+            return $this->path_size($path);
+        }
+    }
 
     /** path - type **/
     public function path_type($path) {
