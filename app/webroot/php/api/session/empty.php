@@ -1,7 +1,7 @@
-<?php namespace pholder\api\session;                ?>
-<?php require_once('../common/api.php');            ?>
-<?php require_once('../common/class/session.php');  ?>
-<?php class empt extends \pholder\common\api {
+<?php namespace pholder\api\session; ?>
+<?php require_once('../common/api.php'); ?>
+<?php require_once('../common/class/session.php'); ?>
+<?php class get extends \pholder\common\api {
 
 
 
@@ -14,8 +14,10 @@
 
     /** __ - construct - start **/
     public function __construct() {
+                $this->input();
                 $this->session = new \pholder\common\c\session();
-        return  $this->empt();
+                $this->session->set_path($this->input_path);
+        return  $this->is_empty();
     }
 
     /** __ - desconstruct - end **/
@@ -24,16 +26,18 @@
     }
 
 
-    /** empt **/
-    private function empt() {
-        $_SESSION['pholder']['paths']           =   array();
-        $_SESSION['pholder']['size']['bytes']   =   0;
-        $_SESSION['pholder']['size']['human']   =   null;
-        $this->set_response_code(200);
-        return true;
+
+
+    /** get **/
+    private function is_empty() {
+                $this->set_response_code(200);
+                $this->set_response_data(array(
+                    "empty" => $this->session->is_empty()
+                ));
+        return  true;
     }
 
 
 
 
-} $empt = new empt(); ?>
+} $get = new get(); ?>

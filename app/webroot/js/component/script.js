@@ -82,6 +82,14 @@ var script =  {
         });
     },
 
+    // api - session - reset
+    api_session_reset : function() {
+        return $.ajax({
+            type:       "GET",
+            url:        "php/api/session/reset.php",
+        });
+    },
+
     // api - session - size
     api_session_size : function() {
         return $.ajax({
@@ -351,8 +359,8 @@ var script =  {
 
     // remove
     remove : function(hash, path_to_remove) {
-              file.add_file_script_loading(hash);
-              this_copy = this;
+        file.add_file_script_loading(hash);
+        this_copy = this;
         api = this.api_session_remove(path_to_remove);
         api.success(function(data) {
             file.remove_file_script(hash);
@@ -360,6 +368,19 @@ var script =  {
         });
         api.error(function() {
             file.add_file_script_error(hash);
+        });
+    },
+
+
+
+
+    // reset
+    reset : function() {
+        this_copy = this;
+        api = this.api_session_reset();
+        api.success(function() {
+            file.refresh( $("#path-input").val() );
+            this_copy.refresh_nav();
         });
     },
 
@@ -535,8 +556,8 @@ var script =  {
         $("#nav-toggle-script").removeClass("cyan");
         $("#nav-toggle-script-export").addClass("hidden");
         $("#nav-toggle-script-export a").removeClass("cyan");
-        $("#nav-toggle-script-empty").addClass("hidden");
-        $("#nav-toggle-script-empty a").removeClass("cyan");
+        $("#nav-toggle-script-reset").addClass("hidden");
+        $("#nav-toggle-script-reset a").removeClass("cyan");
     },
 
     // view - enabled
@@ -547,10 +568,10 @@ var script =  {
         $("#nav-display-script").addClass("darken-1");
         $("#nav-display-script").removeClass("hidden");
         $("#nav-toggle-script").addClass("cyan");
-        $("#nav-toggle-script-empty").removeClass("hidden");
-        $("#nav-toggle-script-empty a").addClass("cyan");
         $("#nav-toggle-script-export").removeClass("hidden");
         $("#nav-toggle-script-export a").addClass("cyan");
+        $("#nav-toggle-script-reset").removeClass("hidden");
+        $("#nav-toggle-script-reset a").addClass("cyan");
     },
 
     // view - nav - loading
@@ -599,6 +620,11 @@ var script =  {
         } else {
             script.enable();
         }
+    });
+
+    // nav - script - reset - click
+    $("#nav-toggle-script-reset").click(function() {
+        script.reset();
     });
 
     // nav - script - export - click

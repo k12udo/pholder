@@ -34,12 +34,12 @@
     }
 
 
-    #nav #nav-toggle-script-empty.hidden {
+    #nav #nav-toggle-script-reset.hidden {
         width:                  0px;
         font-size:              0px;
         display:                none;
     }
-    #nav #nav-toggle-script-empty:hover a {
+    #nav #nav-toggle-script-reset:hover a {
         background-color:       #00acc1 !important;
     }
 
