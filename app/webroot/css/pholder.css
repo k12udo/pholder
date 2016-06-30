@@ -8,6 +8,7 @@
     #pholder {
         width:              100%;
         min-height:         98%;
+        min-width:          200px;
         overflow:           auto;
     }
 

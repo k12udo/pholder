@@ -4,7 +4,7 @@ var nav =  {
 
     // resize - disable - script - mobile
     resize : function() {
-        if( $("#nav").width() <= "480" ){
+        if( $("#nav").width() <= "550" ){
             $("#nav-toggle-script").addClass("hidden");
             script.disable();
         } else {
@@ -20,6 +20,12 @@ var nav =  {
 
 
 /** | listener **/
+
+
+    // document - ready
+    $(document).ready(function() {
+        nav.resize();
+    });
 
 
     // window - resize
