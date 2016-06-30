@@ -2,6 +2,14 @@
 var file = {
 
 
+
+
+    // global(s)
+    size : false,
+
+
+
+
     // add - file(s)
     add_files : function(files){
         for( index in files ){
@@ -39,9 +47,6 @@ var file = {
                     '<span class="name">' + name + '</span>' +
                 '</td>' +
                 '<td class="size">' +
-                    '<div class="progress">' +
-                        '<div class="indeterminate"></div>' +
-                    '</div>' +
                 '</td>' +
                 '<td class="script script-add ' + script_enabled + '">' +
                     '<i class="small material-icons">add</i>' +
@@ -56,7 +61,11 @@ var file = {
         }
 
         // append - file - size
-        this.add_file_size(hash, path_to_file);
+        if( file.size == true ){
+            this.add_file_size(hash, path_to_file);
+        } else {
+            $("#" + hash + " .size").empty();
+        }
 
         // script - refresh - file
         script.refresh_file(hash, path_to_file);
@@ -110,6 +119,12 @@ var file = {
 
     // add - file - size
     add_file_size : function(hash, path_to_file) {
+        $('#' + hash + ' .size').empty();
+        $('#' + hash + ' .size').append(
+            '<div class="progress">' +
+                '<div class="indeterminate"></div>' +
+            '</div>'
+        );
         var api = this.api_get_file_size(path_to_file);
             api.success(function(data) {
                 $('#' + hash + ' .size').empty();
@@ -228,6 +243,23 @@ var file = {
     },
 
 
+
+
+    // toggle - size
+    toggle_size : function() {
+        $("#nav-toggle-file-size").addClass("lighten-e");
+        if( this.size ){
+            this.size = false;
+            $("#nav-toggle-file-size").removeClass("red");
+        } else {
+            this.size = true;
+            $("#nav-toggle-file-size").addClass("red");
+        }
+        this.refresh( $("#path-input").val() );
+    },
+
+
+
     // view - reset
     view_reset : function() {
         $("#files #files-list").empty();
@@ -261,6 +293,12 @@ var file = {
 
 
 /** | listener **/
+
+
+    // nav - click
+    $("#nav-toggle-file-size").click(function() {
+        file.toggle_size();
+    });
 
 
     // file - click
