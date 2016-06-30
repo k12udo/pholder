@@ -15,11 +15,6 @@
     }
 
 
-    #nav #nav-toggle-script:hover {
-        background-color:       #00acc1 !important;
-    }
-
-
     #nav #nav-display-script {
         width:                  150px;
         text-align:             center;
@@ -33,6 +28,13 @@
         font-size:              0px;
     }
 
+    #nav #nav-toggle-script:hover {
+        background-color:       #00acc1 !important;
+    }
+
+    #nav #nav-toggle-script.hidden {
+        display:                none;
+    }
 
     #nav #nav-toggle-script-reset.hidden {
         width:                  0px;
