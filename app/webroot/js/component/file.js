@@ -247,13 +247,12 @@ var file = {
 
     // toggle - size
     toggle_size : function() {
-        $("#nav-toggle-file-size").addClass("lighten-e");
         if( this.size ){
             this.size = false;
-            $("#nav-toggle-file-size").removeClass("red");
+            $("#nav-toggle-file-size").removeClass("teal");
         } else {
             this.size = true;
-            $("#nav-toggle-file-size").addClass("red");
+            $("#nav-toggle-file-size").addClass("teal");
         }
         this.refresh( $("#path-input").val() );
     },
