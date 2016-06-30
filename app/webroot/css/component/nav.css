@@ -39,6 +39,9 @@
         font-size:              0px;
         display:                none;
     }
+    #nav #nav-toggle-script-empty:hover a {
+        background-color:       #00acc1 !important;
+    }
 
 
     #nav #nav-toggle-script-export {
