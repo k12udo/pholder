@@ -8,6 +8,9 @@
     private $response_code = null;
     private $response_data = array();
 
+    /** config **/
+    private $config = __DIR__."/../../../../config";
+
     /** input **/
     public $input_path = null;
 
@@ -51,6 +54,15 @@
 
     /** input - path **/
     public function input_path($path) {
+        if(file_exists($this->config.'/global.path') ){
+            if($root = trim(file_get_contents($this->config.'/global.path'))) {
+                if(is_dir($root)) {
+                    if(strpos($path, $root) !== 0){
+                        return false;
+                    }
+                }
+            }
+        }
         if(is_dir($path) || is_file($path)){
             $this->input_path = $path;
         }
