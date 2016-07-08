@@ -35,6 +35,21 @@
 
 
 
+    /** get - setting - global - root **/
+    public function get_setting_global_root() {
+        if(file_exists($this->config.'/global.root') ){
+            if($root = trim(file_get_contents($this->config.'/global.root'))) {
+                if(is_dir($root)) {
+                    return $root;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+
     /** input **/
     public function input() {
         foreach($_GET as $key => $value) {
@@ -54,13 +69,9 @@
 
     /** input - path **/
     public function input_path($path) {
-        if(file_exists($this->config.'/global.path') ){
-            if($root = trim(file_get_contents($this->config.'/global.path'))) {
-                if(is_dir($root)) {
-                    if(strpos($path, $root) !== 0){
-                        return false;
-                    }
-                }
+        if($root = $this->get_setting_global_root()){
+            if(strpos($path, $root) !== 0){
+                return false;
             }
         }
         if(is_dir($path) || is_file($path)){
