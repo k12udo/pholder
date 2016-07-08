@@ -2,6 +2,23 @@
 var path =  {
 
 
+
+
+    // global(s)
+    root : null,
+
+
+
+
+    // api - get - root
+    api_get_root : function() {
+        return $.ajax({
+            type:       "GET",
+            url:        "php/api/root.php"
+        });
+    },
+
+
     // display - 000 - reset
     display_000 : function() {
         $("#path-input").removeClass("e200");
@@ -31,29 +48,54 @@ var path =  {
 
     // on - change
     on_change : function(path) {
-        if( path != "" ){
-            if( file.refresh(path) ){
-                this.display_200();
-            } else {
-                this.display_400();
-            }
-        } else {
-            this.display_200();
+
+        // ? - empty
+        if( path == "" ){
+            path = this.root
         }
-        window.location.hash = path;
+
+        // ? - valid - root
+        if( ! path.startsWith(this.root) ){
+            path = this.root;
+        }
+
+        // ? - file - refresh
+        if( file.refresh(path) ){
+            this.display_200();
+        } else {
+            this.display_400();
+        }
+
+        // refresh
+        $("#path-input").val(path);
         breadcrumb.refresh(path);
+        window.location.hash = path;
+
     },
 
 
     // ready
     ready : function() {
+
+            // copy - this
+            this_copy = this;
+
+            // get - hash
             hash = window.location.href.split('#')[1];
-        if( hash == undefined ){
-            window.location.hash = "/"
-            this.set_path("/");
-        } else {
-            this.set_path(hash);
-        }
+        if( hash == undefined ){ hash = "/"; }
+
+        // api - get/set - root
+        api = this.api_get_root();
+        api.success(function(root) {
+            root = root[0];
+            if( ! hash.startsWith(root) ){
+                hash = root;
+            }
+            this_copy.root = root;
+            this_copy.set_path(hash);
+            window.location.hash = hash;
+        });
+
     },
 
 

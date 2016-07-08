@@ -32,9 +32,7 @@
 
         // response
         $this->set_response_code(200);
-        $this->set_response_data(array(
-            'root' => $root
-        ));
+        $this->set_response_data(array($root));
 
         // return
         return true;
