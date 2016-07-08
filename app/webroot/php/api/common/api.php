@@ -8,6 +8,9 @@
     private $response_code = null;
     private $response_data = array();
 
+    /** config **/
+    private $config = __DIR__."/../../../../config";
+
     /** input **/
     public $input_path = null;
 
@@ -32,6 +35,21 @@
 
 
 
+    /** get - setting - global - root **/
+    public function get_setting_global_root() {
+        if(file_exists($this->config.'/global.root') ){
+            if($root = trim(file_get_contents($this->config.'/global.root'))) {
+                if(is_dir($root)) {
+                    return $root;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+
     /** input **/
     public function input() {
         foreach($_GET as $key => $value) {
@@ -51,6 +69,11 @@
 
     /** input - path **/
     public function input_path($path) {
+        if($root = $this->get_setting_global_root()){
+            if(strpos($path, $root) !== 0){
+                return false;
+            }
+        }
         if(is_dir($path) || is_file($path)){
             $this->input_path = $path;
         }
