@@ -9,7 +9,7 @@
     private $response_data = array();
 
     /** config **/
-    private $config = __DIR__."/../../../../config";
+    private $config = null;
 
     /** input **/
     public $input_path = null;
@@ -35,8 +35,16 @@
 
 
 
+    /** get - setting **/
+    public function get_setting() {
+        $this->config = __DIR__."/../../../../config";
+    }
+
     /** get - setting - global - root **/
     public function get_setting_global_root() {
+        if(is_null($this->config)) {
+            $this->get_setting();
+        }
         if(file_exists($this->config.'/global.root') ){
             if($root = trim(file_get_contents($this->config.'/global.root'))) {
                 if(is_dir($root)) {
