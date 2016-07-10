@@ -44,7 +44,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # media-pholder
         config.vm.define "media-pholder" do |web|
             config.vm.hostname = "media-pholder"
-            config.vm.network "private_network", type: "dhcp"
             config.vm.provider :virtualbox do |vb|
                 vb.name = "media-pholder"
             end
