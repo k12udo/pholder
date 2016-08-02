@@ -68,7 +68,8 @@ var path =  {
 
         // update - location - if not path
         if( window.location.hash != path ){
-            window.location.hash = path;
+            window.location.hash  = path;
+                   document.title = 'pholder#' + path;
         }
 
         // refresh
