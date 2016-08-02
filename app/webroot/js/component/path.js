@@ -66,11 +66,14 @@ var path =  {
             this.display_400();
         }
 
+        // update - location - if not path
+        if( window.location.hash != path ){
+            window.location.hash = path;
+        }
+
         // refresh
         $("#path-input").val(path);
         breadcrumb.refresh(path);
-        window.location.hash = path;
-
     },
 
 
