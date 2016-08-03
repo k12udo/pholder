@@ -5,7 +5,7 @@ var file = {
 
 
     // global(s)
-    size : false,
+    size : true,
 
 
 
