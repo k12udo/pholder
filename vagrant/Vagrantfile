@@ -28,13 +28,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         # | VirtualBox
         config.vm.provider "virtualbox" do |vb|
-
-            # VBoxManage - settings
+            vb.cpus = 4
             vb.customize [
                 "modifyvm", :id,
-                "--memory", "512",
+                "--memory", "1024",
             ]
-
         end
         # VirtualBox |
 
@@ -43,15 +41,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # | machine(s)
 
-        # | pholder
+        # media-pholder
+        config.vm.define "media-pholder" do |web|
+            config.vm.hostname = "media-pholder"
+            config.vm.provider :virtualbox do |vb|
+                vb.name = "media-pholder"
+            end
+            config.vm.provision "shell", path: "script/provision.media"
+        end
+
+        # pholder
         config.vm.define "pholder" do |web|
             config.vm.hostname = "pholder"
             config.vm.provider :virtualbox do |vb|
                 vb.name = "pholder"
-                vb.cpus = 2
             end
         end
-        # pholder |
 
     # machine(s) |
 

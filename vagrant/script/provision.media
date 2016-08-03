@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+#   script - provision - media
+#
+
+
+    # export - noninteractive
+    export DEBIAN_FRONTEND=noninteractive
+
+    # set - x
+    set -x
+
+    # create - setting - global.path
+    echo '/media' > '/var/www/config/global.root'
+
+
