@@ -1,5 +1,4 @@
 <?php namespace pholder\common;      ?>
-<?php           set_time_limit(4);   ?>
 <?php class     api {
 
 
