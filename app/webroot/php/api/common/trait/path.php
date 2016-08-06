@@ -8,7 +8,6 @@
     private $paths_ignore = array(
         '.'
     );
-    private $paths_search_limit = 50;
 
 
 
@@ -38,14 +37,10 @@
         foreach ($iterator as $i) {
             if( ! is_link($i->getPathname()) ){
                 if( is_readable($i->getPathname()) ){
-                    if( strpos( strtolower(basename($i->getPathname())),
-                                strtolower($term)) !== false) {
+                    if( strpos( strtolower($i->getPathname()),strtolower($term) ) !== false) {
                         $paths[] = $i->getPathname();
                     }
                 }
-            }
-            if( count($paths) == $this->paths_search_limit ){
-                break;
             }
         }
 
@@ -82,7 +77,6 @@
 
     /** path - get - size **/
     function path_size($path) {
-        if(exec('echo OK') == 'OK'  ){ return $this->path_size_system($path);       }
         if(is_file($path)           ){ return $this->path_size_file($path);         }
         if(is_dir($path)            ){ return $this->path_size_directory($path);    }
                                        return false;
