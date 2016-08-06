@@ -245,13 +245,12 @@ var file = {
             });
     },
 
+
     // paginate
     paginate : function() {
-        var height_div = $("#files").height();
-        if( height_div % 3000 == 0 ){
-            this.refresh( this.active_path, false );
-        }
+        this.refresh( this.active_path, false );
     },
+
 
     // refresh
     refresh : function(path_to_file, reset = true) {
