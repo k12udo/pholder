@@ -43,8 +43,10 @@ var file = {
         $('#' + hash).remove();
 
         // ? - path - root
-        if( path_to_file == path.root && path.current == path.root ){
-            return false;
+        if( path.root == path.current ){
+            if( path.root.indexOf(path_to_file) !== -1 ){
+                return false;
+            }
         }
 
         // append - html
