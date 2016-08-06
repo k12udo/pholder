@@ -7,6 +7,11 @@ var file = {
     // global(s)
     size : true,
 
+    // global(s) - active
+    active_limit    : 50,
+    active_offset   : 0,
+    acttve_path     : null,
+
 
 
 
@@ -180,15 +185,29 @@ var file = {
 
     // api - get - files
     api_get_files : function(path_to_file) {
+            var  thi = this;
+            this.active        = true;
+        if( this.active_path  == path_to_file ){
+            this.active_offset = this.active_limit + this.active_offset;
+        } else {
+            this.active_path   = path_to_file;
+            this.active_offset = 0;
+        }
         return $.ajax({
                     type:       "POST",
-                    data:       { path : path_to_file },
+                    data:       {
+                                    path   :      path_to_file,
+                                    limit  : this.active_limit,
+                                    offset : this.active_offset
+                                },
                     url:        "php/api/ls.php",
                     success:    function(data) {
                                     path.display_200();
+                                    thi.active = false;
                                 },
                     error:      function() {
-                                   path.display_400();
+                                    path.display_400();
+                                    thi.active = false;
                                 }
         });
     },
@@ -226,11 +245,18 @@ var file = {
             });
     },
 
+    // paginate
+    paginate : function() {
+        var height_div = $("#files").height();
+        if( height_div % 3000 == 0 ){
+            this.refresh( this.active_path, false );
+        }
+    },
 
     // refresh
-    refresh : function(path_to_file) {
-        this.view_reset();
-        this.view_loading();
+    refresh : function(path_to_file, reset = true) {
+           if( reset ){ this.view_reset(); }
+                        this.view_loading();
         var this_copy = this
         var api = this.api_get_files(path_to_file)
             api.success(function(data) {
@@ -294,11 +320,6 @@ var file = {
 /** | listener **/
 
 
-    // nav - click
-    $("#nav-toggle-file-size").click(function() {
-        file.toggle_size();
-    });
-
 
     // file - click
     $(document).on('click', '.file', function(){
@@ -322,6 +343,18 @@ var file = {
         script.remove( row.attr("id"), row.attr("data-path") );
         return false;
     });
+
+    // nav - click
+    $("#nav-toggle-file-size").click(function() {
+        file.toggle_size();
+    });
+
+    // scroll - bottom - paginate
+    $(window).scroll(function() {
+        file.paginate();
+    });
+
+
 
 
 /** listener | **/

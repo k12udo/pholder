@@ -61,15 +61,16 @@
     /** ls **/
     private function ls() {
 
-        // ? - path
-        if( is_null($this->input_path) ){
-            $this->set_response_code(400);
-            return false;
-        }
+                // ? - path
+                if( is_null($this->input_path) ){
+                    $this->set_response_code(400);
+                    return false;
+                }
 
-        // prepare - path(s) - light
-        $paths = scandir($this->input_path);
-        $paths = $this->paths_clean($paths);
+                // prepare - path(s) - light
+                $paths = scandir($this->input_path);
+                $paths = $this->paths_clean($paths);
+        natsort($paths);
 
         // prepare - path(s) - offset
         if( $this->input_offset ){
