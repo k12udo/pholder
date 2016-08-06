@@ -5,8 +5,8 @@ var path =  {
 
 
     // global(s)
-    root : null,
-
+    root    : null,
+    current : null,
 
 
 
@@ -106,6 +106,7 @@ var path =  {
     // set - path
     set_path : function(path_to_file) {
         $("#path-input").val(path_to_file);
+        this.current = path_to_file;
         this.on_change(path_to_file);
     },
 

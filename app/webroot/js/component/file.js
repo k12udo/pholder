@@ -42,6 +42,11 @@ var file = {
         // remove - existing - html
         $('#' + hash).remove();
 
+        // ? - path - root
+        if( path_to_file == path.root && path.current == path.root ){
+            return false;
+        }
+
         // append - html
         $("#files-list").append(
             '<tr id="' + hash + '" class="file" data-path="'+ path_to_file +'" data-directory="' + dir + '" >' +
