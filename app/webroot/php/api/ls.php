@@ -14,8 +14,9 @@
     private $ignore_files = array('.');
 
     /** global(s) - input **/
-    private $input_limit  = null;
-    private $limit_offset = null;
+    public $input_limit  = null;
+    public $input_offset = null;
+    public $input_path   = null;
 
 
 
@@ -79,9 +80,6 @@
         if( $this->input_limit ){
             $paths = array_slice($paths, 0, $this->input_limit);
         }
-
-        print_r($paths);
-        die;
 
         // prepare - path(s) - heavy
         $paths = $this->paths_absolute($this->input_path, $paths);
