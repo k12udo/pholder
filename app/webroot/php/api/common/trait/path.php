@@ -38,11 +38,9 @@
         foreach ($iterator as $i) {
             if( ! is_link($i->getPathname()) ){
                 if( is_readable($i->getPathname()) ){
-                    if( is_file($i->getPathname()) ){
-                        if( strpos( strtolower(basename($i->getPathname())),
-                                    strtolower($term)) !== false) {
-                            $paths[] = $i->getPathname();
-                        }
+                    if( strpos( strtolower(basename($i->getPathname())),
+                                strtolower($term)) !== false) {
+                        $paths[] = $i->getPathname();
                     }
                 }
             }
