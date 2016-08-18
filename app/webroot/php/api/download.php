@@ -43,10 +43,8 @@
         ob_end_flush();
 
         // iterate - file - chunks
-        $handle = fopen($this->input_path, "rb");
-        while (!feof($handle)) {
-            echo fread($handle, 1000);
-        }
+        $fp = fopen($this->input_path, 'rb');
+        fpassthru($fp);
 
         // return
         return true;
