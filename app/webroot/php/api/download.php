@@ -38,8 +38,15 @@
         header('Pragma: public');
         header('Content-Length: ' . filesize($this->input_path));
 
-        // readfile - path
-        readfile($this->input_path);
+        // clean & flush
+        ob_clean();
+        ob_end_flush();
+
+        // iterate - file - chunks
+        $handle = fopen($this->input_path, "rb");
+        while (!feof($handle)) {
+            echo fread($handle, 1000);
+        }
 
         // return
         return true;
