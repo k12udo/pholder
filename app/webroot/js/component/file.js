@@ -73,7 +73,7 @@ var file = {
         }
 
         // append - file - size
-        if( file.size == true ){
+        if( file.size == true && dir == false ){
             this.add_file_size(hash, path_to_file);
         } else {
             $("#" + hash + " .size").empty();

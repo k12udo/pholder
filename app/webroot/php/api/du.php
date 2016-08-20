@@ -30,12 +30,6 @@
     /** du **/
     private function du() {
 
-        // ? - input_path - directory:
-        if( is_dir($this->input_path) ){
-            $this->set_response_code(200);
-            return true;
-        }
-
         // ? - null - input - path
         if( is_null($this->input_path) ){
             $this->set_response_code(400);
