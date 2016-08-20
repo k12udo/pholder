@@ -204,8 +204,6 @@ var file = {
                     type:       "POST",
                     data:       {
                                     path   :      path_to_file,
-                                    limit  : this.active_limit,
-                                    offset : this.active_offset
                                 },
                     url:        "php/api/ls.php",
                     success:    function(data) {
@@ -326,7 +324,6 @@ var file = {
 /** | listener **/
 
 
-
     // file - click
     $(document).on('click', '.file', function(){
         if($(this).attr("data-directory") == "true"){
@@ -354,13 +351,6 @@ var file = {
     $("#nav-toggle-file-size").click(function() {
         file.toggle_size();
     });
-
-    // scroll - bottom - paginate
-    $(window).scroll(function() {
-        file.paginate();
-    });
-
-
 
 
 /** listener | **/
