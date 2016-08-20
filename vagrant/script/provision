@@ -19,8 +19,11 @@
         # upgrade
         apt-get upgrade -q -y
 
-        # install - lamp
-        apt-get install -q -y lamp-server^
+        # install - nginx
+        apt-get install -q -y nginx
+
+        # install - php
+        apt-get install -q -y php5-fpm php5-json
 
         # install - extra
         apt-get install -q -y fail2ban tree
@@ -28,32 +31,37 @@
     # apt |
 
 
-    # | apache2
-    if [ -d '/var/www/html' ]; then
+    # | nginx
 
-        # remove - existing
-        rm -r '/var/www/html'
+        # update - sites-available - default
+        [ -e '/tmp/etc/nginx/sites-available/default' ] && \
+            cp '/tmp/etc/nginx/sites-available/default' '/etc/nginx/sites-available/default'
 
-        # default - site - pholder
-        sed -i s/html/webroot/g /etc/apache2/sites-enabled/000-default.conf
-
-        # restart
-        service apache2 restart
-
-    fi
-    # apache2 |
+    # nginx |
 
 
     # | pholder
     if [ -d '/tmp/app' ]; then
 
         # ? - exists
-        [ -d '/var/www' ] && rm -r '/var/www'
+        [ -d '/usr/share/nginx/pholder' ] && rm -rf '/usr/share/nginx/pholder'
 
-        # mv - app => folder
-        mv '/tmp/app' '/var/www'
+        # mv - app => nginx - share
+        mv '/tmp/app' '/usr/share/nginx/pholder'
 
     fi
     # pholder |
+
+
+    # restart
+    service nginx    restart
+    service php5-fpm restart
+
+
+    # cleanup
+    [ -d '/tmp/app' ] && rm -r '/tmp/app'
+    [ -d '/tmp/etc' ] && rm -r '/tmp/etc'
+
+
 
 
