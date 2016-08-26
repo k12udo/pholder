@@ -140,7 +140,7 @@
 
     #script-export .script .extra textarea {
         min-height:         100px;
-        border-right:       2px solid lightgreen;
+        border-right:       2px solid #00acc1;
     }
 
     #script-export .script > .path {
@@ -194,12 +194,10 @@
     }
 
     #script-export .script .spacer.success {
-        height:             75px;
         border-right:       2px solid lightgreen;
     }
 
     #script-export .script .spacer.error {
-        height:             25px;
         border-right:       2px solid tomato;;
     }
 

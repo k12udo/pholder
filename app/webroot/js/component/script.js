@@ -247,6 +247,7 @@ var script =  {
 
     // enable - export
     enable_export : function() {
+        this.refresh_filename();
         this.view_export_enabled();
         this.enabled_export = true;
     },
@@ -278,7 +279,6 @@ var script =  {
             $("#script-export-input-path-suffix").val(data['script']['path']['suffix']);
             $("#script-export-input-footer").val(data['script']['footer']);
         });
-        this.refresh_session_ready();
         this.refresh_session_sample();
     },
 
@@ -321,42 +321,28 @@ var script =  {
         });
     },
 
-    // refresh - session - ready
-    refresh_session_ready : function() {
-        $(".script-export-spacer-bot").removeClass("error");
-        $(".script-export-spacer-bot").removeClass("hidden");
-        $(".script-export-spacer-bot").removeClass("success");
-        $(".script-export-spacer-mid").removeClass("error");
-        $(".script-export-spacer-mid").removeClass("success");
-        $(".script-export-spacer-top").removeClass("error");
-        $(".script-export-spacer-top").removeClass("success");
-        api = this.api_session_ready();
-        api.success(function(data) {
-            $("#script-export      input").addClass("success");
-            $("#script-export  .download").removeClass("hidden");
-            $(".script-export-spacer-bot").addClass("success");
-            $(".script-export-spacer-mid").addClass("success");
-            $(".script-export-spacer-top").addClass("success");
-        });
-        api.error(function(data) {
-            $("#script-export-download").addClass("hidden");
-            $(".script-export-spacer-bot").addClass("error");
-            $(".script-export-spacer-mid").addClass("error");
-            $(".script-export-spacer-top").addClass("error");
-        });
+
+    // refresh - filename
+    refresh_filename : function() {
+        if( $('#script-export-input-filename').val().length > 0 ){
+            $('#script-export-download').show();
+        } else {
+            $('#script-export-download').hide();
+        }
     },
+
 
     // refresh - session - sample
     refresh_session_sample : function() {
-        $("#script-export-path").removeClass("error");
-        $("#script-export-path").removeClass("success");
         api = this.api_session_sample();
         api.success(function(data) {
             $("#script-export-path").addClass("success");
+            $("#script-export-path").removeClass("success");
             $("#script-export-path-sample").html(data);
         });
         api.error(function(data) {
             $("#script-export-path").addClass("error");
+            $("#script-export-path").removeClass("error");
             $("#script-export-path-sample").html(data);
         });
     },
@@ -393,222 +379,184 @@ var script =  {
 
 
 
+    /** | set **/
 
-    // set - session - fileename
-    set_session_filename : function(input) {
-        this_copy = this;
-        $(".script-export-spacer-top").removeClass("error");
-        $(".script-export-spacer-top").removeClass("success");
-        $(input).removeClass("error");
-        $(input).removeClass("success");
-        api = this.api_set_session_filename($(input).val());
-        api.success(function(data) {
-            $(input).addClass("success");
-            this_copy.refresh_session_ready();
-            $(".script-export-spacer-top").addClass("success");
-            $(".script-export-display").removeClass("hidden");
-        });
-        api.error(function() {
-            $(input).addClass("error");
-            unset = this_copy.api_unset_session_filename("");
-            unset.success(function() {
-                this_copy.refresh_session_ready();
+        // set - session - fileename
+        set_session_filename : function(input) {
+            this_copy = this;
+            $(input).removeClass("success");
+            api = this.api_set_session_filename($(input).val());
+            api.success(function(data) {
+                $(input).addClass("success");
+                $(input).removeClass("error");
+                this_copy.refresh_filename();
             });
-            $(".script-export-spacer-top").addClass("error");
-            $("#script-export-display").addClass("hidden");
-        });
-    },
-
-    // set - session - header
-    set_session_header : function(input) {
-        this_copy = this;
-        $(input).removeClass("error");
-        $(input).removeClass("success");
-        api = this.api_set_session_header($(input).val());
-        api.success(function(data) {
-            this_copy.refresh_session_ready();
-            $(input).addClass("success");
-        });
-        api.error(function() {
-            $(input).addClass("error");
-            unset = this_copy.api_unset_session_header("");
-            unset.success(function() {
-                this_copy.refresh_session_ready();
+            api.error(function() {
+                $(input).addClass("error");
+                $(input).removeClass("success");
+                this_copy.api_unset_session_filename("");
+                this_copy.refresh_filename();
             });
-        });
-    },
+        },
 
-    // set - session - interpreter
-    set_session_interpreter : function(input) {
-        this_copy = this
-        $(".script-export-spacer-mid").removeClass("success");
-        $(".script-export-spacer-mid").removeClass("error");
-        $(input).removeClass("error");
-        $(input).removeClass("success");
-        api = this.api_set_session_interpreter($(input).val());
-        api.success(function(data) {
-            $(".script-export-spacer-mid").addClass("success");
-            this_copy.refresh_session_ready();
-            $(input).addClass("success");
-        });
-        api.error(function() {
-            $(".script-export-spacer-mid").addClass("error");
-            $(input).addClass("error");
-            unset = this_copy.api_unset_session_interpreter("");
-            unset.success(function() {
-                this_copy.refresh_session_ready();
+        // set - session - header
+        set_session_header : function(input) {
+            this_copy = this;
+            api = this.api_set_session_header($(input).val());
+            api.success(function(data) {
+                $(input).addClass("success");
+                $(input).removeClass("error");
             });
-        });
-    },
-
-    // set - session - footer
-    set_session_footer : function(input) {
-        this_copy = this;
-        $(input).removeClass("error");
-        $(input).removeClass("success");
-        api = this.api_set_session_footer($(input).val());
-        api.success(function(data) {
-            this_copy.refresh_session_ready();
-            $(input).addClass("success");
-        });
-        api.error(function() {
-            $(input).addClass("error");
-            unset = this_copy.api_unset_session_footer("");
-            unset.success(function() {
-                this_copy.refresh_session_ready();
+            api.error(function() {
+                $(input).addClass("error");
+                $(input).removeClass("success");
+                unset = this_copy.api_unset_session_header("");
             });
-        });
-    },
+        },
 
-    // set - session - path - prefix
-    set_session_path_prefix : function(input) {
-        this_copy = this;
-        $(".script-export-spacer-bot").removeClass("success");
-        $(".script-export-spacer-bot").removeClass("error");
-        $(input).removeClass("error");
-        $(input).removeClass("success");
-        api = this.api_set_session_path_prefix($(input).val());
-        api.success(function(data) {
-            this_copy.refresh_session_ready();
-            this_copy.refresh_session_sample();
-            $(input).addClass("success");
-            $(".script-export-spacer-bot").addClass("success");
-        });
-        api.error(function() {
-            $(input).addClass("error");
-            $(".script-export-spacer-bot").addClass("error");
-            unset = this_copy.api_unset_session_path_prefix("");
-            unset.success(function() {
-                this_copy.refresh_session_ready();
+        // set - session - interpreter
+        set_session_interpreter : function(input) {
+            this_copy = this
+            api = this.api_set_session_interpreter($(input).val());
+            api.success(function(data) {
+                $(input).addClass("success");
+                $(input).removeClass("error");
+            });
+            api.error(function() {
+                $(input).addClass("error");
+                $(input).removeClass("success");
+                unset = this_copy.api_unset_session_interpreter("");
+            });
+        },
+
+        // set - session - footer
+        set_session_footer : function(input) {
+            this_copy = this;
+            api = this.api_set_session_footer($(input).val());
+            api.success(function(data) {
+                $(input).addClass("success");
+                $(input).removeClass("error");
+            });
+            api.error(function() {
+                $(input).addClass("error");
+                $(input).removeClass("success");
+                unset = this_copy.api_unset_session_footer("");
+            });
+        },
+
+        // set - session - path - prefix
+        set_session_path_prefix : function(input) {
+            this_copy = this;
+            api = this.api_set_session_path_prefix($(input).val());
+            api.success(function(data) {
+                $(input).addClass("success");
+                $(input).removeClass("error");
                 this_copy.refresh_session_sample();
             });
-        });
-    },
+            api.error(function() {
+                $(input).addClass("error");
+                $(input).removeClass("success");
+                unset = this_copy.api_unset_session_path_prefix("");
+            });
+        },
 
-    // set - session - path - suffix
-    set_session_path_suffix : function(input) {
-        this_copy = this;
-        $(".script-export-spacer-bot").removeClass("success");
-        $(".script-export-spacer-bot").removeClass("error");
-        $(input).removeClass("error");
-        $(input).removeClass("success");
-        api = this.api_set_session_path_suffix($(input).val());
-        api.success(function(data) {
-            this_copy.refresh_session_ready();
-            this_copy.refresh_session_sample();
-            $(input).addClass("success");
-            $(".script-export-spacer-bot").addClass("success");
-        });
-        api.error(function() {
-            $(input).addClass("error");
-            $(".script-export-spacer-bot").addClass("error");
-            unset = this_copy.api_unset_session_path_suffix("");
-            unset.success(function() {
-                this_copy.refresh_session_ready();
+        // set - session - path - suffix
+        set_session_path_suffix : function(input) {
+            this_copy = this;
+            api = this.api_set_session_path_suffix($(input).val());
+            api.success(function(data) {
+                $(input).addClass("success");
+                $(input).removeClass("error");
                 this_copy.refresh_session_sample();
             });
-        });
-    },
+            api.error(function() {
+                $(input).addClass("error");
+                $(input).removeClass("success");
+                unset = this_copy.api_unset_session_path_suffix("");
+            });
+        },
 
-    // set - section - reset
-    set_session_reset : function() {
-        $("#script-export-display").addClass("hidden");
-        $("#script-export-download").addClass("hidden");
-        $("#script-export input").removeClass("error");
-        $("#script-export input").removeClass("success");
-        $("#script-export input").val("");
-        $("#script-export").removeClass("error");
-        $("#script-export").removeClass("success");
-        $("#script-export").val("");
-        $("#script-export-path").removeClass("error");
-        $("#script-export-path").removeClass("success");
-        this.api_unset_session_filename("");
-        this.api_unset_session_header("");
-        this.api_unset_session_interpreter("");
-        this.api_unset_session_path_prefix("");
-        this.api_unset_session_path_suffix("");
-        this.api_unset_session_footer("");
-        this.refresh_session_sample();
-    },
+        // set - section - reset
+        set_session_reset : function() {
+            $("#script-export input").removeClass("error");
+            $("#script-export input").removeClass("success");
+            $("#script-export input").val("");
+            $("#script-export textarea").removeClass("error");
+            $("#script-export textarea").removeClass("success");
+            $("#script-export textarea").val("");
+            $("#script-export").removeClass("error");
+            $("#script-export").removeClass("success");
+            $("#script-export").val("");
+            $("#script-export-path").removeClass("error");
+            $("#script-export-path").removeClass("success");
+            this.api_unset_session_filename("");
+            this.api_unset_session_header("");
+            this.api_unset_session_interpreter("");
+            this.api_unset_session_path_prefix("");
+            this.api_unset_session_path_suffix("");
+            this.api_unset_session_footer("");
+            this.refresh_filename();
+            this.refresh_session_sample();
+        },
 
-
-
-
-    // view - reset
-    view_reset : function() {
-        $("#files .script").addClass("hidden");
-        $("#nav-display-script").addClass("hidden");
-        $("#nav-display-script").removeClass("cyan");
-        $("#nav-display-script").removeClass("darken-1");
-        $("#nav-toggle-script").removeClass("cyan");
-        $("#nav-toggle-script-export").addClass("hidden");
-        $("#nav-toggle-script-export a").removeClass("cyan");
-        $("#nav-toggle-script-reset").addClass("hidden");
-        $("#nav-toggle-script-reset a").removeClass("cyan");
-    },
-
-    // view - enabled
-    view_enabled : function() {
-        this.view_reset();
-        $("#files .script").removeClass("hidden");
-        $("#nav-display-script").addClass("cyan");
-        $("#nav-display-script").addClass("darken-1");
-        $("#nav-display-script").removeClass("hidden");
-        $("#nav-toggle-script").addClass("cyan");
-        $("#nav-toggle-script-export").removeClass("hidden");
-        $("#nav-toggle-script-export a").addClass("cyan");
-        $("#nav-toggle-script-reset").removeClass("hidden");
-        $("#nav-toggle-script-reset a").addClass("cyan");
-    },
-
-    // view - nav - loading
-    view_nav_loading : function() {
-    },
-
-    // view - nav - size
-    view_nav_size : function(bytes, human) {
-        $("#nav-display-script").html(
-            '<span class"size">' + human + '</span>'
-        );
-    },
+    /** set | **/
 
 
+    /** | view **/
+
+        // view - reset
+        view_reset : function() {
+            $("#files .script").addClass("hidden");
+            $("#nav-display-script").addClass("hidden");
+            $("#nav-display-script").removeClass("cyan");
+            $("#nav-display-script").removeClass("darken-1");
+            $("#nav-toggle-script").removeClass("cyan");
+            $("#nav-toggle-script-export").addClass("hidden");
+            $("#nav-toggle-script-export a").removeClass("cyan");
+            $("#nav-toggle-script-reset").addClass("hidden");
+            $("#nav-toggle-script-reset a").removeClass("cyan");
+        },
+
+        // view - enabled
+        view_enabled : function() {
+            this.view_reset();
+            $("#files .script").removeClass("hidden");
+            $("#nav-display-script").addClass("cyan");
+            $("#nav-display-script").addClass("darken-1");
+            $("#nav-display-script").removeClass("hidden");
+            $("#nav-toggle-script").addClass("cyan");
+            $("#nav-toggle-script-export").removeClass("hidden");
+            $("#nav-toggle-script-export a").addClass("cyan");
+            $("#nav-toggle-script-reset").removeClass("hidden");
+            $("#nav-toggle-script-reset a").addClass("cyan");
+        },
+
+        // view - nav - loading
+        view_nav_loading : function() {
+        },
+
+        // view - nav - size
+        view_nav_size : function(bytes, human) {
+            $("#nav-display-script").html(
+                '<span class"size">' + human + '</span>'
+            );
+        },
 
 
-    // view - export - reset
-    view_export_reset : function() {
-        $("body").css("overflow", "auto");
-        $("#script-export").addClass("hidden");
-    },
+        // view - export - reset
+        view_export_reset : function() {
+            $("body").css("overflow", "auto");
+            $("#script-export").addClass("hidden");
+        },
 
-    // view - export - enabled
-    view_export_enabled : function() {
-        this.view_export_reset();
-        $("body").css("overflow", "hidden");
-        $("#script-export").removeClass("hidden");
-    }
+        // view - export - enabled
+        view_export_enabled : function() {
+            this.view_export_reset();
+            $("body").css("overflow", "hidden");
+            $("#script-export").removeClass("hidden");
+        }
 
-
+    /** view | **/
 
 
 }
