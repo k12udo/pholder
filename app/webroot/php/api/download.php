@@ -22,24 +22,6 @@
 
         private function download() {
 
-            // ? - apache
-
-            // ? - php
-            if( strtolower(substr($_SERVER['SERVER_SOFTWARE'], 0, 3)) == 'php' ){
-                return $this->download_php();
-            }
-
-            // ? - no - match
-            return $this->download_php();
-
-        }
-
-        private function download_apache() {
-
-        }
-
-        private function download_php() {
-
             // ? - null
             if(is_null($this->input_path) ){
                 $this->set_response_code(400);
@@ -48,6 +30,9 @@
 
             // headers - status - code
             http_response_code(200);
+
+            // headers - apache - sendfile
+            header("X-Sendfile: ".$this->input_path);
 
             // headers - download
             header('Content-Description: File Transfer');
