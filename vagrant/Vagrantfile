@@ -15,7 +15,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         # copy - app
         config.vm.provision "file", source: "../app", destination: "/tmp/app"
-        config.vm.provision "file", source: "etc",    destination: "/tmp/etc"
 
         # network - adapter - bridged
         config.vm.network "public_network"
