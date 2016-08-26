@@ -369,11 +369,9 @@ var script =  {
 
     // reset
     reset : function() {
-        this_copy = this;
         api = this.api_session_reset();
         api.success(function() {
-            file.refresh( $("#path-input").val() );
-            this_copy.refresh_nav();
+            location.reload();
         });
     },
 
