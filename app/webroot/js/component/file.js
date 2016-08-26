@@ -8,9 +8,10 @@ var file = {
     size : true,
 
     // global(s) - active
+    active_delay    : 500,
     active_limit    : 50,
     active_offset   : 0,
-    acttve_path     : null,
+    active_path     : null,
 
 
 
@@ -271,7 +272,7 @@ var file = {
                 if( data.length == this_copy.active_limit ){
                     setTimeout( function() {
                         this_copy.refresh( this_copy.active_path, false );
-                    }, 100);
+                    }, this_copy.active_delay);
                 } else {
                     this_copy.view_loading_loaded();
                 }
