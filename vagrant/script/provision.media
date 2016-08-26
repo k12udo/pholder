@@ -4,7 +4,13 @@
 #
 
 
+    # export - noninteractive
+    export DEBIAN_FRONTEND=noninteractive
+
+    # set - x
+    set -x
+
     # create - setting - global.path
-    [ -d '/usr/share/nginx/pholder/config' ] && echo '/media' > '/usr/share/nginx/pholder/config/global.root'
+    echo '/media' > '/var/www/config/global.root'
 
 
