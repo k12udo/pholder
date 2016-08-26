@@ -203,7 +203,9 @@ var file = {
         return $.ajax({
                     type:       "POST",
                     data:       {
-                                    path   :      path_to_file,
+                                    path    :        path_to_file,
+                                    limit   :   this.active_limit,
+                                    offset  :   this.active_offset
                                 },
                     url:        "php/api/ls.php",
                     success:    function(data) {
@@ -259,13 +261,21 @@ var file = {
 
     // refresh
     refresh : function(path_to_file, reset = true) {
-           if( reset ){ this.view_reset(); }
-                        this.view_loading();
+        if( reset ){
+            this.view_reset();
+            this.view_loading();
+        }
         var this_copy = this
         var api = this.api_get_files(path_to_file)
             api.success(function(data) {
+                if( data.length == this_copy.active_limit ){
+                    setTimeout( function() {
+                        this_copy.refresh( this_copy.active_path, false );
+                    }, 100);
+                } else {
+                    this_copy.view_loading_loaded();
+                }
                 this_copy.add_files(data)
-                this_copy.view_loading_loaded();
             });
             api.error(function(data) {
                 this_copy.view_loading_error();
