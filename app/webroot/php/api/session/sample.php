@@ -57,7 +57,7 @@
         foreach( $paths as $path ){
             $sample .= "<tr>";
             $sample .= "<td class='prefix'>$prefix</td>";
-            $sample .= "<td class='path'>\"$path\"</td>";
+            $sample .= "<td class='path'>'$path'</td>";
             $sample .= "<td class='suffix'>$suffix</td>";
             $sample .= "</tr>";
         }
