@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # | global
 
         # base - box
-        config.vm.box = "ubuntu/trusty64"
+        config.vm.box = "ubuntu/xenial64"
 
         # copy - app
         config.vm.provision "file", source: "../app", destination: "/tmp/app"
@@ -47,7 +47,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             config.vm.provider :virtualbox do |vb|
                 vb.name = "media-pholder"
             end
-            config.vm.provision "shell", path: "script/provision.media"
+            config.vm.provision "shell", path: "script/provision-media"
         end
 
         # pholder
