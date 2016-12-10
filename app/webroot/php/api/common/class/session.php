@@ -27,11 +27,8 @@
             return true;
         }
 
-        // replace - slash
-        $path = preg_replace('#/+#','/',$this->path);
-
         // add - session - path
-        $_SESSION['pholder']['paths'][$path] = array(
+        $_SESSION['pholder']['paths'][$this->path] = array(
             'size_bytes' => $this->size_bytes,
             'size_human' => $this->size_human
         );

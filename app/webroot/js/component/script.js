@@ -18,6 +18,7 @@ var script =  {
         api.success(function(data) {
             file.add_file_script_selected(hash);
             this_copy.refresh_nav();
+            this_copy.refresh_session_sample();
         });
         api.error(function() {
             file.add_file_script_error(hash);
@@ -358,6 +359,7 @@ var script =  {
         api.success(function(data) {
             file.remove_file_script(hash);
             this_copy.refresh_nav();
+            this_copy.refresh_session_sample();
         });
         api.error(function() {
             file.add_file_script_error(hash);
