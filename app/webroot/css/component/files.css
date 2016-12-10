@@ -8,7 +8,7 @@
     }
 
     #files .loading {
-        height:             200px;
+        height:             120px;
         overflow:           hidden;
         transition:         1s;
     }
