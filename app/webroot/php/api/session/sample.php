@@ -45,13 +45,20 @@
         $prefix = $_SESSION['pholder']['script']['path']['prefix'];
         $suffix = $_SESSION['pholder']['script']['path']['suffix'];
 
-        // prepare - sample
+        // get - path(s)
+        foreach( $_SESSION['pholder']['paths'] as $path => $details ){
+            $paths[] = $path;
+        }
+
+        // init - sample
         $sample = "";
-        foreach( $this->sample_data as $path ){
+
+        // prepare - sample
+        foreach( $paths as $path ){
             $sample .= "<tr>";
-            $sample .= "<td class='amber-text  prefix'>$prefix</td>";
-            $sample .= "<td class='light-blue-text path'>\"$path\"</td>";
-            $sample .= "<td class='amber-text  suffix'>$suffix</td>";
+            $sample .= "<td class='prefix'>$prefix</td>";
+            $sample .= "<td class='path'>\"$path\"</td>";
+            $sample .= "<td class='suffix'>$suffix</td>";
             $sample .= "</tr>";
         }
 

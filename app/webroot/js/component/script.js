@@ -337,12 +337,12 @@ var script =  {
         api = this.api_session_sample();
         api.success(function(data) {
             $("#script-export-path").addClass("success");
-            $("#script-export-path").removeClass("success");
+            $("#script-export-path").removeClass("error");
             $("#script-export-path-sample").html(data);
         });
         api.error(function(data) {
             $("#script-export-path").addClass("error");
-            $("#script-export-path").removeClass("error");
+            $("#script-export-path").removeClass("success");
             $("#script-export-path-sample").html(data);
         });
     },
