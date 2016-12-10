@@ -8,8 +8,8 @@ var file = {
     size : true,
 
     // global(s) - active
-    active_delay    : 500,
-    active_limit    : 50,
+    active_delay    : 50,
+    active_limit    : 1,
     active_offset   : 0,
     active_path     : null,
 
